@@ -22230,7 +22230,7 @@
 							},
 							"name": "formaPagamento",
 							"visibility": "private",
-							"type": "String"
+							"type": "Int"
 						}
 					],
 					"operations": [
@@ -43532,7 +43532,7 @@
 											"top": 606,
 											"width": 145.234375,
 											"height": 13,
-											"text": "-formaPagamento: String",
+											"text": "-formaPagamento: Int",
 											"horizontalAlignment": 0
 										}
 									],
