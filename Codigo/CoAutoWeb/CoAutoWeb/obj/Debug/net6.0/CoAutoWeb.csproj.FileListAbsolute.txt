@@ -278,3 +278,5 @@ C:\Users\jorda\OneDrive\Documentos\Projetos\CoAuto\Codigo\CoAutoWeb\CoAutoWeb\ob
 C:\Users\jorda\OneDrive\Documentos\Projetos\CoAuto\Codigo\CoAutoWeb\CoAutoWeb\obj\Debug\net6.0\CoAutoWeb.pdb
 C:\Users\jorda\OneDrive\Documentos\Projetos\CoAuto\Codigo\CoAutoWeb\CoAutoWeb\obj\Debug\net6.0\CoAutoWeb.genruntimeconfig.cache
 C:\Users\jorda\OneDrive\Documentos\Projetos\CoAuto\Codigo\CoAutoWeb\CoAutoWeb\obj\Debug\net6.0\ref\CoAutoWeb.dll
+C:\Users\jorda\OneDrive\Documentos\Projetos\CoAuto\Codigo\CoAutoWeb\CoAutoWeb\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\jorda\OneDrive\Documentos\Projetos\CoAuto\Codigo\CoAutoWeb\CoAutoWeb\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

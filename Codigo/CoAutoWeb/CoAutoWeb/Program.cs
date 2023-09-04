@@ -1,3 +1,8 @@
+using Core;
+using Core.Service;
+using Microsoft.EntityFrameworkCore;
+using Service;
+
 namespace CoAutoWeb
 {
     public class Program
@@ -8,6 +13,13 @@ namespace CoAutoWeb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<BibliotecaContext>(
+                options => options.UseMySQL(builder.Configuration.GetConnectionString("CoAutoDatabase")));
+
+            builder.Services.AddTransient<IVeiculoService, VeiculoService>();
+
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var app = builder.Build();
 
@@ -28,7 +40,7 @@ namespace CoAutoWeb
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Veiculo}/{action=Index}/{id?}");
 
             app.Run();
         }

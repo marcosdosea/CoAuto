@@ -1,0 +1,155 @@
+﻿@model IEnumerable<CoAutoWeb.Models.VeiculoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Meus Compartilhamentos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crlv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cilindradas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdModelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autorizado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Portas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Combustivel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cambio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Passageiro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carroceria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPessoa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ano)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Placa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crlv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cilindradas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdModelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autorizado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Portas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Combustivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cambio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passageiro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carroceria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPessoa)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
