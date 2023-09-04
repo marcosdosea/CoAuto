@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jorda\\OneDrive\\Documentos\\Projetos\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj": {}
+    "C:\\Users\\Luis Gabriel\\Documents\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jorda\\OneDrive\\Documentos\\Projetos\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj": {
+    "C:\\Users\\Luis Gabriel\\Documents\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jorda\\OneDrive\\Documentos\\Projetos\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Luis Gabriel\\Documents\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\jorda\\OneDrive\\Documentos\\Projetos\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\jorda\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jorda\\OneDrive\\Documentos\\Projetos\\CoAuto\\Codigo\\CoAutoWeb\\Core\\obj\\",
+        "projectPath": "C:\\Users\\Luis Gabriel\\Documents\\CoAuto\\Codigo\\CoAutoWeb\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Luis Gabriel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Luis Gabriel\\Documents\\CoAuto\\Codigo\\CoAutoWeb\\Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jorda\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Luis Gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
