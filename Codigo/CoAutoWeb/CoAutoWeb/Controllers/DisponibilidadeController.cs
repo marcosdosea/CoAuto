@@ -37,7 +37,7 @@ namespace CoAutoWeb.Controllers
         public ActionResult Details(int id)
         {
             var disponibilidade = _disponibilidadeService.GetAll();
-            var disponibilidadeViewModel = _mapper.Map<List<disponibilidadeViewModel>>(disponibilidade);
+            var disponibilidadeViewModel = _mapper.Map<List<DisponibilidadeModel>>(disponibilidade);
             return View(disponibilidadeViewModel);
         }
 
