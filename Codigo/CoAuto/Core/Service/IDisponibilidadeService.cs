@@ -14,7 +14,7 @@ namespace Core.Service
 
         void Delete(int iddisponibilidade);
 
-        Disponibilidade Get(int iddisponibilidade);
+        Disponibilidade Get(int id);
 
         IEnumerable<Disponibilidade> GetAll();
 

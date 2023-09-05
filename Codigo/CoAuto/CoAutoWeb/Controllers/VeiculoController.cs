@@ -11,8 +11,15 @@ namespace CoAutoWeb.Controllers
 {
     public class VeiculoController : Controller
     {
-        IVeiculoService _VeiculoService;
-        IMapper _mapper;
+        private readonly IVeiculoService _VeiculoService;
+        private readonly IMapper _mapper;
+
+
+        public VeiculoController(IVeiculoService veiculoService, IMapper mapper)
+        {
+            _VeiculoService = veiculoService;
+            _mapper = mapper;
+        }
 
         // GET: VeiculoController
         public ActionResult Index()
@@ -20,7 +27,7 @@ namespace CoAutoWeb.Controllers
         {
             var listaVeiculos = _VeiculoService.getAll();
             var listaVeiculosModel = _mapper.Map<List<VeiculoViewModel>>(listaVeiculos);
-            return View(listaVeiculos);
+            return View(listaVeiculosModel);
         }
 
         // GET: VeiculoController/Details/5

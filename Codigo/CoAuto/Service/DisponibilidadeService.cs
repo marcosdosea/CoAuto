@@ -26,13 +26,13 @@ namespace Service
         // <summary>
         /// Insere uma nova disponibilidade
         /// </summary>
-        /// <param name="horas">dados da disponibilidade</param>
-        /// <returns></returns>
+        /// <param name="disponibilidade">dados da disponibilidade</param>
+        /// <returns>id da disponibilidade</returns>
         public int Create(Disponibilidade disponibilidade)
         {
             _context.Add(disponibilidade);
             _context.SaveChanges();
-            return (int)disponibilidade.Id;
+            return disponibilidade.Id;
         }
 
         // <summary>
