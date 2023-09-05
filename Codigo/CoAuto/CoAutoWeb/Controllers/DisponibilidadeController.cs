@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CoAutoWeb.Models;
+using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace CoAutoWeb.Controllers
         private readonly IDisponibilidadeService _disponibilidadeService;
         private readonly IMapper _mapper;
 
-
+         
 
         public DisponibilidadeController(IDisponibilidadeService disponibilidadeService, IMapper mapper)
         {
@@ -36,9 +37,9 @@ namespace CoAutoWeb.Controllers
         // GET: DisponibilidadeController/Details/5
         public ActionResult Details(int id)
         {
-            var disponibilidade = _disponibilidadeService.GetAll();
-            var disponibilidadeViewModel = _mapper.Map<List<DisponibilidadeModel>>(disponibilidade);
-            return View(disponibilidadeViewModel);
+            Disponibilidade disponibilidade = _disponibilidadeService.Get(id);
+            DisponibilidadeModel disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
+            return View(disponibilidadeModel);
         }
 
         // GET: DisponibilidadeController/Create
@@ -50,43 +51,43 @@ namespace CoAutoWeb.Controllers
         // POST: DisponibilidadeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(DisponibilidadeModel disponibilidadeModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var disponibilidade = _mapper.Map<Disponibilidade>(disponibilidadeModel);
+                _disponibilidadeService.Create(disponibilidade);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: DisponibilidadeController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Disponibilidade disponibilidade = _disponibilidadeService.Get(id);
+            DisponibilidadeModel disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
+            return View(disponibilidadeModel);
         }
 
         // POST: DisponibilidadeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, DisponibilidadeModel disponibilidadeModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var disponibilidade = _mapper.Map<Disponibilidade>(disponibilidadeModel);
+                _disponibilidadeService.Editar(disponibilidade);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: DisponibilidadeController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Disponibilidade disponibilidade = _disponibilidadeService.Get(id);
+            DisponibilidadeModel disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
+            return View(disponibilidadeModel);
         }
 
         // POST: DisponibilidadeController/Delete/5
@@ -94,14 +95,8 @@ namespace CoAutoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _disponibilidadeService.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

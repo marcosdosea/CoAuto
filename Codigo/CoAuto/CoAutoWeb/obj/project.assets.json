@@ -11364,19 +11364,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\logxp\\.nuget\\packages\\": {}
+    "C:\\Users\\LuisRibeiro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj",
+      "projectUniqueName": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj",
       "projectName": "CoAutoWeb",
-      "projectPath": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj",
-      "packagesPath": "C:\\Users\\logxp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\obj\\",
+      "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj",
+      "packagesPath": "C:\\Users\\LuisRibeiro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\logxp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LuisRibeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11384,18 +11384,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj"
+            "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj"
             },
-            "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj": {
-              "projectPath": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj"
+            "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj"
             }
           }
         }
@@ -11452,7 +11451,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

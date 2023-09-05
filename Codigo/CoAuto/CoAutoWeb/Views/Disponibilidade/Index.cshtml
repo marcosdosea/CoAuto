@@ -1,0 +1,65 @@
+﻿ @model IEnumerable<CoAutoWeb.Models.DisponibilidadeModel>
+
+@{
+    ViewData["Title"] = "Lista todas as disponibilidades";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Nova Disponibilidade</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVeiculo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVeiculo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.ID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

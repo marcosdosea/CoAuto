@@ -2617,19 +2617,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\logxp\\.nuget\\packages\\": {}
+    "C:\\Users\\LuisRibeiro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\logxp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\logxp\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\obj\\",
+      "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\LuisRibeiro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\logxp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LuisRibeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2692,7 +2692,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
