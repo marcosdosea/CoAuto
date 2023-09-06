@@ -11,15 +11,8 @@ namespace CoAutoWeb.Controllers
 {
     public class VeiculoController : Controller
     {
-        private readonly IVeiculoService _VeiculoService;
-        private readonly IMapper _mapper;
-
-
-        public VeiculoController(IVeiculoService veiculoService, IMapper mapper)
-        {
-            _VeiculoService = veiculoService;
-            _mapper = mapper;
-        }
+         IVeiculoService _VeiculoService;
+         IMapper _mapper;
 
         // GET: VeiculoController
         public ActionResult Index()
