@@ -37,8 +37,8 @@ namespace CoAutoWeb.Controllers
         // GET: DisponibilidadeController/Details/5
         public ActionResult Details(int id)
         {
-            Disponibilidade disponibilidade = _disponibilidadeService.Get(id);
-            DisponibilidadeModel disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
+            var disponibilidade = _disponibilidadeService.Get(id);
+            var disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
             return View(disponibilidadeModel);
         }
 
@@ -77,7 +77,7 @@ namespace CoAutoWeb.Controllers
             if (ModelState.IsValid)
             {
                 var disponibilidade = _mapper.Map<Disponibilidade>(disponibilidadeModel);
-                _disponibilidadeService.Editar(disponibilidade);
+                _disponibilidadeService.Edit(disponibilidade);
             }
             return RedirectToAction(nameof(Index));
         }

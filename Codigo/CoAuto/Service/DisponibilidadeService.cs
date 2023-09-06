@@ -27,7 +27,7 @@ namespace Service
         /// Insere uma nova disponibilidade
         /// </summary>
         /// <param name="disponibilidade">dados da disponibilidade</param>
-        /// <returns>id da disponibilidade</returns>
+        /// <returns></returns>
         public int Create(Disponibilidade disponibilidade)
         {
             _context.Add(disponibilidade);
@@ -51,9 +51,9 @@ namespace Service
         // <summary>
         /// Editar uma disponibilidade
         /// </summary>
-        /// <param name="disponibilidade">dados da disponibilidade para editar</param>
-        /// <returns></returns>
-        public void Editar(Disponibilidade disponibilidade)
+        /// <param name="disponibilidade"></param>
+        /// <exception cref="ServiceException"></exception>
+        public void Edit(Disponibilidade disponibilidade)
         {
             _context.Update(disponibilidade);
             _context.SaveChanges();

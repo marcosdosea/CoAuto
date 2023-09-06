@@ -10,7 +10,7 @@ namespace Core.Service
     {
         int Create(Disponibilidade disponibilidade);
 
-        void Editar(Disponibilidade disponibilidade);
+        void Edit(Disponibilidade disponibilidade);
 
         void Delete(int iddisponibilidade);
 
