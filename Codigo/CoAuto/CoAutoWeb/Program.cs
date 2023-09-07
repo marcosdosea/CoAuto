@@ -18,6 +18,7 @@ namespace CoAutoWeb
                 options => options.UseMySQL(builder.Configuration.GetConnectionString("CoAutoDatabase")));
 
             builder.Services.AddTransient<IVeiculoService, VeiculoService>();
+            builder.Services.AddTransient<IDisponibilidadeService, DisponibilidadeService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

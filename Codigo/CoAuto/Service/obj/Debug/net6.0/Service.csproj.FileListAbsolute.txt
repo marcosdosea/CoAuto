@@ -1,0 +1,51 @@
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\bin\Debug\net6.0\Service.deps.json
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\bin\Debug\net6.0\Service.runtimeconfig.json
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\bin\Debug\net6.0\Service.dll
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\bin\Debug\net6.0\Service.pdb
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\bin\Debug\net6.0\Core.dll
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\bin\Debug\net6.0\Core.pdb
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.csproj.CopyComplete
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.dll
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\refint\Service.dll
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.pdb
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\Service.genruntimeconfig.cache
+C:\Users\Luis Gabriel\Documents\CoAuto\Codigo\CoAutoWeb\Service\obj\Debug\net6.0\ref\Service.dll
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.deps.json
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.runtimeconfig.json
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.dll
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.pdb
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Core.dll
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Core.pdb
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.csproj.CopyComplete
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.dll
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\refint\Service.dll
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.pdb
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.genruntimeconfig.cache
+C:\Users\logxp\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\ref\Service.dll
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.deps.json
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.runtimeconfig.json
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.dll
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Service.pdb
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Core.dll
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\bin\Debug\net6.0\Core.pdb
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.csproj.CopyComplete
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.dll
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\refint\Service.dll
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.pdb
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\Service.genruntimeconfig.cache
+C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\Service\obj\Debug\net6.0\ref\Service.dll
