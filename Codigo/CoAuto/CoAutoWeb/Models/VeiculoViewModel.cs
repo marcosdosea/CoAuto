@@ -10,7 +10,7 @@ namespace CoAutoWeb.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
-        public String Tipo { get; set; } = null!;
+        public string Tipo { get; set; } = null!;
         
         [Required(ErrorMessage = "Campo requerido")]
         [Display(Name = "Ano")]
@@ -24,9 +24,6 @@ namespace CoAutoWeb.Models
 
         [Required(ErrorMessage = "Campo requerido")]
         public string Crlv { get; set; } = null!;
-
-        [Required(ErrorMessage = "Campo requerido")]
-        public int? Cilindradas { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
         [Display(Name = "Valor Diaria")]
@@ -60,7 +57,6 @@ namespace CoAutoWeb.Models
 
         [Required(ErrorMessage = "Campo requerido")]
         [Display(Name = "Número *")]
-        [StringLength(6, ErrorMessage = "Numero da casa tem entre 1 e 6 digitos", MinimumLength = 1)]
         public int Numero { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
@@ -69,15 +65,17 @@ namespace CoAutoWeb.Models
         [Required(ErrorMessage = "Campo requerido")]
         public int IdModelo { get; set; }
 
-        public String? Portas { get; set; }
+        public string? Portas { get; set; }
 
-        public String Combustivel { get; set; } = null!;
+        public int? Cilindradas { get; set; }
 
-        public String Cambio { get; set; } = null!;
+        public string Combustivel { get; set; }
 
-        public String? Passageiro { get; set; }
+        public string Cambio { get; set; }
 
-        public String? Carroceria { get; set; }
+        public string? Passageiro { get; set; }
+
+        public string? Carroceria { get; set; }
 
         public uint IdPessoa { get; set; }
 

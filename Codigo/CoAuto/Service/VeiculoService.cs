@@ -1,6 +1,5 @@
 ﻿using Core;
 using Core.Service;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,53 +7,82 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Service
+
+/// <summary>
+/// Cria um novo Veículo
+/// </summary>
+/// <param name="veiculo">dados do Veículo</param>
+/// <returns>id do Veículo</returns>
+
 {
     public class VeiculoService : IVeiculoService
     {
-        private readonly CoAutoContext context;
+        private readonly CoAutoContext _context;
 
         public VeiculoService(CoAutoContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
-        public int create(Veiculo veiculo)
+        // <summary>
+        /// Insere um novo veículo
+        /// </summary>
+        /// <param name="veiculo">dados do veiculo</param>
+        /// <returns></returns>
+
+        public int Create(Veiculo veiculo)
         {
-            context.Add(veiculo);
-            context.SaveChanges();
-            return veiculo.Id;
+            _context.Add(veiculo);
+            _context.SaveChanges();
+            return (int)veiculo.Id;
         }
 
-        public void delete(Veiculo veiculo)
+        // <summary>
+        /// Deleta um veículo
+        /// </summary>
+        /// <param name="id da veículo ">deleta o veículo </param>
+        /// <returns></returns>
+
+        public void Delete(int idVeiculo)
         {
-            context.Remove(veiculo);
-            context.SaveChanges();
+            var _veiculo = _context.Veiculos.Find(idVeiculo);
+            _context.Remove(_veiculo);
+            _context.SaveChanges();
         }
 
-        public Veiculo get(int idVeiculo)
+        // <summary>
+        /// Edita um veículo
+        /// </summary>
+        /// <param name="veículo"></param>
+        /// <exception cref="ServiceException"></exception>
+
+        public void Edit(Veiculo veiculo)
         {
-            return context.Veiculos.Find(idVeiculo);
+            _context.Update(veiculo);
+            _context.SaveChanges();
+
+        }
+
+        // <summary>
+        /// busca um veículo 
+        /// </summary>
+        /// <param name="id do veículo ">dados do veículo</param>
+        /// <returns></returns>
+
+        public Veiculo Get(int idVeiculo)
+        {
+            return _context.Veiculos.Find(idVeiculo);
            
         }
 
-        public IEnumerable<Veiculo> getAll()
-        {
-            return context.Veiculos.AsNoTracking();
-        }
+        /// <summary>
+        /// Obtém todos veículo
+        /// </summary>
+        /// <returns></returns>
 
-        public void edit(Veiculo veiculo)
+        public IEnumerable<Veiculo> GetAll()
         {
-            context.Update(veiculo);
-            context.SaveChanges();
-
-        }
-
-        public Veiculo delete(int idVeiculo)
-        {
-            var _veiculo = context.Veiculos.Find(idVeiculo);
-            context.Remove(_veiculo);
-            context.SaveChanges();
-            return context.Veiculos.Find(idVeiculo);
+            return _context.Veiculos;
         }
     }
 }

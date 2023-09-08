@@ -32,7 +32,7 @@ namespace Service
         {
             _context.Add(disponibilidade);
             _context.SaveChanges();
-            return disponibilidade.Id;
+            return (int)disponibilidade.Id;
         }
 
         // <summary>
