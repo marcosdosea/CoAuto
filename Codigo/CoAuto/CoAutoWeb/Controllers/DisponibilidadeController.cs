@@ -22,10 +22,6 @@ namespace CoAutoWeb.Controllers
             _mapper = mapper;
         }
 
-
-
-
-
         // GET: DisponibilidadeController
         public ActionResult Index()
         {
