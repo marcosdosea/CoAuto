@@ -2634,24 +2634,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jorda\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Junio\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj",
+      "projectUniqueName": "C:\\Users\\Junio\\Downloads\\Projetos Prog\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj",
-      "packagesPath": "C:\\Users\\jorda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Service\\obj\\",
+      "projectPath": "C:\\Users\\Junio\\Downloads\\Projetos Prog\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj",
+      "packagesPath": "C:\\Users\\Junio\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Junio\\Downloads\\Projetos Prog\\CoAuto\\Codigo\\CoAuto\\Service\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jorda\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Junio\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2659,15 +2654,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj"
+            "C:\\Users\\Junio\\Downloads\\Projetos Prog\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\Junio\\Downloads\\Projetos Prog\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj"
             }
           }
         }

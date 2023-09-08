@@ -3,9 +3,8 @@
     public interface IAluguelService
     {
         int Create(Aluguel aluguel);
-        Aluguel Delete(int idAluguel);
-        void Edit(Aluguel aluguel);
-        Aluguel Get(int idAluguel);
+        void Delete(int idaluguel);
+        Aluguel Get(int id);
         IEnumerable<Aluguel> GetAll();
     }
 }
