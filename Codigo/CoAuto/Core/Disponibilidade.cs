@@ -5,7 +5,7 @@ namespace Core;
 
 public partial class Disponibilidade
 {
-    public int Id { get; set; }
+    public uint Id { get; set; }
 
     public DateTime DataInicio { get; set; }
 

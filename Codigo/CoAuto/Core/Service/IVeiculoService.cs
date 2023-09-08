@@ -8,12 +8,12 @@ namespace Core.Service
 {
     public interface IVeiculoService
     {
-        int create(Veiculo veiculo);
-        void edit(Veiculo veiculo);
-        Veiculo delete(int idVeiculo);
-        Veiculo get(int idVeiculo);
+        int Create(Veiculo veiculo);
+        void Edit(Veiculo veiculo);
+        void Delete(int idVeiculo);
+        Veiculo Get(int idVeiculo);
 
-        IEnumerable<Veiculo> getAll();
+        IEnumerable<Veiculo> GetAll();
         
         
        

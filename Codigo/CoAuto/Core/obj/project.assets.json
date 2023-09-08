@@ -2617,19 +2617,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LuisRibeiro\\.nuget\\packages\\": {}
+    "C:\\Users\\jorda\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\LuisRibeiro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\obj\\",
+      "projectPath": "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\jorda\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jorda\\Downloads\\CoAuto\\Codigo\\CoAuto\\Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\LuisRibeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jorda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2637,6 +2642,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2692,7 +2698,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
