@@ -1,75 +1,65 @@
 ﻿using Core;
 using Core.Service;
-using Microsoft.EntityFrameworkCore;
 
 namespace Service
+
+
+/// <summary>
+/// Manter dados de Aluguel no banco de dados
+/// </summary>
 {
     public class AluguelService : IAluguelService
     {
-        private readonly CoAutoContext context;
+
+        private readonly CoAutoContext _context;
 
         public AluguelService(CoAutoContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
-        /// <summary>
-        /// Cria um novo aluguel
-        /// </summary>
-        /// <param name="aluguel">dados do aluguel</param>
-        /// <returns>id do Aluguel</returns>
 
+        // <summary>
+        /// Insere uma novo aluguel
+        /// </summary>
+        /// <param name="aluguel">dados da aluguel</param>
+        /// <returns></returns>
         public int Create(Aluguel aluguel)
         {
-            context.Add(aluguel);
-            context.SaveChanges();
+            _context.Add(aluguel);
+            _context.SaveChanges();
             return aluguel.Id;
         }
 
-        public void delete(Aluguel aluguel)
-        {
-            context.Remove(aluguel);
-            context.SaveChanges();
-        }
-
-        public Aluguel Get(int idAluguel)
-        {
-            return context.Aluguels.Find(idAluguel);
-
-        }
-
-        /// <summary>
-        /// Busca todos os Aluguels na base de dados
+        // <summary>
+        /// Deleta um aluguel
         /// </summary>
-        /// <returns>lista de alugueis</returns> 
+        /// <param name="id do aluguel ">deleta o aluguel </param>
+        /// <returns></returns>
+        public void Delete(int idaluguel)
+        {
+            var _aluguel = _context.Aluguels.Find(idaluguel);
+            _context.Remove(_aluguel);
+            _context.SaveChanges();
+        }
 
+        // <summary>
+        /// busca um aluguel 
+        /// </summary>
+        /// <param name="id do aluguel ">dados do aluguel</param>
+        /// <returns></returns>
+        public Aluguel Get(int id)
+        {
+            return _context.Aluguels.Find(id);
+        }
+        /// <summary>
+        /// Obtém todos alugueis
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Aluguel> GetAll()
         {
-            return context.Aluguels.AsNoTracking();
-        }
-
-        /// <summary>
-        /// Edita os dados do Aluguel na base de dados
-        /// </summary>
-        /// <param name="aluguel"></param>
-
-        public void Edit(Aluguel aluguel)
-        {
-            context.Update(aluguel);
-            context.SaveChanges();
-        }
-
-        /// <summary>
-        /// Remove os dados do Aluguel na base de dados
-        /// </summary>
-        /// <param name="idAluguel"></param>
-
-        public Aluguel Delete(int idAluguel)
-        {
-            var _aluguel = context.Aluguels.Find(idAluguel);
-            context.Remove(_aluguel);
-            context.SaveChanges();
-            return context.Aluguels.Find(idAluguel);
+            return _context.Aluguels;
         }
     }
 }
+
