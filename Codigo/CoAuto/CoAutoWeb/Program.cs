@@ -20,6 +20,7 @@ namespace CoAutoWeb
             builder.Services.AddTransient<IVeiculoService, VeiculoService>();
             builder.Services.AddTransient<IDisponibilidadeService, DisponibilidadeService>();
             builder.Services.AddTransient<IAluguelService, AluguelService>();
+            builder.Services.AddTransient<IPagamentoService, PagamentoService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
