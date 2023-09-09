@@ -1,16 +1,21 @@
 ﻿using Core;
 using Core.Service;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Service
-
-
 /// <summary>
-/// Manter dados de Aluguel no banco de dados
+/// Cria um novo Aluguel
 /// </summary>
+/// <param name="Aluguel">dados do Aluguel</param>
+/// <returns>id do Aluguel</returns>
+
 {
     public class AluguelService : IAluguelService
     {
-
         private readonly CoAutoContext _context;
 
         public AluguelService(CoAutoContext context)
@@ -18,48 +23,65 @@ namespace Service
             _context = context;
         }
 
-
         // <summary>
-        /// Insere uma novo aluguel
+        /// Insere um novo Aluguel
         /// </summary>
-        /// <param name="aluguel">dados da aluguel</param>
+        /// <param name="Aluguel">dados do Aluguel</param>
         /// <returns></returns>
+
         public int Create(Aluguel aluguel)
         {
             _context.Add(aluguel);
             _context.SaveChanges();
-            return aluguel.Id;
+            return (int)aluguel.Id;
         }
 
         // <summary>
-        /// Deleta um aluguel
+        /// Deleta um Aluguel
         /// </summary>
-        /// <param name="id do aluguel ">deleta o aluguel </param>
+        /// <param name="id da Aluguel ">deleta o Aluguel </param>
         /// <returns></returns>
-        public void Delete(int idaluguel)
+
+        public void Delete(int idAluguel)
         {
-            var _aluguel = _context.Aluguels.Find(idaluguel);
+            var _aluguel = _context.Aluguels.Find(idAluguel);
             _context.Remove(_aluguel);
             _context.SaveChanges();
         }
 
         // <summary>
-        /// busca um aluguel 
+        /// Edita um Aluguel
         /// </summary>
-        /// <param name="id do aluguel ">dados do aluguel</param>
-        /// <returns></returns>
-        public Aluguel Get(int id)
+        /// <param name="Aluguel"></param>
+        /// <exception cref="ServiceException"></exception>
+
+        public void Edit(Aluguel aluguel)
         {
-            return _context.Aluguels.Find(id);
+            _context.Update(aluguel);
+            _context.SaveChanges();
+
         }
+
+        // <summary>
+        /// busca um Aluguel 
+        /// </summary>
+        /// <param name="id do Aluguel ">dados do Aluguel</param>
+        /// <returns></returns>
+
+        public Aluguel Get(int idAluguel)
+        {
+            return _context.Aluguels.Find(idAluguel);
+
+        }
+
         /// <summary>
-        /// Obtém todos alugueis
+        /// Obtém todos Aluguel
         /// </summary>
         /// <returns></returns>
+
         public IEnumerable<Aluguel> GetAll()
         {
             return _context.Aluguels;
         }
     }
 }
-
