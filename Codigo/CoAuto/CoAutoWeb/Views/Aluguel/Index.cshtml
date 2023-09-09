@@ -1,0 +1,107 @@
+﻿@model IEnumerable<CoAutoWeb.Models.AluguelViewModel>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHoraAluguel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPessoa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAvaliacaoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVeiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataAvaliacaoProprietario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdEstrelasAvaliacaoProprietario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataAvaliacaoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdEstrelasAvaliacaoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoAvaliacaoProprietario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoAvaliacaoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDevolucao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraAluguel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPessoa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAvaliacaoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVeiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAvaliacaoProprietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdEstrelasAvaliacaoProprietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAvaliacaoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdEstrelasAvaliacaoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoAvaliacaoProprietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoAvaliacaoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDevolucao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
