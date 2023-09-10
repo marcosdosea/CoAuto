@@ -2,10 +2,10 @@
 
 namespace CoAutoWeb.Models;
 
-public class EntregaViewModel
+public class DevolucaoViewModel
 {
     [Key]
-    public int Id { get; set; }
+    public uint Id { get; set; }
 
     [Display(Name = "Data e Hora")]
     [DataType(DataType.DateTime, ErrorMessage = "Data e Hora válida requerida")]
@@ -22,4 +22,5 @@ public class EntregaViewModel
     public byte[]? Foto4 { get; set; }
 
     public byte[]? Foto5 { get; set; }
+
 }
