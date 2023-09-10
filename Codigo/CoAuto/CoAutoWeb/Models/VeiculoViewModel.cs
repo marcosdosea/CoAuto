@@ -1,5 +1,4 @@
-﻿using Core;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CoAutoWeb.Models
 {
@@ -11,12 +10,12 @@ namespace CoAutoWeb.Models
 
         [Required(ErrorMessage = "Campo requerido")]
         public string Tipo { get; set; } = null!;
-        
+
         [Required(ErrorMessage = "Campo requerido")]
         [Display(Name = "Ano")]
         [StringLength(4, MinimumLength = 4, ErrorMessage = "O número do ano deve ter 4 numeros.")]
         public string Ano { get; set; } = null!;
-        
+
         [Required(ErrorMessage = "Campo requerido")]
         [Display(Name = "Placa")]
         [StringLength(7, MinimumLength = 7, ErrorMessage = "O número da placa deve ter 7 caracteres.")]
@@ -64,6 +63,8 @@ namespace CoAutoWeb.Models
 
         [Required(ErrorMessage = "Campo requerido")]
         public int IdModelo { get; set; }
+
+        public string Modelo { get; set; }
 
         public string? Portas { get; set; }
 

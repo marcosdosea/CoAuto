@@ -1,10 +1,5 @@
 ﻿using Core;
 using Core.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service
 
@@ -25,7 +20,7 @@ namespace Service
         /// </summary>
         /// <param name="pagamento">dados de pagamento</param>
         /// <returns></returns>
-        
+
         public int Create(Pagamento pagamento)
         {
             _context.Add(pagamento);
@@ -37,7 +32,7 @@ namespace Service
         /// </summary>
         /// <param name="id do pagamento ">deleta o pagamento </param>
         /// <returns></returns>
-        
+
         public void Delete(int idPagamento)
         {
             var _pagamento = _context.Pagamentos.Find(idPagamento);
@@ -50,7 +45,7 @@ namespace Service
         /// </summary>
         /// <param name="pagamento"></param>
         /// <exception cref="ServiceException"></exception>
-        
+
         public void Edit(Pagamento pagamento)
         {
             _context.Update(pagamento);
@@ -62,7 +57,7 @@ namespace Service
         /// </summary>
         /// <param name="id do pagamento ">dados do pagamento</param>
         /// <returns></returns>
-         
+
         public Pagamento Get(int idPagamento)
         {
             return _context.Pagamentos.Find(idPagamento);
@@ -72,8 +67,8 @@ namespace Service
         /// Obtém todos pagamentos
         /// </summary>
         /// <returns></returns>
-        
-        public IEnumerable<Pagamento> GetAll() 
+
+        public IEnumerable<Pagamento> GetAll()
         {
             return _context.Pagamentos;
         }

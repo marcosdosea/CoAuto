@@ -2,9 +2,7 @@
 using CoAutoWeb.Models;
 using Core;
 using Core.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Service;
 
 namespace CoAutoWeb.Controllers
 {
@@ -14,7 +12,7 @@ namespace CoAutoWeb.Controllers
         private readonly IDisponibilidadeService _disponibilidadeService;
         private readonly IMapper _mapper;
 
-         
+
 
         public DisponibilidadeController(IDisponibilidadeService disponibilidadeService, IMapper mapper)
         {

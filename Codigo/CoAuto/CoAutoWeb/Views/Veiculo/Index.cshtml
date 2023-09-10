@@ -7,9 +7,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Tipo)
             </th>
             <th>
@@ -20,9 +17,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Crlv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cilindradas)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Valor)
@@ -49,10 +43,13 @@
                 @Html.DisplayNameFor(model => model.Autorizado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdModelo)
+                @Html.DisplayNameFor(model => model.Modelo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Portas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cilindradas)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Combustivel)
@@ -73,77 +70,76 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Placa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Crlv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cilindradas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rua)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autorizado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdModelo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Portas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Combustivel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cambio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Passageiro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Carroceria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPessoa)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <input type="hidden" asp-for="@item.Id" />
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Placa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Crlv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rua)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autorizado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Portas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cilindradas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Combustivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cambio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Passageiro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carroceria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPessoa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
