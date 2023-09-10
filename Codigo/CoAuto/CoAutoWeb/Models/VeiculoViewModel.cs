@@ -64,15 +64,15 @@ namespace CoAutoWeb.Models
         [Required(ErrorMessage = "Campo requerido")]
         public int IdModelo { get; set; }
 
-        public string? Modelo { get; set; }
+        public string? Modelo { get; set; } 
 
         public string? Portas { get; set; }
 
         public int? Cilindradas { get; set; }
 
-        public string Combustivel { get; set; }
+        public string Combustivel { get; set; } = null!;
 
-        public string Cambio { get; set; }
+        public string Cambio { get; set; } = null!;
 
         public string? Passageiro { get; set; }
 

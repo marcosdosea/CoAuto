@@ -32,7 +32,7 @@ public class ModeloService : IModeloService
     /// <returns></returns>
     public async Task Delete(int idModelo)
     {
-        var modelo = await _context.Veiculos.
+        var modelo = await _context.Modelos.
             FindAsync(idModelo);
 
         if (modelo == null) return;

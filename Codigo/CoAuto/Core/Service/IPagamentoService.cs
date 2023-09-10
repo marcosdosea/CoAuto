@@ -1,12 +1,10 @@
-﻿namespace Core.Service
+﻿namespace Core.Service;
+public interface IPagamentoService
 {
-    public interface IPagamentoService
-    {
-        int Create(Pagamento pagamento);
-        void Edit(Pagamento pagamento);
-        void Delete(int idPagamento);
-        Pagamento Get(int id);
+    int Create(Pagamento pagamento);
+    void Edit(Pagamento pagamento);
+    void Delete(int idPagamento);
+    Pagamento Get(int id);
 
-        IEnumerable<Pagamento> GetAll();
-    }
+    IEnumerable<Pagamento> GetAll();
 }
