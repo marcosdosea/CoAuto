@@ -25,6 +25,7 @@ public class Program
         builder.Services.AddTransient<IMarcaService, MarcaService>();
         builder.Services.AddTransient<IPessoaService, PessoaService>();
         builder.Services.AddTransient<IEntregaService, EntregaService>();
+        builder.Services.AddTransient<IDevolucaoService, DevolucaoService>();
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

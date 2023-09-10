@@ -2,13 +2,12 @@
 using CoAutoWeb.Models;
 using Core;
 
-namespace CoAutoWeb.Mappers
+namespace CoAutoWeb.Mappers;
+
+public class EntregaProfile : Profile
 {
-    public class EntregaProfile : Profile
+    public EntregaProfile() 
     {
-        public EntregaProfile() 
-        {
-            CreateMap<EntregaViewModel, Entrega>().ReverseMap();
-        }
+        CreateMap<EntregaViewModel, Entrega>().ReverseMap();
     }
 }
