@@ -23,6 +23,7 @@ public class Program
         builder.Services.AddTransient<IPagamentoService, PagamentoService>();
         builder.Services.AddTransient<IModeloService, ModeloService>();
         builder.Services.AddTransient<IMarcaService, MarcaService>();
+        builder.Services.AddTransient<IPessoaService, PessoaService>();
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
