@@ -1,13 +1,8 @@
 ﻿using Core;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
-/// <summary>
-/// Cria um novo Aluguel
-/// </summary>
-/// <param name="Aluguel">dados do Aluguel</param>
-/// <returns>id do Aluguel</returns>
-
 {
     public class AluguelService : IAluguelService
     {
@@ -19,29 +14,32 @@ namespace Service
         }
 
         // <summary>
-        /// Insere um novo Aluguel
+        /// Insere um novo Aluguel 
         /// </summary>
         /// <param name="Aluguel">dados do Aluguel</param>
         /// <returns></returns>
-
-        public int Create(Aluguel aluguel)
+        public async Task<int> Create(Aluguel aluguel)
         {
-            _context.Add(aluguel);
-            _context.SaveChanges();
-            return (int)aluguel.Id;
+            await _context.AddAsync(aluguel);
+            await _context.SaveChangesAsync();
+            return aluguel.Id;
         }
 
         // <summary>
         /// Deleta um Aluguel
         /// </summary>
-        /// <param name="id da Aluguel ">deleta o Aluguel </param>
+        /// <param name="id do Aluguel ">deleta o Aluguel </param>
         /// <returns></returns>
-
-        public void Delete(int idAluguel)
+        public async Task Delete(int idAluguel)
         {
-            var _aluguel = _context.Aluguels.Find(idAluguel);
-            _context.Remove(_aluguel);
-            _context.SaveChanges();
+            var aluguel = await _context.Aluguels.
+            FindAsync(idAluguel);
+
+            if (aluguel == null) return;
+
+            _context.Remove(aluguel);
+            await _context.SaveChangesAsync();
+
         }
 
         // <summary>
@@ -49,12 +47,11 @@ namespace Service
         /// </summary>
         /// <param name="Aluguel"></param>
         /// <exception cref="ServiceException"></exception>
-
-        public void Edit(Aluguel aluguel)
+        public async Task Edit(Aluguel aluguel)
         {
             _context.Update(aluguel);
-            _context.SaveChanges();
 
+            await _context.SaveChangesAsync();
         }
 
         // <summary>
@@ -62,21 +59,18 @@ namespace Service
         /// </summary>
         /// <param name="id do Aluguel ">dados do Aluguel</param>
         /// <returns></returns>
-
-        public Aluguel Get(int idAluguel)
+        public async Task<Aluguel> Get(int idAluguel)
         {
-            return _context.Aluguels.Find(idAluguel);
-
+            return await _context.Aluguels.FindAsync(idAluguel);
         }
 
         /// <summary>
-        /// Obtém todos Aluguel
+        /// Obtém todos os Aluguel
         /// </summary>
         /// <returns></returns>
-
-        public IEnumerable<Aluguel> GetAll()
+        public async Task<IEnumerable<Aluguel>> GetAll()
         {
-            return _context.Aluguels;
+            return await _context.Aluguels.ToListAsync();
         }
     }
 }
