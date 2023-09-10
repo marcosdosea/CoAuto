@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CoAutoWeb.Models.EntregaViewModel>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto5)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto5)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

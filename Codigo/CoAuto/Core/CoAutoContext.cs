@@ -23,6 +23,8 @@ public partial class CoAutoContext : DbContext
 
     public virtual DbSet<Disponibilidade> Disponibilidades { get; set; }
 
+    public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
+
     public virtual DbSet<Entrega> Entregas { get; set; }
 
     public virtual DbSet<Marca> Marcas { get; set; }
@@ -170,6 +172,16 @@ public partial class CoAutoContext : DbContext
                 .HasForeignKey(d => d.IdVeiculo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("%fk%DisponibilidadeVeiculo%Veiculo1");
+        });
+
+        modelBuilder.Entity<Efmigrationshistory>(entity =>
+        {
+            entity.HasKey(e => e.MigrationId).HasName("PRIMARY");
+
+            entity.ToTable("__efmigrationshistory");
+
+            entity.Property(e => e.MigrationId).HasMaxLength(150);
+            entity.Property(e => e.ProductVersion).HasMaxLength(32);
         });
 
         modelBuilder.Entity<Entrega>(entity =>
