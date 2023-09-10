@@ -1,5 +1,4 @@
 ﻿namespace Core.Service;
-
 public interface IModeloService
 {
     Task<int> Create(Modelo modelo);

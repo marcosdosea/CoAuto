@@ -31,30 +31,30 @@ namespace CoAutoWeb.Controllers
             if (veiculos == null) return BadRequest();
 
             var modelos = await _modeloService.GetAll();
-            var veiculoModel = veiculos.Select(v => new VeiculoViewModel
+            var veiculoModel = veiculos.Select(veiculo => new VeiculoViewModel
             {
-                Ano = v.Ano,
-                Autorizado = v.Autorizado,
-                Bairro = v.Bairro,
-                Cambio = v.Cambio,
-                Carroceria = v.Carroceria,
-                Cep = v.Cep,
-                Cidade = v.Cidade,
-                Cilindradas = v.Cilindradas,
-                Combustivel = v.Combustivel,
-                Crlv = v.Crlv,
-                Estado = v.Estado,
-                Id = v.Id,
-                IdModelo = v.IdModelo,
-                IdPessoa = v.IdPessoa,
-                Modelo = modelos.FirstOrDefault(mo => mo.Id == v.IdModelo).Nome,
-                Numero = v.Numero,
-                Passageiro = v.Passageiro,
-                Placa = v.Placa,
-                Portas = v.Portas,
-                Rua = v.Rua,
-                Tipo = v.Tipo,
-                Valor = v.Valor
+                Ano = veiculo.Ano,
+                Autorizado = veiculo.Autorizado,
+                Bairro = veiculo.Bairro,
+                Cambio = veiculo.Cambio,
+                Carroceria = veiculo.Carroceria,
+                Cep = veiculo.Cep,
+                Cidade = veiculo.Cidade,
+                Cilindradas = veiculo.Cilindradas,
+                Combustivel = veiculo.Combustivel,
+                Crlv = veiculo.Crlv,
+                Estado = veiculo.Estado,
+                Id = veiculo.Id,
+                IdModelo = veiculo.IdModelo,
+                IdPessoa = veiculo.IdPessoa,
+                Modelo = modelos.FirstOrDefault(modelo => modelo.Id == veiculo.IdModelo).Nome,
+                Numero = veiculo.Numero,
+                Passageiro = veiculo.Passageiro,
+                Placa = veiculo.Placa,
+                Portas = veiculo.Portas,
+                Rua = veiculo.Rua,
+                Tipo = veiculo.Tipo,
+                Valor = veiculo.Valor
             }).ToList();
 
             return View(veiculoModel);
@@ -85,7 +85,7 @@ namespace CoAutoWeb.Controllers
                 Id = veiculo.Id,
                 IdModelo = veiculo.IdModelo,
                 IdPessoa = veiculo.IdPessoa,
-                Modelo = modelos.FirstOrDefault(mo => mo.Id == veiculo.IdModelo).Nome,
+                Modelo = modelos.FirstOrDefault(modelo => modelo.Id == veiculo.IdModelo).Nome,
                 Numero = veiculo.Numero,
                 Passageiro = veiculo.Passageiro,
                 Placa = veiculo.Placa,
@@ -202,7 +202,7 @@ namespace CoAutoWeb.Controllers
                 Id = veiculo.Id,
                 IdModelo = veiculo.IdModelo,
                 IdPessoa = veiculo.IdPessoa,
-                Modelo = modelos.FirstOrDefault(mo => mo.Id == veiculo.IdModelo).Nome,
+                Modelo = modelos.FirstOrDefault(modelo => modelo.Id == veiculo.IdModelo).Nome,
                 Numero = veiculo.Numero,
                 Passageiro = veiculo.Passageiro,
                 Placa = veiculo.Placa,
