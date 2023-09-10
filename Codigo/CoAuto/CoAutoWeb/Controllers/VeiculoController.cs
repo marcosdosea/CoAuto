@@ -2,93 +2,226 @@
 using CoAutoWeb.Models;
 using Core;
 using Core.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Service;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoAutoWeb.Controllers
 {
     public class VeiculoController : Controller
     {
         private readonly IVeiculoService _veiculoService;
+        private readonly IModeloService _modeloService;
         private readonly IMapper _mapper;
-
-        public VeiculoController(IVeiculoService veiculoService, IMapper mapper)
+        public VeiculoController(IVeiculoService veiculoService, IModeloService modeloService, IMapper mapper)
         {
             _veiculoService = veiculoService;
+            _modeloService = modeloService;
             _mapper = mapper;
         }
 
-        // GET: VeiculoController
-        public ActionResult Index()
+        [HttpGet]
+        /// <summary>
+        /// Retorna todos os veiculos da ViewModel
+        /// </summary>
+        /// <returns>View(veiculos)</returns>
+        public async Task<ActionResult> Index()
         {
-            var listaVeiculo = _veiculoService.GetAll();
-            var listaVeiculoModel = _mapper.Map<List<VeiculoViewModel>>(listaVeiculo);
-            return View(listaVeiculoModel);
+            var veiculos = await _veiculoService.GetAll();
+
+            if (veiculos == null) return BadRequest();
+
+            var modelos = await _modeloService.GetAll();
+            var veiculoModel = veiculos.Select(v => new VeiculoViewModel
+            {
+                Ano = v.Ano,
+                Autorizado = v.Autorizado,
+                Bairro = v.Bairro,
+                Cambio = v.Cambio,
+                Carroceria = v.Carroceria,
+                Cep = v.Cep,
+                Cidade = v.Cidade,
+                Cilindradas = v.Cilindradas,
+                Combustivel = v.Combustivel,
+                Crlv = v.Crlv,
+                Estado = v.Estado,
+                Id = v.Id,
+                IdModelo = v.IdModelo,
+                IdPessoa = v.IdPessoa,
+                Modelo = modelos.FirstOrDefault(mo => mo.Id == v.IdModelo).Nome,
+                Numero = v.Numero,
+                Passageiro = v.Passageiro,
+                Placa = v.Placa,
+                Portas = v.Portas,
+                Rua = v.Rua,
+                Tipo = v.Tipo,
+                Valor = v.Valor
+            }).ToList();
+
+            return View(veiculoModel);
         }
 
         // GET: VeiculoController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public async Task<ActionResult> Details(int id)
         {
-            var veiculo = _veiculoService.Get(id);
-            var VeiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
-            return View(VeiculoModel);
+            var veiculo = await _veiculoService.Get(id);
+
+            if (veiculo == null) return BadRequest();
+
+            var modelos = await _modeloService.GetAll();
+            var veiculoModel = new VeiculoViewModel
+            {
+                Ano = veiculo.Ano,
+                Autorizado = veiculo.Autorizado,
+                Bairro = veiculo.Bairro,
+                Cambio = veiculo.Cambio,
+                Carroceria = veiculo.Carroceria,
+                Cep = veiculo.Cep,
+                Cidade = veiculo.Cidade,
+                Cilindradas = veiculo.Cilindradas,
+                Combustivel = veiculo.Combustivel,
+                Crlv = veiculo.Crlv,
+                Estado = veiculo.Estado,
+                Id = veiculo.Id,
+                IdModelo = veiculo.IdModelo,
+                IdPessoa = veiculo.IdPessoa,
+                Modelo = modelos.FirstOrDefault(mo => mo.Id == veiculo.IdModelo).Nome,
+                Numero = veiculo.Numero,
+                Passageiro = veiculo.Passageiro,
+                Placa = veiculo.Placa,
+                Portas = veiculo.Portas,
+                Rua = veiculo.Rua,
+                Tipo = veiculo.Tipo,
+                Valor = veiculo.Valor
+            };
+
+            return View(veiculoModel);
         }
 
         // GET: VeiculoController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            var modelos = await _modeloService.GetAll();
+            var items = modelos.Select(modelo => new SelectListItem { Value = modelo.Id.ToString(), Text = modelo.Nome }).ToList();
+            var selectList = new SelectList(items, "Value", "Text");
+            ViewBag.ModelosSelectList = selectList;
             return View();
         }
 
         // POST: VeiculoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(VeiculoViewModel VeiculoModel)
+        public async Task<ActionResult> Create(VeiculoViewModel veiculoModel)
         {
+
             if (ModelState.IsValid)
             {
-                var veiculo = _mapper.Map<Veiculo>(VeiculoModel);
-                _veiculoService.Create(veiculo);
+                try
+                {
+                    var veiculo = _mapper.Map<Veiculo>(veiculoModel);
+                    await _veiculoService.Create(veiculo);
+                }
+                catch
+                {
+                    return View(veiculoModel);
+                }
+
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+
+            return View(veiculoModel);
+
         }
 
         // GET: VeiculoController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            Veiculo veiculo = _veiculoService.Get(id);
-            VeiculoViewModel VeiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
-            return View(VeiculoModel);
+            var veiculo = await _veiculoService.Get(id);
+
+            var veiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
+
+            var modelos = await _modeloService.GetAll();
+            var items = modelos.Select(modelo => new SelectListItem { Value = modelo.Id.ToString(), Text = modelo.Nome }).ToList();
+            var selectList = new SelectList(items, "Value", "Text");
+            ViewBag.ModelosSelectList = selectList;
+
+            return View(veiculoModel);
         }
 
         // POST: VeiculoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, VeiculoViewModel VeiculoModel)
+        public async Task<ActionResult> Edit(int id, VeiculoViewModel veiculoModel)
         {
+            if (id != veiculoModel.Id) return NotFound();
+
+
             if (ModelState.IsValid)
             {
-                var veiculo = _mapper.Map<Veiculo>(VeiculoModel);
-                _veiculoService.Edit(veiculo);
+                try
+                {
+                    var veiculo = _mapper.Map<Veiculo>(veiculoModel);
+                    await _veiculoService.Edit(veiculo);
+                }
+                catch
+                {
+                    return BadRequest();
+                }
+
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+
+            return View(veiculoModel);
+
         }
 
-    // GET: VeiculoController/Delete/5
-    public ActionResult Delete(int id)
+        // GET: VeiculoController/Delete/5
+        [HttpGet]
+        public async Task<ActionResult> Delete(int? id)
         {
-            Veiculo veiculo = _veiculoService.Get(id);
-            VeiculoViewModel VeiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
-            return View(VeiculoModel);
+            if (id == null) return BadRequest();
+
+            var veiculo = await _veiculoService.Get((int)id);
+
+            if (veiculo == null) return NotFound();
+
+            var modelos = await _modeloService.GetAll();
+            var veiculoModel = new VeiculoViewModel
+            {
+                Ano = veiculo.Ano,
+                Autorizado = veiculo.Autorizado,
+                Bairro = veiculo.Bairro,
+                Cambio = veiculo.Cambio,
+                Carroceria = veiculo.Carroceria,
+                Cep = veiculo.Cep,
+                Cidade = veiculo.Cidade,
+                Cilindradas = veiculo.Cilindradas,
+                Combustivel = veiculo.Combustivel,
+                Crlv = veiculo.Crlv,
+                Estado = veiculo.Estado,
+                Id = veiculo.Id,
+                IdModelo = veiculo.IdModelo,
+                IdPessoa = veiculo.IdPessoa,
+                Modelo = modelos.FirstOrDefault(mo => mo.Id == veiculo.IdModelo).Nome,
+                Numero = veiculo.Numero,
+                Passageiro = veiculo.Passageiro,
+                Placa = veiculo.Placa,
+                Portas = veiculo.Portas,
+                Rua = veiculo.Rua,
+                Tipo = veiculo.Tipo,
+                Valor = veiculo.Valor
+            };
+
+            return View(veiculoModel);
         }
 
         // POST: VeiculoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection colletion)
+        public async Task<ActionResult> Delete(int id)
         {
-            _veiculoService.Delete(id);
+            await _veiculoService.Delete(id);
+
             return RedirectToAction(nameof(Index));
         }
     }

@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
-using Core;
+﻿using AutoMapper;
 using CoAutoWeb.Models;
+using Core;
 using Core.Service;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace CoAutoWeb.Controllers
@@ -65,7 +65,7 @@ namespace CoAutoWeb.Controllers
         // POST: PagamentoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id,PagamentoViewModel pagamentoModel)
+        public ActionResult Edit(int id, PagamentoViewModel pagamentoModel)
         {
             if (ModelState.IsValid)
             {

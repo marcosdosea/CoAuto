@@ -32,11 +32,6 @@
                 <span asp-validation-for="Crlv" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Cilindradas" class="control-label"></label>
-                <input asp-for="Cilindradas" class="form-control" />
-                <span asp-validation-for="Cilindradas" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Valor" class="control-label"></label>
                 <input asp-for="Valor" class="form-control" />
                 <span asp-validation-for="Valor" class="text-danger"></span>
@@ -77,14 +72,17 @@
                 <span asp-validation-for="Autorizado" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdModelo" class="control-label"></label>
-                <input asp-for="IdModelo" class="form-control" />
-                <span asp-validation-for="IdModelo" class="text-danger"></span>
+                <select asp-for="IdModelo" asp-items="@ViewBag.ModelosSelectList"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Portas" class="control-label"></label>
                 <input asp-for="Portas" class="form-control" />
                 <span asp-validation-for="Portas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cilindradas" class="control-label"></label>
+                <input asp-for="Cilindradas" class="form-control" />
+                <span asp-validation-for="Cilindradas" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Combustivel" class="control-label"></label>
