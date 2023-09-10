@@ -8,7 +8,7 @@ namespace CoAutoWeb.Mappers
     {
         public PagamentoProfile()
         {
-            CreateMap<PagamentoViewModel,Pagamento>().ReverseMap();
+            CreateMap<PagamentoViewModel, Pagamento>().ReverseMap();
         }
     }
 }

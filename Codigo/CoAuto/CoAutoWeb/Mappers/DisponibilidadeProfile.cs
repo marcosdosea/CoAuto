@@ -9,7 +9,7 @@ namespace CoAutoWeb.Mappers
     {
         public DisponibilidadeProfile()
         {
-            CreateMap<DisponibilidadeModel, Disponibilidade>().ReverseMap();   
+            CreateMap<DisponibilidadeModel, Disponibilidade>().ReverseMap();
         }
     }
 }

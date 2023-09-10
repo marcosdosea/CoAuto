@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace CoAutoWeb.Models
 {
@@ -9,7 +8,7 @@ namespace CoAutoWeb.Models
         public int ID { get; set; }
 
         [Display(Name = "Data de inicio")]
-        [DataType(DataType.DateTime, ErrorMessage ="Data válida requerida")]
+        [DataType(DataType.DateTime, ErrorMessage = "Data válida requerida")]
         [Required(ErrorMessage = "Data de inicio é obrigatório")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataInicio { get; set; }
@@ -33,9 +32,9 @@ namespace CoAutoWeb.Models
         [RegularExpression(@"^\d{2}:\d{2}$", ErrorMessage = "Formato inválido. Use HH:mm")]
         public TimeSpan HoraFim { get; set; }
 
-        
+
         [Display(Name = "Qual o veiculo")]
-        [Range(1,100,ErrorMessage ="o veiculo deve ser associado")]
+        [Range(1, 100, ErrorMessage = "o veiculo deve ser associado")]
         public int IdVeiculo { get; set; }
     }
 }

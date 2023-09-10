@@ -30,6 +30,8 @@ namespace CoAutoWeb.Controllers
 
             if (veiculos == null) return BadRequest();
 
+            //var veiculoModel = _mapper.Map<List<VeiculoViewModel>>(veiculo);
+
             var modelos = await _modeloService.GetAll();
             var veiculoModel = veiculos.Select(v => new VeiculoViewModel
             {
@@ -68,32 +70,7 @@ namespace CoAutoWeb.Controllers
 
             if (veiculo == null) return BadRequest();
 
-            var modelos = await _modeloService.GetAll();
-            var veiculoModel = new VeiculoViewModel
-            {
-                Ano = veiculo.Ano,
-                Autorizado = veiculo.Autorizado,
-                Bairro = veiculo.Bairro,
-                Cambio = veiculo.Cambio,
-                Carroceria = veiculo.Carroceria,
-                Cep = veiculo.Cep,
-                Cidade = veiculo.Cidade,
-                Cilindradas = veiculo.Cilindradas,
-                Combustivel = veiculo.Combustivel,
-                Crlv = veiculo.Crlv,
-                Estado = veiculo.Estado,
-                Id = veiculo.Id,
-                IdModelo = veiculo.IdModelo,
-                IdPessoa = veiculo.IdPessoa,
-                Modelo = modelos.FirstOrDefault(mo => mo.Id == veiculo.IdModelo).Nome,
-                Numero = veiculo.Numero,
-                Passageiro = veiculo.Passageiro,
-                Placa = veiculo.Placa,
-                Portas = veiculo.Portas,
-                Rua = veiculo.Rua,
-                Tipo = veiculo.Tipo,
-                Valor = veiculo.Valor
-            };
+            var veiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
 
             return View(veiculoModel);
         }
@@ -140,11 +117,6 @@ namespace CoAutoWeb.Controllers
 
             var veiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
 
-            var modelos = await _modeloService.GetAll();
-            var items = modelos.Select(modelo => new SelectListItem { Value = modelo.Id.ToString(), Text = modelo.Nome }).ToList();
-            var selectList = new SelectList(items, "Value", "Text");
-            ViewBag.ModelosSelectList = selectList;
-
             return View(veiculoModel);
         }
 
@@ -185,32 +157,7 @@ namespace CoAutoWeb.Controllers
 
             if (veiculo == null) return NotFound();
 
-            var modelos = await _modeloService.GetAll();
-            var veiculoModel = new VeiculoViewModel
-            {
-                Ano = veiculo.Ano,
-                Autorizado = veiculo.Autorizado,
-                Bairro = veiculo.Bairro,
-                Cambio = veiculo.Cambio,
-                Carroceria = veiculo.Carroceria,
-                Cep = veiculo.Cep,
-                Cidade = veiculo.Cidade,
-                Cilindradas = veiculo.Cilindradas,
-                Combustivel = veiculo.Combustivel,
-                Crlv = veiculo.Crlv,
-                Estado = veiculo.Estado,
-                Id = veiculo.Id,
-                IdModelo = veiculo.IdModelo,
-                IdPessoa = veiculo.IdPessoa,
-                Modelo = modelos.FirstOrDefault(mo => mo.Id == veiculo.IdModelo).Nome,
-                Numero = veiculo.Numero,
-                Passageiro = veiculo.Passageiro,
-                Placa = veiculo.Placa,
-                Portas = veiculo.Portas,
-                Rua = veiculo.Rua,
-                Tipo = veiculo.Tipo,
-                Valor = veiculo.Valor
-            };
+            var veiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
 
             return View(veiculoModel);
         }
