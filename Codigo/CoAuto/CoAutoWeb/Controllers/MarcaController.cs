@@ -19,7 +19,7 @@ public class MarcaController : Controller
     /// <summary>
     /// Retorna todas as marcas da ViewModel
     /// </summary>
-    /// <returns>View(companies)</returns>
+    /// <returns>View(marcas)</returns>
     public async Task<ActionResult> Index()
     {
         var marcas = await _marcaService.GetAll();
@@ -31,7 +31,7 @@ public class MarcaController : Controller
         return View(marcaModel);
     }
 
-    // GET: CompanyController/Details/5
+    // GET: MarcaController/Details/5
     [HttpGet]
     public async Task<ActionResult> Details(int id)
     {
@@ -44,13 +44,13 @@ public class MarcaController : Controller
         return View(marcaModel);
     }
 
-    // GET: CompanyController/Create
+    // GET: MarcaController/Create
     public ActionResult Create()
     {
         return View();
     }
 
-    // POST: CompanyController/Create
+    // POST: MarcaController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Create(MarcaViewModel marcaModel)
@@ -75,7 +75,7 @@ public class MarcaController : Controller
 
     }
 
-    // GET: CompanyController/Edit/5
+    // GET: MarcaController/Edit/5
     [HttpGet]
     public async Task<ActionResult> Edit(int id)
     {
@@ -86,7 +86,7 @@ public class MarcaController : Controller
         return View(marcaModel);
     }
 
-    // POST: CompanyController/Edit/5
+    // POST: MarcaController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Edit(int id, MarcaViewModel marcaModel)
@@ -113,7 +113,7 @@ public class MarcaController : Controller
 
     }
 
-    // GET: CompanyController/Delete/5
+    // GET: MarcaController/Delete/5
     [HttpGet]
     public async Task<ActionResult> Delete(int? id)
     {
@@ -128,7 +128,7 @@ public class MarcaController : Controller
         return View(marcaModel);
     }
 
-    // POST: CompanyController/Delete/5
+    // POST: MarcaController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Delete(int id)
