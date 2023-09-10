@@ -1,15 +1,11 @@
-﻿namespace Core.Service
+﻿namespace Core.Service;
+
+public interface IAluguelService
 {
-    public interface IAluguelService
-    {
-        int Create(Aluguel aluguel);
-        void Edit(Aluguel aluguel);
-        void Delete(int idAluguel);
-        Aluguel Get(int idAluguel);
-
-        IEnumerable<Aluguel> GetAll();
-
-
-
-    }
+    Task<int> Create(Aluguel aluguel);
+    Task Edit(Aluguel aluguel);
+    Task Delete(int idAluguel);
+    Task<Aluguel> Get(int idAluguel);
+    Task<IEnumerable<Aluguel>> GetAll();
 }
+
