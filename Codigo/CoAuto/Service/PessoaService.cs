@@ -21,11 +21,11 @@ public class PessoaService : IPessoaService
     /// </summary>
     /// <param name="pessoa">dados da pessoa</param>
     /// <returns>id do pessoa</returns>
-    public int Create(Pessoa pessoa)
+    public uint Create(Pessoa pessoa)
     {
         _context.Add(pessoa);
         _context.SaveChanges();
-        return (int)pessoa.Id;
+        return (uint)pessoa.Id;
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class PessoaService : IPessoaService
     /// Remover a pessoa da base de dados
     /// </summary>
     /// <param name="id">id da pessoa</param>
-    public void Delete(int id)
+    public void Delete(uint id)
     {
         var pessoa = _context.Pessoas.Find(id);
         _context.Remove(pessoa);
@@ -55,7 +55,7 @@ public class PessoaService : IPessoaService
     /// </summary>
     /// <param name="id">id da pessoa</param>
     /// <returns>dados da pessoa</returns>
-    public Pessoa Get(int id)
+    public Pessoa Get(uint id)
     {
         return _context.Pessoas.Find(id);
     }
