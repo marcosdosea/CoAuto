@@ -2,9 +2,9 @@ namespace Core.Service;
 
 public interface IPessoaService
 {
-    int Create(Pessoa pessoa);
+    uint Create(Pessoa pessoa);
     void Edit(Pessoa pessoa);
-    void Delete(int id);
-    Pessoa Get(int id);
+    void Delete(uint id);
+    Pessoa Get(uint id);
     IEnumerable<Pessoa> GetAll();
 }
