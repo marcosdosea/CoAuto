@@ -34,11 +34,11 @@ namespace CoAutoWeb.Controllers
         // GET: DevolucaoController/Details/5
         public async Task<ActionResult> Details(uint? id)
         {
-            var devolucao = await _devolucaoService.GetAll();
+            var devolucao = await _devolucaoService.Get((uint)id);
 
             if (devolucao == null) return BadRequest();
 
-            var devolucaoModel = _mapper.Map<List<DevolucaoViewModel>>(devolucao);
+            var devolucaoModel = _mapper.Map<DevolucaoViewModel>(devolucao);
 
             return View(devolucaoModel);
         }
@@ -73,7 +73,7 @@ namespace CoAutoWeb.Controllers
         }
 
         // GET: DevolucaoController/Edit/5
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(uint id)
         {
             var devolucao = await _devolucaoService.Get(id);
 
@@ -110,11 +110,11 @@ namespace CoAutoWeb.Controllers
         }
 
         // GET: DevolucaoController/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(uint? id)
         {
             if (id == null) return BadRequest();
 
-            var devolucao = await _devolucaoService.Get((int)id);
+            var devolucao = await _devolucaoService.Get((uint)id);
 
             if (devolucao == null) return NotFound();
 
@@ -126,7 +126,7 @@ namespace CoAutoWeb.Controllers
         // POST: DevolucaoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(uint id)
         {
             await _devolucaoService.Delete(id);
 

@@ -2,9 +2,9 @@
 
 public interface IDevolucaoService
 {
-    Task<int> Create(Devolucao devolucao);
+    Task<uint> Create(Devolucao devolucao);
     Task Edit(Devolucao devolucao);
-    Task Delete(int idDevolucao);
-    Task<Devolucao> Get(int idDevolucao);
+    Task Delete(uint idDevolucao);
+    Task<Devolucao> Get(uint idDevolucao);
     Task<IEnumerable<Devolucao>> GetAll();
 }

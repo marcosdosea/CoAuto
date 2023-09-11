@@ -34,11 +34,11 @@ public class EntregaController : Controller
     // GET: EntregaController/Details/5
     public async Task<ActionResult> Details(uint? id)
     {
-        var entrega = await _entregaService.GetAll();
+        var entrega = await _entregaService.Get((uint)id);
 
         if (entrega == null) return BadRequest();
 
-        var entregaModel = _mapper.Map<List<EntregaViewModel>>(entrega);
+        var entregaModel = _mapper.Map<EntregaViewModel>(entrega);
 
         return View(entregaModel);
     }
@@ -73,7 +73,7 @@ public class EntregaController : Controller
     }
 
     // GET: EntregaController/Edit/5
-    public async Task<ActionResult> Edit(int id)
+    public async Task<ActionResult> Edit(uint id)
     {
         var entrega = await _entregaService.Get(id);
 
@@ -110,11 +110,11 @@ public class EntregaController : Controller
     }
 
     // GET: EntregaController/Delete/5
-    public async Task<ActionResult> Delete(int? id)
+    public async Task<ActionResult> Delete(uint? id)
     {
         if (id == null) return BadRequest();
 
-        var entrega = await _entregaService.Get((int)id);
+        var entrega = await _entregaService.Get((uint)id);
 
         if (entrega == null) return NotFound();
 
@@ -126,7 +126,7 @@ public class EntregaController : Controller
     // POST: EntregaController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(int id)
+    public async Task<ActionResult> Delete(uint id)
     {
         await _entregaService.Delete(id);
 

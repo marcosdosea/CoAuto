@@ -18,11 +18,11 @@ namespace Service
         /// </summary>
         /// <param name="entrega">dados da entrega</param>
         /// <returns></returns>
-        public async Task<int> Create(Entrega entrega)
+        public async Task<uint> Create(Entrega entrega)
         {
             await _context.AddAsync(entrega);
             await _context.SaveChangesAsync();
-            return (int)entrega.Id;
+            return (uint)entrega.Id;
         }
 
         // <summary>
@@ -30,7 +30,7 @@ namespace Service
         /// </summary>
         /// <param name="id da entrega ">deleta a entrega </param>
         /// <returns></returns>
-        public async Task Delete(int id)
+        public async Task Delete(uint id)
         {
             var entrega = await _context.Entregas.
             FindAsync(id);
@@ -58,7 +58,7 @@ namespace Service
         /// </summary>
         /// <param name="id da entrega ">dados da entrega</param>
         /// <returns></returns>
-        public async Task<Entrega> Get(int idEntrega)
+        public async Task<Entrega> Get(uint idEntrega)
         {
             return await _context.Entregas.FindAsync(idEntrega);
         }
