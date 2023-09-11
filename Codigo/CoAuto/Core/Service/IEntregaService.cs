@@ -2,9 +2,9 @@
 
 public interface IEntregaService
 {
-    Task<int> Create(Entrega entrega);
+    Task<uint> Create(Entrega entrega);
     Task Edit(Entrega entrega);
-    Task Delete(int idEntrega);
-    Task<Entrega> Get(int idEntrega);
+    Task Delete(uint idEntrega);
+    Task<Entrega> Get(uint idEntrega);
     Task<IEnumerable<Entrega>> GetAll();
 }

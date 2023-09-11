@@ -18,11 +18,11 @@ public class DevolucaoService : IDevolucaoService
     /// </summary>
     /// <param name="entrega">dados da entrega</param>
     /// <returns></returns>
-    public async Task<int> Create(Devolucao devolucao)
+    public async Task<uint> Create(Devolucao devolucao)
     {
         await _context.AddAsync(devolucao);
         await _context.SaveChangesAsync();
-        return (int)devolucao.Id;
+        return (uint)devolucao.Id;
     }
 
     // <summary>
@@ -30,7 +30,7 @@ public class DevolucaoService : IDevolucaoService
     /// </summary>
     /// <param name="id da devolucao ">deleta a devolucao </param>
     /// <returns></returns>
-    public async Task Delete(int id)
+    public async Task Delete(uint id)
     {
         var devolucao = await _context.Devolucaos.
         FindAsync(id);
@@ -58,7 +58,7 @@ public class DevolucaoService : IDevolucaoService
     /// </summary>
     /// <param name="id da devolucao ">dados da devolucao</param>
     /// <returns></returns>
-    public async Task<Devolucao> Get(int idDevolucao)
+    public async Task<Devolucao> Get(uint idDevolucao)
     {
         return await _context.Devolucaos.FindAsync(idDevolucao);
     }
