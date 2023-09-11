@@ -81,7 +81,7 @@ public class AluguelController : Controller
     {
         var aluguel = await _aluguelService.Get(id);
 
-        var aluguelModel = _mapper.Map<MarcaViewModel>(aluguel);
+        var aluguelModel = _mapper.Map<AluguelViewModel>(aluguel);
 
         return View(aluguelModel);
     }
@@ -123,7 +123,7 @@ public class AluguelController : Controller
 
         if (aluguel == null) return NotFound();
 
-        var aluguelModel = _mapper.Map<MarcaViewModel>(aluguel);
+        var aluguelModel = _mapper.Map<AluguelViewModel>(aluguel);
 
         return View(aluguelModel);
     }
