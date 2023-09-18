@@ -22,7 +22,7 @@ namespace CoAutoWeb.Controllers
 		public ActionResult Index()
 		{
 			var listaPessoas= _pessoaService.GetAll();
-			var listaPessoasModel = _mapper.Map<List<PessoaModel>>(listaPessoas);
+			var listaPessoasModel = _mapper.Map<List<PessoaViewModel>>(listaPessoas);
 			return View(listaPessoasModel);
 		}
 
@@ -30,7 +30,7 @@ namespace CoAutoWeb.Controllers
 		public ActionResult Details(uint id)
 		{
 			Pessoa pessoa = _pessoaService.Get(id);
-			PessoaModel pessoaModel = _mapper.Map<PessoaModel>(pessoa);
+			PessoaViewModel pessoaModel = _mapper.Map<PessoaViewModel>(pessoa);
 			return View(pessoaModel);
 		}
 
@@ -43,7 +43,7 @@ namespace CoAutoWeb.Controllers
 		// POST: PessoaController/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(PessoaModel pessoaModel)
+		public ActionResult Create(PessoaViewModel pessoaModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -62,7 +62,7 @@ namespace CoAutoWeb.Controllers
 		// POST: PessoaController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(uint id, PessoaModel pessoaModel)
+		public ActionResult Edit(uint id, PessoaViewModel pessoaModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -76,14 +76,14 @@ namespace CoAutoWeb.Controllers
 		public ActionResult Delete(uint id)
 		{
 			Pessoa pessoa = _pessoaService.Get(id);
-			PessoaModel pessoaModel = _mapper.Map<PessoaModel>(pessoa);
+			PessoaViewModel pessoaModel = _mapper.Map<PessoaViewModel>(pessoa);
 			return View(pessoaModel);
 		}
 
 		// POST: PessoaController/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Delete(uint id, PessoaModel pessoaModel)
+		public ActionResult Delete(uint id, PessoaViewModel pessoaModel)
 		{
 			_pessoaService.Delete(id);
 			return RedirectToAction(nameof(Index));

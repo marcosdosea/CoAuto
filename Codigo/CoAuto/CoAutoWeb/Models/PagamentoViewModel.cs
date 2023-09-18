@@ -12,7 +12,7 @@ namespace CoAutoWeb.Models
         [Required(ErrorMessage = "A Forma de pagamento é obrigatória")]
         public string FormaPagamento { get; set; } = null!;
 
-        public int IdAluguel { get; set; }
+        public uint IdAluguel { get; set; }
 
     }
 }

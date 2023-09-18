@@ -5,25 +5,23 @@ namespace Core;
 
 public partial class Aluguel
 {
-    public int Id { get; set; }
+    public uint Id { get; set; }
 
-    public string DataHoraAluguel { get; set; } = null!;
+    public DateTime DataHoraAluguel { get; set; }
 
     public uint IdPessoa { get; set; }
 
-    public uint? IdAvaliacaoCliente { get; set; }
-
     public string Status { get; set; } = null!;
 
-    public int IdVeiculo { get; set; }
+    public uint IdVeiculo { get; set; }
 
-    public DateTime? DataAvaliacaoProprietario { get; set; }
+    public DateTime? DataHoraAvaliacaoProprietario { get; set; }
 
     public byte? QtdEstrelasAvaliacaoProprietario { get; set; }
 
-    public DateTime? DataAvaliacaoCliente { get; set; }
+    public DateTime? DataHoraAvaliacaoCliente { get; set; }
 
-    public sbyte? QtdEstrelasAvaliacaoCliente { get; set; }
+    public byte? QtdEstrelasAvaliacaoCliente { get; set; }
 
     public string? DescricaoAvaliacaoProprietario { get; set; }
 
@@ -41,5 +39,5 @@ public partial class Aluguel
 
     public virtual Veiculo IdVeiculoNavigation { get; set; } = null!;
 
-    public virtual ICollection<Pagamento> Pagamentos { get; set; } = new List<Pagamento>();
+    public virtual Pagamento? Pagamento { get; set; }
 }

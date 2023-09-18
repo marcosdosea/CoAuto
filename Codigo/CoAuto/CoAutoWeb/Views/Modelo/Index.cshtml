@@ -7,9 +7,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Marca)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
             <th></th>
@@ -20,9 +17,6 @@
         {
             <input type="hidden" asp-for="@item.Id" />
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Marca)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>

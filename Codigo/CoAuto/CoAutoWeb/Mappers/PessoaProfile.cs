@@ -8,7 +8,7 @@ namespace CoAutoWeb.Mappers
     {
         public PessoaProfile()
         {
-            CreateMap<PessoaModel, Pessoa>().ReverseMap();
+            CreateMap<PessoaViewModel, Pessoa>().ReverseMap();
         }
     }
 }

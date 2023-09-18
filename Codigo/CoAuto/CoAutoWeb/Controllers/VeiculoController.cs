@@ -62,7 +62,7 @@ namespace CoAutoWeb.Controllers
 
         // GET: VeiculoController/Details/5
         [HttpGet]
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(uint id)
         {
             var veiculo = await _veiculoService.Get(id);
 
@@ -134,7 +134,7 @@ namespace CoAutoWeb.Controllers
         }
 
         // GET: VeiculoController/Edit/5
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(uint id)
         {
             var veiculo = await _veiculoService.Get(id);
 
@@ -151,7 +151,7 @@ namespace CoAutoWeb.Controllers
         // POST: VeiculoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, VeiculoViewModel veiculoModel)
+        public async Task<ActionResult> Edit(uint id, VeiculoViewModel veiculoModel)
         {
             if (id != veiculoModel.Id) return NotFound();
 
@@ -177,11 +177,11 @@ namespace CoAutoWeb.Controllers
 
         // GET: VeiculoController/Delete/5
         [HttpGet]
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(uint? id)
         {
             if (id == null) return BadRequest();
 
-            var veiculo = await _veiculoService.Get((int)id);
+            var veiculo = await _veiculoService.Get((uint)id);
 
             if (veiculo == null) return NotFound();
 
@@ -218,7 +218,7 @@ namespace CoAutoWeb.Controllers
         // POST: VeiculoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(uint id)
         {
             await _veiculoService.Delete(id);
 

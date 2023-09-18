@@ -33,7 +33,7 @@ public class AluguelController : Controller
 
     // GET: AluguelController/Details/5
     [HttpGet]
-    public async Task<ActionResult> Details(int id)
+    public async Task<ActionResult> Details(uint id)
     {
         var aluguel = await _aluguelService.Get(id);
 
@@ -77,7 +77,7 @@ public class AluguelController : Controller
 
     // GET: AluguelController/Edit/5
     [HttpGet]
-    public async Task<ActionResult> Edit(int id)
+    public async Task<ActionResult> Edit(uint id)
     {
         var aluguel = await _aluguelService.Get(id);
 
@@ -89,7 +89,7 @@ public class AluguelController : Controller
     // POST: AluguelController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(int id, AluguelViewModel aluguelModel)
+    public async Task<ActionResult> Edit(uint id, AluguelViewModel aluguelModel)
     {
         if (id != aluguelModel.Id) return NotFound();
 
@@ -115,11 +115,11 @@ public class AluguelController : Controller
 
     // GET: AluguelController/Delete/5
     [HttpGet]
-    public async Task<ActionResult> Delete(int? id)
+    public async Task<ActionResult> Delete(uint? id)
     {
         if (id == null) return BadRequest();
 
-        var aluguel = await _aluguelService.Get((int)id);
+        var aluguel = await _aluguelService.Get((uint)id);
 
         if (aluguel == null) return NotFound();
 
@@ -131,7 +131,7 @@ public class AluguelController : Controller
     // POST: AluguelController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(int id)
+    public async Task<ActionResult> Delete(uint id)
     {
         await _aluguelService.Delete(id);
 

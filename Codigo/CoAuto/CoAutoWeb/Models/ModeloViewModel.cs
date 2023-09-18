@@ -7,11 +7,9 @@ namespace CoAutoWeb.Models
     {
 
         [Key]
-        public int Id { get; set; }
+        public uint Id { get; set; }
 
-        public int IdMarca { get; set; }
-
-        public string? Marca { get; set; }
+        public uint IdMarca { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
         [Display(Name = "Nome do modelo *")]

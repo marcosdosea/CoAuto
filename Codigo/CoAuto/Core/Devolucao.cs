@@ -19,5 +19,5 @@ public partial class Devolucao
 
     public DateTime DataHora { get; set; }
 
-    public virtual ICollection<Aluguel> Aluguels { get; set; } = new List<Aluguel>();
+    public virtual Aluguel? Aluguel { get; set; }
 }

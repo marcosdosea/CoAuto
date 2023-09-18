@@ -2,9 +2,9 @@
 
 public interface IMarcaService
 {
-    Task<int> Create(Marca marca);
+    Task<uint> Create(Marca marca);
     Task Edit(Marca marca);
-    Task Delete(int idMarca);
-    Task<Marca> Get(int idMarca);
+    Task Delete(uint idMarca);
+    Task<Marca> Get(uint idMarca);
     Task<IEnumerable<Marca>> GetAll();
 }

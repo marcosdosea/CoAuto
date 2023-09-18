@@ -2,9 +2,9 @@
 
 public interface IVeiculoService
 {
-    Task<int> Create(Veiculo veiculo);
+    Task<uint> Create(Veiculo veiculo);
     Task Edit(Veiculo veiculo);
-    Task Delete(int idVeiculo);
-    Task<Veiculo> Get(int idVeiculo);
+    Task Delete(uint idVeiculo);
+    Task<Veiculo> Get(uint idVeiculo);
     Task<IEnumerable<Veiculo>> GetAll();
 }

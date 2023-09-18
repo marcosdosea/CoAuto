@@ -18,7 +18,7 @@ public class VeiculoService : IVeiculoService
     /// </summary>
     /// <param name="veiculo">dados do veiculo</param>
     /// <returns></returns>
-    public async Task<int> Create(Veiculo veiculo)
+    public async Task<uint> Create(Veiculo veiculo)
     {
         await _context.AddAsync(veiculo);
         await _context.SaveChangesAsync();
@@ -30,7 +30,7 @@ public class VeiculoService : IVeiculoService
     /// </summary>
     /// <param name="id da veículo ">deleta o veículo </param>
     /// <returns></returns>
-    public async Task Delete(int idVeiculo)
+    public async Task Delete(uint idVeiculo)
     {
         var veiculo = await _context.Veiculos.
             FindAsync(idVeiculo);
@@ -59,7 +59,7 @@ public class VeiculoService : IVeiculoService
     /// </summary>
     /// <param name="id do veículo ">dados do veículo</param>
     /// <returns></returns>
-    public async Task<Veiculo> Get(int idVeiculo)
+    public async Task<Veiculo> Get(uint idVeiculo)
     {
         return await _context.Veiculos.FindAsync(idVeiculo);
     }
