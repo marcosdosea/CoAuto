@@ -5,7 +5,7 @@ namespace Core;
 
 public partial class Veiculo
 {
-    public int Id { get; set; }
+    public uint Id { get; set; }
 
     public string Tipo { get; set; } = null!;
 
@@ -29,17 +29,17 @@ public partial class Veiculo
 
     public string Rua { get; set; } = null!;
 
-    public int Numero { get; set; }
+    public string Numero { get; set; } = null!;
 
-    public DateTime DataAutorizacao { get; set; }
+    public DateTime? DataAutorizacao { get; set; }
 
     public string? Portas { get; set; }
 
     public sbyte Autorizado { get; set; }
 
-    public int IdModelo { get; set; }
+    public uint IdModelo { get; set; }
 
-    public string Combustivel { get; set; } = null!;
+    public string? Combustivel { get; set; }
 
     public string Cambio { get; set; } = null!;
 
@@ -49,9 +49,9 @@ public partial class Veiculo
 
     public uint IdPessoa { get; set; }
 
-    public virtual ICollection<Aluguel> Aluguels { get; set; } = new List<Aluguel>();
+    public virtual Aluguel? Aluguel { get; set; }
 
-    public virtual ICollection<Disponibilidade> Disponibilidades { get; set; } = new List<Disponibilidade>();
+    public virtual Disponibilidade? Disponibilidade { get; set; }
 
     public virtual Modelo IdModeloNavigation { get; set; } = null!;
 

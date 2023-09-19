@@ -8,22 +8,20 @@ namespace CoAutoWeb.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
-        public String DataHoraAluguel { get; set; } = null!;
+        public DateTime DataHoraAluguel { get; set; }
 
         public uint IdPessoa { get; set; }
-
-        public uint? IdAvaliacaoCliente { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
         public string Status { get; set; } = null!;
 
-        public int IdVeiculo { get; set; }
+        public uint IdVeiculo { get; set; }
 
-        public DateTime? DataAvaliacaoProprietario { get; set; }
+        public DateTime? DataHoraAvaliacaoProprietario { get; set; }
 
         public byte? QtdEstrelasAvaliacaoProprietario { get; set; }
 
-        public DateTime? DataAvaliacaoCliente { get; set; }
+        public DateTime? DataHoraAvaliacaoCliente { get; set; }
 
         public sbyte? QtdEstrelasAvaliacaoCliente { get; set; }
 

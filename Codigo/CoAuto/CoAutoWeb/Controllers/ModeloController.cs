@@ -35,7 +35,6 @@ namespace CoAutoWeb.Controllers
             {
                 Id = modelo.Id,
                 IdMarca = modelo.IdMarca,
-                Marca = marcas.FirstOrDefault(marca => marca.Id == modelo.IdMarca).Nome,
                 Nome = modelo.Nome
             }).ToList();
 
@@ -44,7 +43,7 @@ namespace CoAutoWeb.Controllers
 
         // GET: ModeloController/Details/5
         [HttpGet]
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(uint id)
         {
             var modelo = await _modeloService.Get(id);
 
@@ -55,7 +54,6 @@ namespace CoAutoWeb.Controllers
             {
                 Id = modelo.Id,
                 IdMarca = modelo.IdMarca,
-                Marca = marcas.FirstOrDefault(marca => marca.Id == modelo.IdMarca).Nome,
                 Nome = modelo.Nome
             };
 
@@ -98,7 +96,7 @@ namespace CoAutoWeb.Controllers
         }
 
         // GET: ModeloController/Edit/5
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(uint id)
         {
             var modelo = await _modeloService.Get(id);
 
@@ -115,7 +113,7 @@ namespace CoAutoWeb.Controllers
         // POST: ModeloController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, ModeloViewModel modeloModel)
+        public async Task<ActionResult> Edit(uint id, ModeloViewModel modeloModel)
         {
             if (id != modeloModel.Id) return NotFound();
 
@@ -141,11 +139,11 @@ namespace CoAutoWeb.Controllers
 
         // GET: ModeloController/Delete/5
         [HttpGet]
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(uint? id)
         {
             if (id == null) return BadRequest();
 
-            var modelo = await _modeloService.Get((int)id);
+            var modelo = await _modeloService.Get((uint)id);
 
             if (modelo == null) return NotFound();
 
@@ -154,7 +152,6 @@ namespace CoAutoWeb.Controllers
             {
                 Id = modelo.Id,
                 IdMarca = modelo.IdMarca,
-                Marca = marcas.FirstOrDefault(marca => marca.Id == modelo.IdMarca).Nome,
                 Nome = modelo.Nome
             };
 
@@ -164,7 +161,7 @@ namespace CoAutoWeb.Controllers
         // POST: ModeloController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(uint id)
         {
             await _modeloService.Delete(id);
 

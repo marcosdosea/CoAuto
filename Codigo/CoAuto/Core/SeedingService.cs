@@ -61,7 +61,7 @@ public class SeedingService
             Cnh = "123456789",
             Cpf = "12345678900",
             Senha = "senhaSecreta",
-            DataNascimento = "01/01/1980",
+            DataNascimento = new DateTime(2002,02,23),
             Telefone = "(11) 12345-6789",
             Cep = "12345678",
             Estado = "SP",
@@ -98,7 +98,7 @@ public class SeedingService
             Cidade = "Itabaiana",
             Bairro = "Serrano",
             Rua = "Av Manoel Francisco Teles",
-            Numero = 319,
+            Numero = "319",
             IdModeloNavigation = modelo1,
             IdModelo = 1,
             IdPessoaNavigation = pessoa1,
@@ -115,10 +115,8 @@ public class SeedingService
         Disponibilidade disponibilidade1 = new Disponibilidade
         {
             Id = 1,
-            DataInicio = DateTime.Now,
-            DataFim = DateTime.Now,
-            HoraInicio = TimeSpan.MinValue,
-            HoraFim = TimeSpan.MaxValue,
+            DataHoraInicio = DateTime.Now,
+            DataHoraFim = DateTime.Now,
             IdVeiculoNavigation = veiculo1,
             IdVeiculo = 2 
         };
@@ -154,9 +152,9 @@ public class SeedingService
         {
             Id = 2,
             Status = "Alugado",
-            DataAvaliacaoCliente = DateTime.Now,
-            DataAvaliacaoProprietario = DateTime.Now,
-            DataHoraAluguel = "2001/01/02 00:00",
+            DataHoraAvaliacaoCliente = DateTime.Now,
+            DataHoraAvaliacaoProprietario = DateTime.Now,
+            DataHoraAluguel = new DateTime(2022,08,04),
             IdVeiculoNavigation = veiculo1,
             IdVeiculo = 2,
             IdPessoaNavigation = pessoa1,
@@ -164,8 +162,7 @@ public class SeedingService
             IdDevolucaoNavigation = devolucao1,
             IdDevolucao = 1,
             IdEntregaNavigation = entrega1,
-            IdEntrega = 1,
-            IdAvaliacaoCliente = 2
+            IdEntrega = 1
         };
         _coAutoContext.AddRange(aluguel1);
         _coAutoContext.SaveChanges();

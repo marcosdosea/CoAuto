@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace CoAutoWeb.Models
 {
-    public class PessoaModel
+    public class PessoaViewModel
     {
-        [Required(ErrorMessage = "Campo requerido")]
+        [Key]
         public uint Id { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
@@ -16,7 +17,7 @@ namespace CoAutoWeb.Models
         public string Email { get; set; } = null!;
 
         [Required(ErrorMessage = "Campo requerido")]
-        [StringLength(45, ErrorMessage = "CNH deve ter no máximo 45 caracteres")]
+        [StringLength(9, ErrorMessage = "CNH deve ter no máximo 9 caracteres")]
         public string Cnh { get; set; } = null!;
 
         [Required(ErrorMessage = "Campo requerido")]
@@ -31,10 +32,11 @@ namespace CoAutoWeb.Models
 
         [Display(Name = "Data de Nascimento")]
         [Required(ErrorMessage = "Campo requerido")]
-        [StringLength(10, ErrorMessage = "Data de Nascimento deve ter no máximo 10 caracteres")]
-        public string DataNascimento { get; set; } = null!;
+        [DataType(DataType.Date)]
+        public DateTime DataNascimento { get; set; }
 
-        [StringLength(23, ErrorMessage = "Telefone deve ter no máximo 23 caracteres")]
+        [Required(ErrorMessage = "Campo requerido")]
+        [StringLength(14, ErrorMessage = "Telefone deve ter no máximo 23 caracteres")]
         public string Telefone { get; set; } = null!;
 
         public byte[]? Fotoperfil { get; set; }
@@ -44,11 +46,11 @@ namespace CoAutoWeb.Models
         public string Cep { get; set; } = null!;
 
         [Required(ErrorMessage = "Campo requerido")]
-        [StringLength(50, ErrorMessage = "Estado deve ter no máximo 50 caracteres")]
+        [StringLength(2, ErrorMessage = "Estado deve ter no máximo 50 caracteres")]
         public string Estado { get; set; } = null!;
 
         [Required(ErrorMessage = "Campo requerido")]
-        [StringLength(50, ErrorMessage = "Cidade deve ter no máximo 50 caracteres")]
+        [StringLength(20, ErrorMessage = "Cidade deve ter no máximo 50 caracteres")]
         public string Cidade { get; set; } = null!;
 
         [Required(ErrorMessage = "Campo requerido")]
@@ -75,14 +77,16 @@ namespace CoAutoWeb.Models
         [StringLength(32, ErrorMessage = "Chave Pix deve ter no máximo 32 caracteres")]
         public string? Chavepix { get; set; }
 
-        [Display(Name = "Data Autorização")] public DateTime DataAutorizacao { get; set; }
+        [Display(Name = "Data Autorização")]
+        public DateTime? DataAutorizacao { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
-        public sbyte Autorizado { get; set; }
+        public sbyte Autorizado { get; set; } = 0;
 
         [Required(ErrorMessage = "Campo requerido")]
-        public string Tipo { get; set; } = null!;
+        public string Tipo { get; set; } = "cliente";
 
+        [Required(ErrorMessage = "Campo requerido")]
         public uint IdBanco { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Service
         /// </summary>
         /// <param name="marca">dados da marca</param>
         /// <returns></returns>
-        public async Task<int> Create(Marca marca)
+        public async Task<uint> Create(Marca marca)
         {
             await _context.AddAsync(marca);
             await _context.SaveChangesAsync();
@@ -30,7 +30,7 @@ namespace Service
         /// </summary>
         /// <param name="id da marca ">deleta a marca </param>
         /// <returns></returns>
-        public async Task Delete(int idMarca)
+        public async Task Delete(uint idMarca)
         {
             var marca = await _context.Marcas.
             FindAsync(idMarca);
@@ -59,7 +59,7 @@ namespace Service
         /// </summary>
         /// <param name="id da marca ">dados da marca</param>
         /// <returns></returns>
-        public async Task<Marca> Get(int idMarca)
+        public async Task<Marca> Get(uint idMarca)
         {
             return await _context.Marcas.FindAsync(idMarca);
         }

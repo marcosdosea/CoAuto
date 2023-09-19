@@ -23,8 +23,6 @@ public partial class CoAutoContext : DbContext
 
     public virtual DbSet<Disponibilidade> Disponibilidades { get; set; }
 
-    public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
-
     public virtual DbSet<Entrega> Entregas { get; set; }
 
     public virtual DbSet<Marca> Marcas { get; set; }
@@ -37,9 +35,8 @@ public partial class CoAutoContext : DbContext
 
     public virtual DbSet<Veiculo> Veiculos { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=123456;database=coauto");
+    ///protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    ///   => optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=123456;database=coauto");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,6 +46,8 @@ public partial class CoAutoContext : DbContext
 
             entity.ToTable("aluguel");
 
+            entity.HasIndex(e => e.IdPessoa, "IdPessoa_UNIQUE").IsUnique();
+
             entity.HasIndex(e => e.IdDevolucao, "fkAluguelDevolucao");
 
             entity.HasIndex(e => e.IdEntrega, "fkAluguelEntrega");
@@ -57,25 +56,30 @@ public partial class CoAutoContext : DbContext
 
             entity.HasIndex(e => e.IdVeiculo, "fkAluguelVeiculo");
 
+            entity.HasIndex(e => e.IdDevolucao, "idDevolucao_UNIQUE").IsUnique();
+
+            entity.HasIndex(e => e.IdEntrega, "idEntrega_UNIQUE").IsUnique();
+
+            entity.HasIndex(e => e.IdVeiculo, "idVeiculo_UNIQUE").IsUnique();
+
             entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DataAvaliacaoCliente)
-                .HasColumnType("datetime")
-                .HasColumnName("dataAvaliacaoCliente");
-            entity.Property(e => e.DataAvaliacaoProprietario)
-                .HasColumnType("datetime")
-                .HasColumnName("dataAvaliacaoProprietario");
             entity.Property(e => e.DataHoraAluguel)
-                .HasMaxLength(45)
+                .HasColumnType("datetime")
                 .HasColumnName("dataHoraAluguel");
+            entity.Property(e => e.DataHoraAvaliacaoCliente)
+                .HasColumnType("datetime")
+                .HasColumnName("dataHoraAvaliacaoCliente");
+            entity.Property(e => e.DataHoraAvaliacaoProprietario)
+                .HasColumnType("datetime")
+                .HasColumnName("dataHoraAvaliacaoProprietario");
             entity.Property(e => e.DescricaoAvaliacaoCliente)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .HasColumnName("descricaoAvaliacaoCliente");
             entity.Property(e => e.DescricaoAvaliacaoProprietario)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .HasColumnName("descricaoAvaliacaoProprietario");
-            entity.Property(e => e.IdAvaliacaoCliente).HasColumnName("idAvaliacaoCliente");
             entity.Property(e => e.IdDevolucao).HasColumnName("idDevolucao");
             entity.Property(e => e.IdEntrega).HasColumnName("idEntrega");
             entity.Property(e => e.IdVeiculo).HasColumnName("idVeiculo");
@@ -85,23 +89,23 @@ public partial class CoAutoContext : DbContext
                 .HasColumnType("enum('andamento','concluido','cancelado')")
                 .HasColumnName("status");
 
-            entity.HasOne(d => d.IdDevolucaoNavigation).WithMany(p => p.Aluguels)
-                .HasForeignKey(d => d.IdDevolucao)
-                .HasConstraintName("fk%Aluguel%dtable2");
+            entity.HasOne(d => d.IdDevolucaoNavigation).WithOne(p => p.Aluguel)
+                .HasForeignKey<Aluguel>(d => d.IdDevolucao)
+                .HasConstraintName("fkAluguelDevolucao");
 
-            entity.HasOne(d => d.IdEntregaNavigation).WithMany(p => p.Aluguels)
-                .HasForeignKey(d => d.IdEntrega)
-                .HasConstraintName("fk%Aluguel%dtable1");
+            entity.HasOne(d => d.IdEntregaNavigation).WithOne(p => p.Aluguel)
+                .HasForeignKey<Aluguel>(d => d.IdEntrega)
+                .HasConstraintName("fkAluguelEntrega");
 
-            entity.HasOne(d => d.IdPessoaNavigation).WithMany(p => p.Aluguels)
-                .HasForeignKey(d => d.IdPessoa)
+            entity.HasOne(d => d.IdPessoaNavigation).WithOne(p => p.Aluguel)
+                .HasForeignKey<Aluguel>(d => d.IdPessoa)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fkAluguelUsusario");
+                .HasConstraintName("fkAluguelPessoa");
 
-            entity.HasOne(d => d.IdVeiculoNavigation).WithMany(p => p.Aluguels)
-                .HasForeignKey(d => d.IdVeiculo)
+            entity.HasOne(d => d.IdVeiculoNavigation).WithOne(p => p.Aluguel)
+                .HasForeignKey<Aluguel>(d => d.IdVeiculo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("%fk%Aluguel%Veiculo1");
+                .HasConstraintName("fkAluguelVeiculo");
         });
 
         modelBuilder.Entity<Banco>(entity =>
@@ -109,6 +113,8 @@ public partial class CoAutoContext : DbContext
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("banco");
+
+            entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Nome)
@@ -123,6 +129,8 @@ public partial class CoAutoContext : DbContext
             entity.ToTable("devolucao");
 
             entity.HasIndex(e => e.DataHora, "dataHora");
+
+            entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DataHora)
@@ -153,35 +161,23 @@ public partial class CoAutoContext : DbContext
 
             entity.HasIndex(e => e.IdVeiculo, "fkDisponibilidadeVeiculo");
 
+            entity.HasIndex(e => e.IdVeiculo, "idVeiculo_UNIQUE").IsUnique();
+
+            entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
+
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DataFim)
-                .HasColumnType("date")
-                .HasColumnName("dataFim");
-            entity.Property(e => e.DataInicio)
-                .HasColumnType("date")
-                .HasColumnName("dataInicio");
-            entity.Property(e => e.HoraFim)
-                .HasColumnType("time")
-                .HasColumnName("horaFim");
-            entity.Property(e => e.HoraInicio)
-                .HasColumnType("time")
-                .HasColumnName("horaInicio");
+            entity.Property(e => e.DataHoraFim)
+                .HasColumnType("datetime")
+                .HasColumnName("dataHoraFim");
+            entity.Property(e => e.DataHoraInicio)
+                .HasColumnType("datetime")
+                .HasColumnName("dataHoraInicio");
             entity.Property(e => e.IdVeiculo).HasColumnName("idVeiculo");
 
-            entity.HasOne(d => d.IdVeiculoNavigation).WithMany(p => p.Disponibilidades)
-                .HasForeignKey(d => d.IdVeiculo)
+            entity.HasOne(d => d.IdVeiculoNavigation).WithOne(p => p.Disponibilidade)
+                .HasForeignKey<Disponibilidade>(d => d.IdVeiculo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("%fk%DisponibilidadeVeiculo%Veiculo1");
-        });
-
-        modelBuilder.Entity<Efmigrationshistory>(entity =>
-        {
-            entity.HasKey(e => e.MigrationId).HasName("PRIMARY");
-
-            entity.ToTable("__efmigrationshistory");
-
-            entity.Property(e => e.MigrationId).HasMaxLength(150);
-            entity.Property(e => e.ProductVersion).HasMaxLength(32);
+                .HasConstraintName("fkDisponibilidadeVeiculo");
         });
 
         modelBuilder.Entity<Entrega>(entity =>
@@ -191,6 +187,8 @@ public partial class CoAutoContext : DbContext
             entity.ToTable("entrega");
 
             entity.HasIndex(e => e.DataHora, "dataHora");
+
+            entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DataHora)
@@ -219,9 +217,11 @@ public partial class CoAutoContext : DbContext
 
             entity.ToTable("marca");
 
+            entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
+
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Nome)
-                .HasMaxLength(50)
+                .HasMaxLength(20)
                 .HasColumnName("nome");
         });
 
@@ -233,16 +233,20 @@ public partial class CoAutoContext : DbContext
 
             entity.HasIndex(e => e.IdMarca, "fkModeloMarca");
 
+            entity.HasIndex(e => e.IdMarca, "idMarca_UNIQUE").IsUnique();
+
+            entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
+
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.IdMarca).HasColumnName("idMarca");
             entity.Property(e => e.Nome)
-                .HasMaxLength(50)
+                .HasMaxLength(20)
                 .HasColumnName("nome");
 
-            entity.HasOne(d => d.IdMarcaNavigation).WithMany(p => p.Modelos)
-                .HasForeignKey(d => d.IdMarca)
+            entity.HasOne(d => d.IdMarcaNavigation).WithOne(p => p.Modelo)
+                .HasForeignKey<Modelo>(d => d.IdMarca)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("%fk%Modelo%Marca1");
+                .HasConstraintName("fkModeloMarca");
         });
 
         modelBuilder.Entity<Pagamento>(entity =>
@@ -253,19 +257,23 @@ public partial class CoAutoContext : DbContext
 
             entity.HasIndex(e => e.IdAluguel, "fkPagamentoVeiculo");
 
+            entity.HasIndex(e => e.IdAluguel, "idAluguel_UNIQUE").IsUnique();
+
+            entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
+
             entity.HasIndex(e => e.Valor, "valor");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.FormaPagamento)
-                .HasColumnType("enum('a vista','parcelado','pix')")
+                .HasColumnType("enum('à vista','parcelado','pix')")
                 .HasColumnName("formaPagamento");
             entity.Property(e => e.IdAluguel).HasColumnName("idAluguel");
             entity.Property(e => e.Valor).HasColumnName("valor");
 
-            entity.HasOne(d => d.IdAluguelNavigation).WithMany(p => p.Pagamentos)
-                .HasForeignKey(d => d.IdAluguel)
+            entity.HasOne(d => d.IdAluguelNavigation).WithOne(p => p.Pagamento)
+                .HasForeignKey<Pagamento>(d => d.IdAluguel)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("%fk%Pagamento%Aluguel1");
+                .HasConstraintName("fkPagamentoAluguel");
         });
 
         modelBuilder.Entity<Pessoa>(entity =>
@@ -279,6 +287,8 @@ public partial class CoAutoContext : DbContext
             entity.HasIndex(e => e.Cpf, "cpf");
 
             entity.HasIndex(e => e.IdBanco, "fkPessoaBanco");
+
+            entity.HasIndex(e => e.IdBanco, "idBanco_UNIQUE").IsUnique();
 
             entity.HasIndex(e => e.Nome, "nome");
 
@@ -296,10 +306,10 @@ public partial class CoAutoContext : DbContext
                 .HasMaxLength(32)
                 .HasColumnName("chavepix");
             entity.Property(e => e.Cidade)
-                .HasMaxLength(50)
+                .HasMaxLength(20)
                 .HasColumnName("cidade");
             entity.Property(e => e.Cnh)
-                .HasMaxLength(45)
+                .HasMaxLength(9)
                 .HasColumnName("cnh");
             entity.Property(e => e.ContaCorrente)
                 .HasMaxLength(10)
@@ -311,13 +321,13 @@ public partial class CoAutoContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("dataAutorizacao");
             entity.Property(e => e.DataNascimento)
-                .HasMaxLength(10)
+                .HasColumnType("date")
                 .HasColumnName("dataNascimento");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .HasColumnName("email");
             entity.Property(e => e.Estado)
-                .HasMaxLength(50)
+                .HasMaxLength(2)
                 .HasColumnName("estado");
             entity.Property(e => e.Fotocnh)
                 .HasColumnType("blob")
@@ -339,16 +349,15 @@ public partial class CoAutoContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("senha");
             entity.Property(e => e.Telefone)
-                .HasMaxLength(23)
+                .HasMaxLength(14)
                 .HasColumnName("telefone");
             entity.Property(e => e.Tipo)
                 .HasColumnType("enum('cliente','proprietario')")
                 .HasColumnName("tipo");
 
-            entity.HasOne(d => d.IdBancoNavigation).WithMany(p => p.Pessoas)
-                .HasForeignKey(d => d.IdBanco)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("%fk%Pessoa%Banco1");
+            entity.HasOne(d => d.IdBancoNavigation).WithOne(p => p.Pessoa)
+                .HasForeignKey<Pessoa>(d => d.IdBanco)
+                .HasConstraintName("fkPessoaBanco");
         });
 
         modelBuilder.Entity<Veiculo>(entity =>
@@ -357,9 +366,13 @@ public partial class CoAutoContext : DbContext
 
             entity.ToTable("veiculo");
 
-            entity.HasIndex(e => e.IdPessoa, "fkPessoaVeiculo");
+            entity.HasIndex(e => e.IdPessoa, "IdPessoa_UNIQUE").IsUnique();
 
             entity.HasIndex(e => e.IdModelo, "fkVeiculoModelo");
+
+            entity.HasIndex(e => e.IdPessoa, "fkVeiculoPessoa");
+
+            entity.HasIndex(e => e.IdModelo, "idModelo_UNIQUE").IsUnique();
 
             entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
@@ -381,11 +394,11 @@ public partial class CoAutoContext : DbContext
                 .HasMaxLength(8)
                 .HasColumnName("cep");
             entity.Property(e => e.Cidade)
-                .HasMaxLength(50)
+                .HasMaxLength(20)
                 .HasColumnName("cidade");
             entity.Property(e => e.Cilindradas).HasColumnName("cilindradas");
             entity.Property(e => e.Combustivel)
-                .HasColumnType("enum('flex','gasolina','etanol','diesel','gnv')")
+                .HasColumnType("enum('flex','gasolina','etanol','diesel','gnv','elétrico')")
                 .HasColumnName("combustivel");
             entity.Property(e => e.Crlv)
                 .HasMaxLength(13)
@@ -397,7 +410,9 @@ public partial class CoAutoContext : DbContext
                 .HasMaxLength(2)
                 .HasColumnName("estado");
             entity.Property(e => e.IdModelo).HasColumnName("idModelo");
-            entity.Property(e => e.Numero).HasColumnName("numero");
+            entity.Property(e => e.Numero)
+                .HasMaxLength(10)
+                .HasColumnName("numero");
             entity.Property(e => e.Passageiro)
                 .HasColumnType("enum('4','5','6','7','8')")
                 .HasColumnName("passageiro");
@@ -415,15 +430,15 @@ public partial class CoAutoContext : DbContext
                 .HasColumnName("tipo");
             entity.Property(e => e.Valor).HasColumnName("valor");
 
-            entity.HasOne(d => d.IdModeloNavigation).WithMany(p => p.Veiculos)
-                .HasForeignKey(d => d.IdModelo)
+            entity.HasOne(d => d.IdModeloNavigation).WithOne(p => p.Veiculo)
+                .HasForeignKey<Veiculo>(d => d.IdModelo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("%fk%Veiculo%Modelo1");
+                .HasConstraintName("fkVeiculoModelo");
 
-            entity.HasOne(d => d.IdPessoaNavigation).WithMany(p => p.Veiculos)
-                .HasForeignKey(d => d.IdPessoa)
+            entity.HasOne(d => d.IdPessoaNavigation).WithOne(p => p.Veiculo)
+                .HasForeignKey<Veiculo>(d => d.IdPessoa)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("%fk%Veiculo%Pessoa1");
+                .HasConstraintName("fkVeiculoPessoa");
         });
 
         OnModelCreatingPartial(modelBuilder);

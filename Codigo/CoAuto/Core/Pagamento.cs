@@ -11,7 +11,7 @@ public partial class Pagamento
 
     public string FormaPagamento { get; set; } = null!;
 
-    public int IdAluguel { get; set; }
+    public uint IdAluguel { get; set; }
 
     public virtual Aluguel IdAluguelNavigation { get; set; } = null!;
 }

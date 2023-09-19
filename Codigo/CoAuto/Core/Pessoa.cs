@@ -19,7 +19,7 @@ public partial class Pessoa
 
     public byte[]? Fotocnh { get; set; }
 
-    public string DataNascimento { get; set; } = null!;
+    public DateTime DataNascimento { get; set; }
 
     public string Telefone { get; set; } = null!;
 
@@ -49,11 +49,11 @@ public partial class Pessoa
 
     public string Tipo { get; set; } = null!;
 
-    public uint IdBanco { get; set; }
+    public uint? IdBanco { get; set; }
 
-    public virtual ICollection<Aluguel> Aluguels { get; set; } = new List<Aluguel>();
+    public virtual Aluguel? Aluguel { get; set; }
 
-    public virtual Banco IdBancoNavigation { get; set; } = null!;
+    public virtual Banco? IdBancoNavigation { get; set; }
 
-    public virtual ICollection<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
+    public virtual Veiculo? Veiculo { get; set; }
 }

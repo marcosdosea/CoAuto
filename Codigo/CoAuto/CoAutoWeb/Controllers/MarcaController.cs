@@ -33,7 +33,7 @@ public class MarcaController : Controller
 
     // GET: MarcaController/Details/5
     [HttpGet]
-    public async Task<ActionResult> Details(int id)
+    public async Task<ActionResult> Details(uint id)
     {
         var marca = await _marcaService.Get(id);
 
@@ -77,7 +77,7 @@ public class MarcaController : Controller
 
     // GET: MarcaController/Edit/5
     [HttpGet]
-    public async Task<ActionResult> Edit(int id)
+    public async Task<ActionResult> Edit(uint id)
     {
         var marca = await _marcaService.Get(id);
 
@@ -89,7 +89,7 @@ public class MarcaController : Controller
     // POST: MarcaController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(int id, MarcaViewModel marcaModel)
+    public async Task<ActionResult> Edit(uint id, MarcaViewModel marcaModel)
     {
         if (id != marcaModel.Id) return NotFound();
 
@@ -115,11 +115,11 @@ public class MarcaController : Controller
 
     // GET: MarcaController/Delete/5
     [HttpGet]
-    public async Task<ActionResult> Delete(int? id)
+    public async Task<ActionResult> Delete(uint? id)
     {
         if (id == null) return BadRequest();
 
-        var marca = await _marcaService.Get((int)id);
+        var marca = await _marcaService.Get((uint)id);
 
         if (marca == null) return NotFound();
 
@@ -131,7 +131,7 @@ public class MarcaController : Controller
     // POST: MarcaController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(int id)
+    public async Task<ActionResult> Delete(uint id)
     {
         await _marcaService.Delete(id);
 

@@ -18,7 +18,7 @@ namespace Service
         /// </summary>
         /// <param name="Aluguel">dados do Aluguel</param>
         /// <returns></returns>
-        public async Task<int> Create(Aluguel aluguel)
+        public async Task<uint> Create(Aluguel aluguel)
         {
             await _context.AddAsync(aluguel);
             await _context.SaveChangesAsync();
@@ -30,7 +30,7 @@ namespace Service
         /// </summary>
         /// <param name="id do Aluguel ">deleta o Aluguel </param>
         /// <returns></returns>
-        public async Task Delete(int idAluguel)
+        public async Task Delete(uint idAluguel)
         {
             var aluguel = await _context.Aluguels.
             FindAsync(idAluguel);
@@ -59,7 +59,7 @@ namespace Service
         /// </summary>
         /// <param name="id do Aluguel ">dados do Aluguel</param>
         /// <returns></returns>
-        public async Task<Aluguel> Get(int idAluguel)
+        public async Task<Aluguel> Get(uint idAluguel)
         {
             return await _context.Aluguels.FindAsync(idAluguel);
         }

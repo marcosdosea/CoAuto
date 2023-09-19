@@ -18,7 +18,7 @@ public class ModeloService : IModeloService
     /// </summary>
     /// <param name="modelo">dados do modelo</param>
     /// <returns></returns>
-    public async Task<int> Create(Modelo modelo)
+    public async Task<uint> Create(Modelo modelo)
     {
         await _context.AddAsync(modelo);
         await _context.SaveChangesAsync();
@@ -30,7 +30,7 @@ public class ModeloService : IModeloService
     /// </summary>
     /// <param name="id da modelo ">deleta o modelo </param>
     /// <returns></returns>
-    public async Task Delete(int idModelo)
+    public async Task Delete(uint idModelo)
     {
         var modelo = await _context.Modelos.
             FindAsync(idModelo);
@@ -59,7 +59,7 @@ public class ModeloService : IModeloService
     /// </summary>
     /// <param name="id do modelo">dados do modelo</param>
     /// <returns></returns>
-    public async Task<Modelo> Get(int idModelo)
+    public async Task<Modelo> Get(uint idModelo)
     {
         return await _context.Modelos.FindAsync(idModelo);
     }
