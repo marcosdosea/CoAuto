@@ -5,6 +5,5 @@ public interface IPagamentoService
     void Edit(Pagamento pagamento);
     void Delete(int idPagamento);
     Pagamento Get(int id);
-
     IEnumerable<Pagamento> GetAll();
 }

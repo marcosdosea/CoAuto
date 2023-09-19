@@ -2,74 +2,73 @@
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 
-namespace Service
+namespace Service;
+
+public class EntregaService : IEntregaService
 {
-    public class EntregaService : IEntregaService
+    private readonly CoAutoContext _context;
+
+    public EntregaService(CoAutoContext context)
     {
-        private readonly CoAutoContext _context;
+        _context = context;
+    }
 
-        public EntregaService(CoAutoContext context)
-        {
-            _context = context;
-        }
+    // <summary>
+    /// Insere uma nova entrega
+    /// </summary>
+    /// <param name="entrega">dados da entrega</param>
+    /// <returns></returns>
+    public async Task<uint> Create(Entrega entrega)
+    {
+        await _context.AddAsync(entrega);
+        await _context.SaveChangesAsync();
+        return (uint)entrega.Id;
+    }
 
-        // <summary>
-        /// Insere uma nova entrega
-        /// </summary>
-        /// <param name="entrega">dados da entrega</param>
-        /// <returns></returns>
-        public async Task<uint> Create(Entrega entrega)
-        {
-            await _context.AddAsync(entrega);
-            await _context.SaveChangesAsync();
-            return (uint)entrega.Id;
-        }
+    // <summary>
+    /// Deleta uma entrega
+    /// </summary>
+    /// <param name="id da entrega ">deleta a entrega </param>
+    /// <returns></returns>
+    public async Task Delete(uint id)
+    {
+        var entrega = await _context.Entregas.
+        FindAsync(id);
 
-        // <summary>
-        /// Deleta uma entrega
-        /// </summary>
-        /// <param name="id da entrega ">deleta a entrega </param>
-        /// <returns></returns>
-        public async Task Delete(uint id)
-        {
-            var entrega = await _context.Entregas.
-            FindAsync(id);
+        if (entrega == null) return;
 
-            if (entrega == null) return;
+        _context.Remove(entrega);
+        await _context.SaveChangesAsync();
+    }
 
-            _context.Remove(entrega);
-            await _context.SaveChangesAsync();
-        }
+    // <summary>
+    /// Edita uma entrega
+    /// </summary>
+    /// <param name="entrega"></param>
+    /// <exception cref="ServiceException"></exception>
+    public async Task Edit(Entrega entrega)
+    {
+        _context.Update(entrega);
 
-        // <summary>
-        /// Edita uma entrega
-        /// </summary>
-        /// <param name="entrega"></param>
-        /// <exception cref="ServiceException"></exception>
-        public async Task Edit(Entrega entrega)
-        {
-            _context.Update(entrega);
+        await _context.SaveChangesAsync();
+    }
 
-            await _context.SaveChangesAsync();
-        }
+    // <summary>
+    /// busca uma entrega 
+    /// </summary>
+    /// <param name="id da entrega ">dados da entrega</param>
+    /// <returns></returns>
+    public async Task<Entrega> Get(uint idEntrega)
+    {
+        return await _context.Entregas.FindAsync(idEntrega);
+    }
 
-        // <summary>
-        /// busca uma entrega 
-        /// </summary>
-        /// <param name="id da entrega ">dados da entrega</param>
-        /// <returns></returns>
-        public async Task<Entrega> Get(uint idEntrega)
-        {
-            return await _context.Entregas.FindAsync(idEntrega);
-        }
-
-        /// <summary>
-        /// Obtém todas as entregas
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IEnumerable<Entrega>> GetAll()
-        {
-            return await _context.Entregas.ToListAsync();
-        }
+    /// <summary>
+    /// Obtém todas as entregas
+    /// </summary>
+    /// <returns></returns>
+    public async Task<IEnumerable<Entrega>> GetAll()
+    {
+        return await _context.Entregas.ToListAsync();
     }
 }

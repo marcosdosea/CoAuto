@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Core.Service;
 using CoAutoWeb.Models;
 using Core;
+using Core.Service;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoAutoWeb.Controllers;
 
@@ -27,7 +27,6 @@ public class MarcaController : Controller
         if (marcas == null) return BadRequest();
 
         var marcaModel = _mapper.Map<List<MarcaViewModel>>(marcas);
-
         return View(marcaModel);
     }
 

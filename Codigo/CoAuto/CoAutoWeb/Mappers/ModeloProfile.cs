@@ -2,13 +2,12 @@
 using CoAutoWeb.Models;
 using Core;
 
-namespace CoAutoWeb.Mappers
+namespace CoAutoWeb.Mappers;
+
+public class ModeloProfile : Profile
 {
-    public class ModeloProfile : Profile
+    public ModeloProfile()
     {
-        public ModeloProfile()
-        {
-            CreateMap<ModeloViewModel, Modelo>().ReverseMap();
-        }
+        CreateMap<ModeloViewModel, Modelo>().ReverseMap();
     }
 }

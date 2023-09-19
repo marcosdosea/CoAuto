@@ -6,7 +6,7 @@ namespace CoAutoWeb.Mappers;
 
 public class EntregaProfile : Profile
 {
-    public EntregaProfile() 
+    public EntregaProfile()
     {
         CreateMap<EntregaViewModel, Entrega>().ReverseMap();
     }
