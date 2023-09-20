@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Core.Service;
 using CoAutoWeb.Models;
 using Core;
+using Core.Service;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoAutoWeb.Controllers;
 
@@ -27,7 +27,6 @@ public class EntregaController : Controller
         if (entregas == null) return BadRequest();
 
         var entregaModel = _mapper.Map<List<EntregaViewModel>>(entregas);
-
         return View(entregaModel);
     }
 
@@ -39,7 +38,6 @@ public class EntregaController : Controller
         if (entrega == null) return BadRequest();
 
         var entregaModel = _mapper.Map<EntregaViewModel>(entrega);
-
         return View(entregaModel);
     }
 
@@ -76,9 +74,7 @@ public class EntregaController : Controller
     public async Task<ActionResult> Edit(uint id)
     {
         var entrega = await _entregaService.Get(id);
-
         var entregaModel = _mapper.Map<EntregaViewModel>(entrega);
-
         return View(entregaModel);
     }
 
@@ -88,7 +84,6 @@ public class EntregaController : Controller
     public async Task<ActionResult> Edit(uint id, EntregaViewModel entregaModel)
     {
         if (id != entregaModel.Id) return NotFound();
-
 
         if (ModelState.IsValid)
         {
@@ -101,12 +96,9 @@ public class EntregaController : Controller
             {
                 return BadRequest();
             }
-
             return RedirectToAction(nameof(Index));
         }
-
         return View(entregaModel);
-
     }
 
     // GET: EntregaController/Delete/5
@@ -119,7 +111,6 @@ public class EntregaController : Controller
         if (entrega == null) return NotFound();
 
         var entregaModel = _mapper.Map<EntregaViewModel>(entrega);
-
         return View(entregaModel);
     }
 
@@ -129,7 +120,6 @@ public class EntregaController : Controller
     public async Task<ActionResult> Delete(uint id)
     {
         await _entregaService.Delete(id);
-
         return RedirectToAction(nameof(Index));
     }
 }

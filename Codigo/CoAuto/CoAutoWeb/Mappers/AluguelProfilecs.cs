@@ -2,14 +2,12 @@
 using CoAutoWeb.Models;
 using Core;
 
+namespace CoAutoWeb.Mappers;
 
-namespace CoAutoWeb.Mappers
+public class AluguelProfile : Profile
 {
-    public class AluguelProfile : Profile
+    public AluguelProfile()
     {
-        public AluguelProfile()
-        {
-            CreateMap<AluguelViewModel, Aluguel>().ReverseMap();
-        }
+        CreateMap<AluguelViewModel, Aluguel>().ReverseMap();
     }
 }

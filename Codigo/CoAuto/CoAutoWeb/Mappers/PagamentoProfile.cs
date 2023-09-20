@@ -2,13 +2,12 @@
 using CoAutoWeb.Models;
 using Core;
 
-namespace CoAutoWeb.Mappers
+namespace CoAutoWeb.Mappers;
+
+public class PagamentoProfile : Profile
 {
-    public class PagamentoProfile : Profile
+    public PagamentoProfile()
     {
-        public PagamentoProfile()
-        {
-            CreateMap<PagamentoViewModel, Pagamento>().ReverseMap();
-        }
+        CreateMap<PagamentoViewModel, Pagamento>().ReverseMap();
     }
 }

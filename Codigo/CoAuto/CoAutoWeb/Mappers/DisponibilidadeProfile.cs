@@ -2,14 +2,12 @@
 using CoAutoWeb.Models;
 using Core;
 
+namespace CoAutoWeb.Mappers;
 
-namespace CoAutoWeb.Mappers
+public class DisponibilidadeProfile : Profile
 {
-    public class DisponibilidadeProfile : Profile
+    public DisponibilidadeProfile()
     {
-        public DisponibilidadeProfile()
-        {
-            CreateMap<DisponibilidadeModel, Disponibilidade>().ReverseMap();
-        }
+        CreateMap<DisponibilidadeModel, Disponibilidade>().ReverseMap();
     }
 }

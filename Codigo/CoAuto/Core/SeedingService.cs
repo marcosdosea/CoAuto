@@ -61,8 +61,8 @@ public class SeedingService
             Cnh = "123456789",
             Cpf = "12345678900",
             Senha = "senhaSecreta",
-            DataNascimento = new DateTime(2002,02,23),
-            Telefone = "(11) 12345-6789",
+            DataNascimento = new DateTime(2002, 02, 23),
+            Telefone = "(11)12345-6789",
             Cep = "12345678",
             Estado = "SP",
             Cidade = "São Paulo",
@@ -104,7 +104,7 @@ public class SeedingService
             IdPessoaNavigation = pessoa1,
             IdPessoa = 1,
             Combustivel = "Gasolina",
-            Cambio = "Manual"   
+            Cambio = "Manual"
         };
         _coAutoContext.AddRange(veiculo1);
         _coAutoContext.SaveChanges();
@@ -118,7 +118,7 @@ public class SeedingService
             DataHoraInicio = DateTime.Now,
             DataHoraFim = DateTime.Now,
             IdVeiculoNavigation = veiculo1,
-            IdVeiculo = 2 
+            IdVeiculo = 2
         };
         _coAutoContext.AddRange(disponibilidade1);
         _coAutoContext.SaveChanges();
@@ -126,8 +126,8 @@ public class SeedingService
 
         if (_coAutoContext.Entregas.Any())
             return;
-        Entrega entrega1 = new Entrega 
-        { 
+        Entrega entrega1 = new Entrega
+        {
             Id = 1,
             DataHora = DateTime.Now
         };
@@ -154,7 +154,7 @@ public class SeedingService
             Status = "Alugado",
             DataHoraAvaliacaoCliente = DateTime.Now,
             DataHoraAvaliacaoProprietario = DateTime.Now,
-            DataHoraAluguel = new DateTime(2022,08,04),
+            DataHoraAluguel = new DateTime(2022, 08, 04),
             IdVeiculoNavigation = veiculo1,
             IdVeiculo = 2,
             IdPessoaNavigation = pessoa1,

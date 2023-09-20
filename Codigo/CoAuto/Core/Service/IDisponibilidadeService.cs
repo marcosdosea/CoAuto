@@ -6,8 +6,5 @@ public interface IDisponibilidadeService
     void Edit(Disponibilidade disponibilidade);
     void Delete(int iddisponibilidade);
     Disponibilidade Get(int id);
-
     IEnumerable<Disponibilidade> GetAll();
-
-
 }
