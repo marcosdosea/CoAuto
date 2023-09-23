@@ -2,9 +2,9 @@
 
 public interface IDisponibilidadeService
 {
-    int Create(Disponibilidade disponibilidade);
+    uint Create(Disponibilidade disponibilidade);
     void Edit(Disponibilidade disponibilidade);
-    void Delete(int iddisponibilidade);
-    Disponibilidade Get(int id);
+    void Delete(uint iddisponibilidade);
+    Disponibilidade Get(uint id);
     IEnumerable<Disponibilidade> GetAll();
 }

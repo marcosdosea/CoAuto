@@ -42,7 +42,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("aluguel");
+            entity.ToTable("Aluguel");
 
             entity.HasIndex(e => e.IdPessoa, "IdPessoa_UNIQUE").IsUnique();
 
@@ -110,7 +110,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("banco");
+            entity.ToTable("Banco");
 
             entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
@@ -124,7 +124,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("devolucao");
+            entity.ToTable("Devolucao");
 
             entity.HasIndex(e => e.DataHora, "dataHora");
 
@@ -155,7 +155,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("disponibilidade");
+            entity.ToTable("Disponibilidade");
 
             entity.HasIndex(e => e.IdVeiculo, "fkDisponibilidadeVeiculo");
 
@@ -182,7 +182,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("entrega");
+            entity.ToTable("Entrega");
 
             entity.HasIndex(e => e.DataHora, "dataHora");
 
@@ -213,7 +213,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("marca");
+            entity.ToTable("Marca");
 
             entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
@@ -227,7 +227,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("modelo");
+            entity.ToTable("Modelo");
 
             entity.HasIndex(e => e.IdMarca, "fkModeloMarca");
 
@@ -251,7 +251,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("pagamento");
+            entity.ToTable("Pagamento");
 
             entity.HasIndex(e => e.IdAluguel, "fkPagamentoVeiculo");
 
@@ -278,7 +278,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("pessoa");
+            entity.ToTable("Pessoa");
 
             entity.HasIndex(e => e.Id, "Id_UNIQUE").IsUnique();
 
@@ -362,7 +362,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("veiculo");
+            entity.ToTable("Veiculo");
 
             entity.HasIndex(e => e.IdPessoa, "IdPessoa_UNIQUE").IsUnique();
 
