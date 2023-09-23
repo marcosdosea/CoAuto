@@ -26,7 +26,7 @@ public class DisponibilidadeController : Controller
     }
 
     // GET: DisponibilidadeController/Details/5
-    public ActionResult Details(int id)
+    public ActionResult Details(uint id)
     {
         var disponibilidade = _disponibilidadeService.Get(id);
         var disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
@@ -53,7 +53,7 @@ public class DisponibilidadeController : Controller
     }
 
     // GET: DisponibilidadeController/Edit/5
-    public ActionResult Edit(int id)
+    public ActionResult Edit(uint id)
     {
         Disponibilidade disponibilidade = _disponibilidadeService.Get(id);
         DisponibilidadeModel disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
@@ -63,7 +63,7 @@ public class DisponibilidadeController : Controller
     // POST: DisponibilidadeController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, DisponibilidadeModel disponibilidadeModel)
+    public ActionResult Edit(uint id, DisponibilidadeModel disponibilidadeModel)
     {
         if (ModelState.IsValid)
         {
@@ -74,7 +74,7 @@ public class DisponibilidadeController : Controller
     }
 
     // GET: DisponibilidadeController/Delete/5
-    public ActionResult Delete(int id)
+    public ActionResult Delete(uint id)
     {
         Disponibilidade disponibilidade = _disponibilidadeService.Get(id);
         DisponibilidadeModel disponibilidadeModel = _mapper.Map<DisponibilidadeModel>(disponibilidade);
@@ -84,7 +84,7 @@ public class DisponibilidadeController : Controller
     // POST: DisponibilidadeController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
+    public ActionResult Delete(uint id, IFormCollection collection)
     {
         _disponibilidadeService.Delete(id);
         return RedirectToAction(nameof(Index));

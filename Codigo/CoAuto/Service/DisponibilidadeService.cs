@@ -23,11 +23,11 @@ public class DisponibilidadeService : IDisponibilidadeService
     /// </summary>
     /// <param name="disponibilidade">dados da disponibilidade</param>
     /// <returns></returns>
-    public int Create(Disponibilidade disponibilidade)
+    public uint Create(Disponibilidade disponibilidade)
     {
         _context.Add(disponibilidade);
         _context.SaveChanges();
-        return (int)disponibilidade.Id;
+        return (uint)disponibilidade.Id;
     }
 
     // <summary>
@@ -35,7 +35,7 @@ public class DisponibilidadeService : IDisponibilidadeService
     /// </summary>
     /// <param name="id da disponibilidade ">deleta a disponibilidade </param>
     /// <returns></returns>
-    public void Delete(int iddisponibilidade)
+    public void Delete(uint iddisponibilidade)
     {
         var _disponibilidade = _context.Disponibilidades.Find(iddisponibilidade);
         _context.Remove(_disponibilidade);
@@ -59,7 +59,7 @@ public class DisponibilidadeService : IDisponibilidadeService
     /// </summary>
     /// <param name="id da disponibilidade ">dados da disponibilidade</param>
     /// <returns></returns>
-    public Disponibilidade Get(int id)
+    public Disponibilidade Get(uint id)
     {
         return _context.Disponibilidades.Find(id);
     }
