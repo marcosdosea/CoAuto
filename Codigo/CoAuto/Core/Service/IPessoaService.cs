@@ -1,3 +1,5 @@
+using Core.DTO;
+
 namespace Core.Service;
 
 public interface IPessoaService
@@ -7,4 +9,5 @@ public interface IPessoaService
     void Delete(uint id);
     Pessoa Get(uint id);
     IEnumerable<Pessoa> GetAll();
+    IEnumerable<PessoaDto> GetByNome(string nome);
 }

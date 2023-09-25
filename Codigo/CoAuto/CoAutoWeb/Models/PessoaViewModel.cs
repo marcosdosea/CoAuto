@@ -35,7 +35,7 @@ public class PessoaViewModel
     public DateTime DataNascimento { get; set; }
 
     [Required(ErrorMessage = "Campo requerido")]
-    [StringLength(14, ErrorMessage = "Telefone deve ter no máximo 23 caracteres")]
+    [StringLength(14, ErrorMessage = "Telefone deve ter no máximo 14 caracteres")]
     public string Telefone { get; set; } = null!;
 
     public byte[]? Fotoperfil { get; set; }
@@ -45,11 +45,11 @@ public class PessoaViewModel
     public string Cep { get; set; } = null!;
 
     [Required(ErrorMessage = "Campo requerido")]
-    [StringLength(2, ErrorMessage = "Estado deve ter no máximo 50 caracteres")]
+    [StringLength(2, ErrorMessage = "Estado deve ter no máximo 2 caracteres")]
     public string Estado { get; set; } = null!;
 
     [Required(ErrorMessage = "Campo requerido")]
-    [StringLength(20, ErrorMessage = "Cidade deve ter no máximo 50 caracteres")]
+    [StringLength(20, ErrorMessage = "Cidade deve ter no máximo 20 caracteres")]
     public string Cidade { get; set; } = null!;
 
     [Required(ErrorMessage = "Campo requerido")]
