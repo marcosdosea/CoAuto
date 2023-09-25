@@ -3,6 +3,6 @@
 public class AluguelDTO
 {
     public int Id { get; set; }
-    public string DataHoraAluguel { get; set; } = null!;
+    public DateTime DataHoraAluguel { get; set; }
     public string Status { get; set; } = null!;
 }
