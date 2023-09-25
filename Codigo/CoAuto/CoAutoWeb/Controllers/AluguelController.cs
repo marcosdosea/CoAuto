@@ -3,9 +3,8 @@ using CoAutoWeb.Models;
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
-
+using Service;
 namespace CoAutoWeb.Controllers;
-
 public class AluguelController : Controller
 {
     private readonly IAluguelService _aluguelService;
@@ -15,126 +14,67 @@ public class AluguelController : Controller
         _aluguelService = aluguelService;
         _mapper = mapper;
     }
-
-    /// <summary>
-    /// Retorna todos os Aluguel da ViewModel
-    /// </summary>
-    /// <returns>View(Aluguel)</returns>
-    public async Task<ActionResult> Index()
+    // GET: AluguelController
+    public ActionResult Index()
     {
-        var aluguels = await _aluguelService.GetAll();
-
-        if (aluguels == null) return BadRequest();
-
-        var aluguelModel = _mapper.Map<List<AluguelViewModel>>(aluguels);
-
-        return View(aluguelModel);
+        var listaAluguels = _aluguelService.GetAll();
+        var listaAluguelsModel = _mapper.Map<List<AluguelViewModel>>(listaAluguels);
+        return View(listaAluguelsModel);
     }
-
     // GET: AluguelController/Details/5
-    [HttpGet]
-    public async Task<ActionResult> Details(uint id)
+    public ActionResult Details(uint id)
     {
-        var aluguel = await _aluguelService.Get(id);
-
-        if (aluguel == null) return BadRequest();
-
-        var aluguelModel = _mapper.Map<AluguelViewModel>(aluguel);
-
+        Aluguel aluguel = _aluguelService.Get(id);
+        AluguelViewModel aluguelModel = _mapper.Map<AluguelViewModel>(aluguel);
         return View(aluguelModel);
     }
-
     // GET: AluguelController/Create
     public ActionResult Create()
     {
         return View();
     }
-
     // POST: AluguelController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(AluguelViewModel aluguelModel)
+    public ActionResult Create(AluguelViewModel aluguelModel)
     {
-
         if (ModelState.IsValid)
         {
-            try
-            {
-                var aluguel = _mapper.Map<Aluguel>(aluguelModel);
-                await _aluguelService.Create(aluguel);
-            }
-            catch
-            {
-                return View(aluguelModel);
-            }
-
-            return RedirectToAction(nameof(Index));
+            var aluguel = _mapper.Map<Aluguel>(aluguelModel);
+            _aluguelService.Create(aluguel);
         }
-
-        return View(aluguelModel);
-
+        return RedirectToAction(nameof(Index));
     }
-
     // GET: AluguelController/Edit/5
-    [HttpGet]
-    public async Task<ActionResult> Edit(uint id)
+    public ActionResult Edit(uint id)
     {
-        var aluguel = await _aluguelService.Get(id);
-
-        var aluguelModel = _mapper.Map<AluguelViewModel>(aluguel);
-
-        return View(aluguelModel);
+        return Details(id);
     }
-
     // POST: AluguelController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(uint id, AluguelViewModel aluguelModel)
+    public ActionResult Edit(uint id, AluguelViewModel aluguelModel)
     {
-        if (id != aluguelModel.Id) return NotFound();
-
-
         if (ModelState.IsValid)
         {
-            try
-            {
-                var aluguel = _mapper.Map<Aluguel>(aluguelModel);
-                await _aluguelService.Edit(aluguel);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-
-            return RedirectToAction(nameof(Index));
+            var aluguel = _mapper.Map<Aluguel>(aluguelModel);
+            _aluguelService.Edit(aluguel);
         }
-
-        return View(aluguelModel);
-
+        return RedirectToAction(nameof(Index));
     }
-
     // GET: AluguelController/Delete/5
-    [HttpGet]
-    public async Task<ActionResult> Delete(uint? id)
+    public ActionResult Delete(uint id)
     {
-        if (id == null) return BadRequest();
-
-        var aluguel = await _aluguelService.Get((uint)id);
-
-        if (aluguel == null) return NotFound();
-
-        var aluguelModel = _mapper.Map<AluguelViewModel>(aluguel);
-
+        Aluguel aluguel = _aluguelService.Get(id);
+        AluguelViewModel aluguelModel = _mapper.Map<AluguelViewModel>(aluguel);
         return View(aluguelModel);
     }
-
     // POST: AluguelController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(uint id)
+    public ActionResult Delete(uint id, AluguelViewModel aluguelModel)
     {
-        await _aluguelService.Delete(id);
-
+        _aluguelService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
 }

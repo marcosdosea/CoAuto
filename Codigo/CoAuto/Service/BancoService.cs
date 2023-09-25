@@ -1,75 +1,62 @@
 ﻿using Core;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
-
 namespace Service;
-
+/// <summary>
+/// Implementa serviços para manter dados do banco
+/// </summary>
 public class BancoService : IBancoService
 {
     private readonly CoAutoContext _context;
-
     public BancoService(CoAutoContext context)
     {
-        _context = context;
+        this._context = context;
     }
-
-    // <summary>
-    /// Insere um novo banco 
+    /// <summary>
+    /// Criar um novo banco na base de dados
     /// </summary>
     /// <param name="banco">dados do banco</param>
-    /// <returns></returns>
-    public async Task<uint> Create(Banco banco)
+    /// <returns>id do banco</returns>
+    public uint Create(Banco banco)
     {
-        await _context.AddAsync(banco);
-        await _context.SaveChangesAsync();
-        return banco.Id;
+        _context.Add(banco);
+        _context.SaveChanges();
+        return (uint)banco.Id;
     }
-
-    // <summary>
-    /// Deleta um banco
-    /// </summary>
-    /// <param name="id do banco ">deleta o banco </param>
-    /// <returns></returns>
-    public async Task Delete(uint idBanco)
-    {
-        var banco = await _context.Bancos.
-        FindAsync(idBanco);
-
-        if (banco == null) return;
-
-        _context.Remove(banco);
-        await _context.SaveChangesAsync();
-
-    }
-
-    // <summary>
-    /// Edita um banco
+    /// <summary>
+    /// Editar dados do banco na base de dados
     /// </summary>
     /// <param name="banco"></param>
-    /// <exception cref="ServiceException"></exception>
-    public async Task Edit(Banco banco)
+    public void Edit(Banco banco)
     {
         _context.Update(banco);
-
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
-
-    // <summary>
-    /// busca um banco 
-    /// </summary>
-    /// <param name="id do banco ">dados do banco</param>
-    /// <returns></returns>
-    public async Task<Banco> Get(uint idBanco)
-    {
-        return await _context.Bancos.FindAsync(idBanco);
-    }
-
     /// <summary>
-    /// Obtém todas os bancos
+    /// Remover o banco da base de dados
     /// </summary>
-    /// <returns></returns>
-    public async Task<IEnumerable<Banco>> GetAll()
+    /// <param name="id">id do banco</param>
+    public void Delete(uint id)
     {
-        return await _context.Bancos.ToListAsync();
+        var banco = _context.Bancos.Find(id);
+        _context.Remove(banco);
+        _context.SaveChanges();
+    }
+    /// <summary>
+    /// Buscar um banco na base de dados
+    /// </summary>
+    /// <param name="id">id do banco</param>
+    /// <returns>dados do banco</returns>
+    public Banco Get(uint id)
+    {
+        return _context.Bancos.Find(id);
+    }
+    /// <summary>
+    /// Buscar todos os bancos cadastrados
+    /// </summary>
+    /// <returns>lista de banco</returns>
+    public IEnumerable<Banco> GetAll()
+    {
+        return _context.Bancos.AsNoTracking();
     }
 }
