@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Service;
 using AutoMapper;
+using Moq;
+using Core;
 
 namespace CoAutoWeb.Controllers.Tests
 {
@@ -18,22 +20,45 @@ namespace CoAutoWeb.Controllers.Tests
         private IMapper mapper;
 
 
-        [TestMethod()]
-        public void DisponibilidadeControllerTest()
-        {
-            Assert.Fail();
+        [TestInitialize] 
+        public void Initialize() {
+
+            var mockService = new Mock<IDisponibilidadeService>();
+
+            IMapper mapper = new MapperConfiguration(ctg => 
+            ctg.AddProfile(new DisponibilidadeProfile())).CreateMapper();
+
+            mockService.Setup(service => service.GetAll())
+                .Returns(GetTesteDisponibilidade());
+            mockService.Setup(service => service.Get(1))
+                .Returns(GetTargetDisponibilidade());
+            mockService.Setup(service => service.Create(It.IsAny<Disponibilidade>()))
+                .Verifiable();
+            controller = new DisponibilidadeController(mockService.Object, mapper);
+            
         }
+
 
         [TestMethod()]
         public void IndexTest()
         {
-            Assert.Fail();
+
+            // Act
+            var result = controller.Index();
+
+            //assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result;
+            Assert.IsInstanceOfType(viewResult.ViewData.model, typeof(List<Disponibilidade>));
+            
+            List<DisponibilidadeModel> ? lista = (List<DisponibilidadeModel>)viewResult.ViewData.model; 
+            Assert.AreEqual(2, lista.Count);
         }
 
         [TestMethod()]
         public void DetailsTest()
         {
-            Assert.Fail();
+            var result = controller.Details(1);
         }
 
         [TestMethod()]
