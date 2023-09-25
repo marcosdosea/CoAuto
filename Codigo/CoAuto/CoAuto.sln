@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoAutoWeb", "CoAutoWeb\CoAutoWeb.csproj", "{E8481DDA-8DCF-4931-9C45-FE7A3A0E2756}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoAutoWeb", "CoAutoWeb\CoAutoWeb.csproj", "{E8481DDA-8DCF-4931-9C45-FE7A3A0E2756}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{2B811BC1-AF31-46FD-9A69-12A9E765E7A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{2B811BC1-AF31-46FD-9A69-12A9E765E7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{C29BC436-D5FD-4D9D-93FB-DA8315BE5E05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{C29BC436-D5FD-4D9D-93FB-DA8315BE5E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoAutoWebTests", "CoAutoWebTests\CoAutoWebTests.csproj", "{39990FBC-1C8D-4612-A674-4130FCBB0459}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{C29BC436-D5FD-4D9D-93FB-DA8315BE5E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C29BC436-D5FD-4D9D-93FB-DA8315BE5E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C29BC436-D5FD-4D9D-93FB-DA8315BE5E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39990FBC-1C8D-4612-A674-4130FCBB0459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39990FBC-1C8D-4612-A674-4130FCBB0459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39990FBC-1C8D-4612-A674-4130FCBB0459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39990FBC-1C8D-4612-A674-4130FCBB0459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
