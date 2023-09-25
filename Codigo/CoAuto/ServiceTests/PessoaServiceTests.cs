@@ -174,7 +174,7 @@ namespace Service.Tests
         public void EditTest()
         {
             //Act 
-            var pessoa = _pessoaService.Get(4);
+            var pessoa = _pessoaService.Get(3);
             pessoa.Nome = "Eduardo";
             pessoa.Email = "eduardo@example.com";
             pessoa.Cnh = "9876543210";
@@ -197,7 +197,7 @@ namespace Service.Tests
             pessoa.IdBanco = 1;
             _pessoaService.Edit(pessoa);
             //Assert
-            pessoa = _pessoaService.Get(4);
+            pessoa = _pessoaService.Get(3);
             Assert.AreEqual("Eduardo", pessoa.Nome);
             Assert.AreEqual("eduardo@example.com", pessoa.Email);
             Assert.AreEqual("9876543210", pessoa.Cnh);
@@ -214,7 +214,6 @@ namespace Service.Tests
             Assert.AreEqual("4321", pessoa.Agencia);
             Assert.AreEqual("987654-1", pessoa.ContaCorrente);
             Assert.AreEqual("eduardo.pix@example.com", pessoa.Chavepix);
-            Assert.AreEqual(DateTime.Now, pessoa.DataAutorizacao);
             Assert.AreEqual(1, pessoa.Autorizado);
             Assert.AreEqual("cliente", pessoa.Tipo);
             Assert.AreEqual((uint)1, pessoa.IdBanco);
@@ -254,26 +253,25 @@ namespace Service.Tests
             // Assert
             Assert.IsInstanceOfType(listaPessoa, typeof(IEnumerable<Pessoa>));
             Assert.IsNotNull(listaPessoa);
-            Assert.AreEqual(2, listaPessoa.Count());
+            Assert.AreEqual(3, listaPessoa.Count());
             var firstPerson = listaPessoa.First();
-            Assert.AreEqual(3, firstPerson.Id);
-            Assert.AreEqual("João Silva", firstPerson.Nome);
-            Assert.AreEqual("joao.silva@example.com", firstPerson.Email);
-            Assert.AreEqual("123456789", firstPerson.Cnh);
-            Assert.AreEqual("98765432109", firstPerson.Cpf);
-            Assert.AreEqual("outraSenha", firstPerson.Senha);
-            Assert.AreEqual(new DateTime(1980, 03, 15), firstPerson.DataNascimento);
-            Assert.AreEqual("(11)98765-1234", firstPerson.Telefone);
-            Assert.AreEqual("09876543", firstPerson.Cep);
-            Assert.AreEqual("RJ", firstPerson.Estado);
-            Assert.AreEqual("Rio de Janeiro", firstPerson.Cidade);
-            Assert.AreEqual("Copacabana", firstPerson.Bairro);
-            Assert.AreEqual("Avenida Principal", firstPerson.Rua);
-            Assert.AreEqual("456", firstPerson.Numero);
-            Assert.AreEqual("7890", firstPerson.Agencia);
-            Assert.AreEqual("543210-1", firstPerson.ContaCorrente);
-            Assert.AreEqual("joao.pix@example.com", firstPerson.Chavepix);
-            Assert.AreEqual(DateTime.Now, firstPerson.DataAutorizacao);
+            Assert.AreEqual((uint)1, firstPerson.Id);
+            Assert.AreEqual("Alice Johnson", firstPerson.Nome);
+            Assert.AreEqual("alice.johnson@example.com", firstPerson.Email);
+            Assert.AreEqual("987654321", firstPerson.Cnh);
+            Assert.AreEqual("12345678901", firstPerson.Cpf);
+            Assert.AreEqual("senhaAleatoria", firstPerson.Senha);
+            Assert.AreEqual(new DateTime(1995, 07, 12), firstPerson.DataNascimento);
+            Assert.AreEqual("(11)987654321", firstPerson.Telefone);
+            Assert.AreEqual("04567-890", firstPerson.Cep);
+            Assert.AreEqual("SP", firstPerson.Estado);
+            Assert.AreEqual("São Paulo", firstPerson.Cidade);
+            Assert.AreEqual("Vila Exemplo", firstPerson.Bairro);
+            Assert.AreEqual("Rua da Amostra", firstPerson.Rua);
+            Assert.AreEqual("123", firstPerson.Numero);
+            Assert.AreEqual("5678", firstPerson.Agencia);
+            Assert.AreEqual("987654-3", firstPerson.ContaCorrente);
+            Assert.AreEqual("alice.pix@example.com", firstPerson.Chavepix);
             Assert.AreEqual(1, firstPerson.Autorizado);
             Assert.AreEqual("cliente", firstPerson.Tipo);
             Assert.AreEqual((uint)1, firstPerson.IdBanco);
@@ -288,6 +286,7 @@ namespace Service.Tests
             Assert.IsNotNull(pessoas);
             Assert.AreEqual(1, pessoas.Count());
             var firstPerson = pessoas.First();
+            Assert.AreEqual((uint)3, firstPerson.Id);
             Assert.AreEqual("Maria Santos", firstPerson.Nome);
             Assert.AreEqual("maria.santos@example.com", firstPerson.Email);
             Assert.AreEqual("543210987", firstPerson.Cnh);

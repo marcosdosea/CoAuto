@@ -80,6 +80,7 @@ public class PessoaService : IPessoaService
                         Id = pessoa.Id,
                         Nome = pessoa.Nome,
                         Cpf = pessoa.Cpf,
+                        Cnh = pessoa.Cnh,
                         Email = pessoa.Email,
                         Telefone = pessoa.Telefone
                     };
