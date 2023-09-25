@@ -1,4 +1,5 @@
 using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -67,5 +68,22 @@ public class PessoaService : IPessoaService
     public IEnumerable<Pessoa> GetAll()
     {
         return _context.Pessoas.AsNoTracking();
+    }
+
+    public IEnumerable<PessoaDto> GetByNome(string nome)
+    {
+        var query = from pessoa in _context.Pessoas
+                    where pessoa.Nome.StartsWith(nome)
+                    orderby pessoa.Nome
+                    select new Core.DTO.PessoaDto
+                    {
+                        Id = pessoa.Id,
+                        Nome = pessoa.Nome,
+                        Cpf = pessoa.Cpf,
+                        Cnh = pessoa.Cnh,
+                        Email = pessoa.Email,
+                        Telefone = pessoa.Telefone
+                    };
+        return query;
     }
 }
