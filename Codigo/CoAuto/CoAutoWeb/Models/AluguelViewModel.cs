@@ -7,7 +7,10 @@ public class AluguelViewModel
     [Key]
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Data e Hora")]
+    [DataType(DataType.DateTime, ErrorMessage = "Data e Hora válida requerida")]
+    [Required(ErrorMessage = "Data e Hora são obrigatórias")]
+    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime DataHoraAluguel { get; set; }
 
     public uint IdPessoa { get; set; }
