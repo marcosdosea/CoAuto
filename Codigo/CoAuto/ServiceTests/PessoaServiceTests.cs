@@ -46,7 +46,7 @@ namespace Service.Tests
                         Agencia = "5678",
                         ContaCorrente = "987654-3",
                         Chavepix = "alice.pix@example.com",
-                        DataAutorizacao = DateTime.Now,
+                        DataAutorizacao = new DateTime(2021, 09, 2, 3, 30, 0),
                         Autorizado = 1,
                         Tipo = "cliente",
                         IdBanco = 1
@@ -70,7 +70,7 @@ namespace Service.Tests
                         Agencia = "7890",
                         ContaCorrente = "543210-1",
                         Chavepix = "joao.pix@example.com",
-                        DataAutorizacao = DateTime.Now,
+                        DataAutorizacao = new DateTime(2022, 05, 4, 21, 30, 0),
                         Autorizado = 1,
                         Tipo = "cliente",
                         IdBanco = 1
@@ -94,7 +94,7 @@ namespace Service.Tests
                         Agencia = "4567",
                         ContaCorrente = "321987-0",
                         Chavepix = "maria.pix@example.com",
-                        DataAutorizacao = DateTime.Now,
+                        DataAutorizacao = new DateTime(2023, 02, 1, 13, 00, 0),
                         Autorizado = 1,
                         Tipo = "cliente",
                         IdBanco = 1
@@ -130,7 +130,7 @@ namespace Service.Tests
                 Agencia = "1234",
                 ContaCorrente = "123456-7",
                 Chavepix = "carlos.pix@example.com",
-                DataAutorizacao = DateTime.Now,
+                DataAutorizacao = new DateTime(2023, 02, 1, 23, 30, 0),
                 Autorizado = 1,
                 Tipo = "cliente",
                 IdBanco = 1
@@ -154,6 +154,7 @@ namespace Service.Tests
             Assert.AreEqual("1234", pessoa.Agencia);
             Assert.AreEqual("123456-7", pessoa.ContaCorrente);
             Assert.AreEqual("carlos.pix@example.com", pessoa.Chavepix);
+            Assert.AreEqual(DateTime.Parse("2023-02-01 23:30:00"), pessoa.DataAutorizacao);
             Assert.AreEqual(1, pessoa.Autorizado);
             Assert.AreEqual("cliente", pessoa.Tipo);
             Assert.AreEqual((uint)1, pessoa.IdBanco);
@@ -191,7 +192,7 @@ namespace Service.Tests
             pessoa.Agencia = "4321";
             pessoa.ContaCorrente = "987654-1";
             pessoa.Chavepix = "eduardo.pix@example.com";
-            pessoa.DataAutorizacao = DateTime.Now;
+            pessoa.DataAutorizacao = new DateTime(2022, 12, 20, 11, 35, 0);
             pessoa.Autorizado = 1;
             pessoa.Tipo = "cliente";
             pessoa.IdBanco = 1;
@@ -214,6 +215,7 @@ namespace Service.Tests
             Assert.AreEqual("4321", pessoa.Agencia);
             Assert.AreEqual("987654-1", pessoa.ContaCorrente);
             Assert.AreEqual("eduardo.pix@example.com", pessoa.Chavepix);
+            Assert.AreEqual(DateTime.Parse("2022-12-20 11:35:00"), pessoa.DataAutorizacao);
             Assert.AreEqual(1, pessoa.Autorizado);
             Assert.AreEqual("cliente", pessoa.Tipo);
             Assert.AreEqual((uint)1, pessoa.IdBanco);
@@ -240,6 +242,7 @@ namespace Service.Tests
             Assert.AreEqual("4567", pessoa.Agencia);
             Assert.AreEqual("321987-0", pessoa.ContaCorrente);
             Assert.AreEqual("maria.pix@example.com", pessoa.Chavepix);
+            Assert.AreEqual(DateTime.Parse("2023-02-01 13:00:00"), pessoa.DataAutorizacao);
             Assert.AreEqual(1, pessoa.Autorizado);
             Assert.AreEqual("cliente", pessoa.Tipo);
             Assert.AreEqual((uint)1, pessoa.IdBanco);
@@ -272,6 +275,7 @@ namespace Service.Tests
             Assert.AreEqual("5678", firstPerson.Agencia);
             Assert.AreEqual("987654-3", firstPerson.ContaCorrente);
             Assert.AreEqual("alice.pix@example.com", firstPerson.Chavepix);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), firstPerson.DataAutorizacao);
             Assert.AreEqual(1, firstPerson.Autorizado);
             Assert.AreEqual("cliente", firstPerson.Tipo);
             Assert.AreEqual((uint)1, firstPerson.IdBanco);
