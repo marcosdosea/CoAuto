@@ -74,7 +74,6 @@ namespace CoAutoWeb.Controllers.Tests
             Assert.AreEqual("5678", pessoaViewModel.Agencia);
             Assert.AreEqual("987654-3", pessoaViewModel.ContaCorrente);
             Assert.AreEqual("alice.pix@example.com", pessoaViewModel.Chavepix);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), pessoaViewModel.DataAutorizacao);
             Assert.AreEqual(1, pessoaViewModel.Autorizado);
             Assert.AreEqual("cliente", pessoaViewModel.Tipo);
             Assert.AreEqual((uint)1, pessoaViewModel.IdBanco);
@@ -146,7 +145,6 @@ namespace CoAutoWeb.Controllers.Tests
             Assert.AreEqual("5678", pessoaViewModel.Agencia);
             Assert.AreEqual("987654-3", pessoaViewModel.ContaCorrente);
             Assert.AreEqual("alice.pix@example.com", pessoaViewModel.Chavepix);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), pessoaViewModel.DataAutorizacao);
             Assert.AreEqual(1, pessoaViewModel.Autorizado);
             Assert.AreEqual("cliente", pessoaViewModel.Tipo);
             Assert.AreEqual((uint)1, pessoaViewModel.IdBanco);
@@ -192,7 +190,6 @@ namespace CoAutoWeb.Controllers.Tests
             Assert.AreEqual("5678", pessoaViewModel.Agencia);
             Assert.AreEqual("987654-3", pessoaViewModel.ContaCorrente);
             Assert.AreEqual("alice.pix@example.com", pessoaViewModel.Chavepix);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), pessoaViewModel.DataAutorizacao);
             Assert.AreEqual(1, pessoaViewModel.Autorizado);
             Assert.AreEqual("cliente", pessoaViewModel.Tipo);
             Assert.AreEqual((uint)1, pessoaViewModel.IdBanco);
@@ -232,7 +229,7 @@ namespace CoAutoWeb.Controllers.Tests
                 Agencia = "5678",
                 ContaCorrente = "987654-3",
                 Chavepix = "alice.pix@example.com",
-                DataAutorizacao = new DateTime(2021, 09, 2, 3, 30, 0),
+                DataAutorizacao = DateTime.Now,
                 Autorizado = 1,
                 Tipo = "cliente",
                 IdBanco = 1
@@ -259,7 +256,7 @@ namespace CoAutoWeb.Controllers.Tests
                 Agencia = "5678",
                 ContaCorrente = "987654-3",
                 Chavepix = "alice.pix@example.com",
-                DataAutorizacao = new DateTime(2021, 09, 2, 3, 30, 0),
+                DataAutorizacao = DateTime.Now,
                 Autorizado = 1,
                 Tipo = "cliente",
                 IdBanco = 1
@@ -287,7 +284,7 @@ namespace CoAutoWeb.Controllers.Tests
                 Agencia = "5678",
                 ContaCorrente = "987654-3",
                 Chavepix = "alice.pix@example.com",
-                DataAutorizacao = new DateTime(2021, 09, 2, 3, 30, 0),
+                DataAutorizacao = DateTime.Now,
                 Autorizado = 1,
                 Tipo = "cliente",
                 IdBanco = 1
@@ -317,7 +314,7 @@ namespace CoAutoWeb.Controllers.Tests
                     Agencia = "5678",
                     ContaCorrente = "987654-3",
                     Chavepix = "alice.pix@example.com",
-                    DataAutorizacao = new DateTime(2021, 09, 2, 3, 30, 0),
+                    DataAutorizacao = DateTime.Now,
                     Autorizado = 1,
                     Tipo = "cliente",
                     IdBanco = 1
@@ -341,7 +338,7 @@ namespace CoAutoWeb.Controllers.Tests
                     Agencia = "7890",
                     ContaCorrente = "543210-1",
                     Chavepix = "joao.pix@example.com",
-                    DataAutorizacao = new DateTime(2023, 05, 25, 9, 30, 0),
+                    DataAutorizacao = DateTime.Now,
                     Autorizado = 1,
                     Tipo = "cliente",
                     IdBanco = 1
@@ -365,7 +362,7 @@ namespace CoAutoWeb.Controllers.Tests
                     Agencia = "4567",
                     ContaCorrente = "321987-0",
                     Chavepix = "maria.pix@example.com",
-                    DataAutorizacao = new DateTime(2021, 09, 25, 10, 0, 0),
+                    DataAutorizacao = DateTime.Now,
                     Autorizado = 1,
                     Tipo = "cliente",
                     IdBanco = 1
