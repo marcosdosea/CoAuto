@@ -1,75 +1,62 @@
 ﻿using Core;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
-
 namespace Service;
-
+/// <summary>
+/// Implementa serviços para manter dados do aluguel
+/// </summary>
 public class AluguelService : IAluguelService
 {
     private readonly CoAutoContext _context;
-
     public AluguelService(CoAutoContext context)
     {
-        _context = context;
+        this._context = context;
     }
-
-    // <summary>
-    /// Insere um novo Aluguel 
+    /// <summary>
+    /// Criar um novo aluguel na base de dados
     /// </summary>
-    /// <param name="Aluguel">dados do Aluguel</param>
-    /// <returns></returns>
-    public async Task<uint> Create(Aluguel aluguel)
+    /// <param name="aluguel">dados do aluguel</param>
+    /// <returns>id do aluguel</returns>
+    public uint Create(Aluguel aluguel)
     {
-        await _context.AddAsync(aluguel);
-        await _context.SaveChangesAsync();
-        return aluguel.Id;
+        _context.Add(aluguel);
+        _context.SaveChanges();
+        return (uint)aluguel.Id;
     }
-
-    // <summary>
-    /// Deleta um Aluguel
+    /// <summary>
+    /// Editar dados do aluguel na base de dados
     /// </summary>
-    /// <param name="id do Aluguel ">deleta o Aluguel </param>
-    /// <returns></returns>
-    public async Task Delete(uint idAluguel)
-    {
-        var aluguel = await _context.Aluguels.
-        FindAsync(idAluguel);
-
-        if (aluguel == null) return;
-
-        _context.Remove(aluguel);
-        await _context.SaveChangesAsync();
-
-    }
-
-    // <summary>
-    /// Edita um Aluguel
-    /// </summary>
-    /// <param name="Aluguel"></param>
-    /// <exception cref="ServiceException"></exception>
-    public async Task Edit(Aluguel aluguel)
+    /// <param name="aluguel"></param>
+    public void Edit(Aluguel aluguel)
     {
         _context.Update(aluguel);
-
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
-
-    // <summary>
-    /// busca um Aluguel 
-    /// </summary>
-    /// <param name="id do Aluguel ">dados do Aluguel</param>
-    /// <returns></returns>
-    public async Task<Aluguel> Get(uint idAluguel)
-    {
-        return await _context.Aluguels.FindAsync(idAluguel);
-    }
-
     /// <summary>
-    /// Obtém todos os Aluguel
+    /// Remover o aluguel da base de dados
     /// </summary>
-    /// <returns></returns>
-    public async Task<IEnumerable<Aluguel>> GetAll()
+    /// <param name="id">id do aluguel</param>
+    public void Delete(uint id)
     {
-        return await _context.Aluguels.ToListAsync();
+        var aluguel = _context.Aluguels.Find(id);
+        _context.Remove(aluguel);
+        _context.SaveChanges();
+    }
+    /// <summary>
+    /// Buscar um aluguel na base de dados
+    /// </summary>
+    /// <param name="id">id do aluguel</param>
+    /// <returns>dados do aluguel</returns>
+    public Aluguel Get(uint id)
+    {
+        return _context.Aluguels.Find(id);
+    }
+    /// <summary>
+    /// Buscar todos os aluguels cadastrados
+    /// </summary>
+    /// <returns>lista de aluguel</returns>
+    public IEnumerable<Aluguel> GetAll()
+    {
+        return _context.Aluguels.AsNoTracking();
     }
 }

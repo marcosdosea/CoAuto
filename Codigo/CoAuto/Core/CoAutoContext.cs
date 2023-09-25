@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Core;
 
@@ -33,8 +35,9 @@ public partial class CoAutoContext : DbContext
 
     public virtual DbSet<Veiculo> Veiculos { get; set; }
 
-    ///protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    ///   => optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=123456;database=coauto");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=123456;database=coauto");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -42,7 +45,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Aluguel");
+            entity.ToTable("aluguel");
 
             entity.HasIndex(e => e.IdPessoa, "IdPessoa_UNIQUE").IsUnique();
 
@@ -110,7 +113,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Banco");
+            entity.ToTable("banco");
 
             entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
@@ -124,7 +127,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Devolucao");
+            entity.ToTable("devolucao");
 
             entity.HasIndex(e => e.DataHora, "dataHora");
 
@@ -155,7 +158,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Disponibilidade");
+            entity.ToTable("disponibilidade");
 
             entity.HasIndex(e => e.IdVeiculo, "fkDisponibilidadeVeiculo");
 
@@ -182,7 +185,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Entrega");
+            entity.ToTable("entrega");
 
             entity.HasIndex(e => e.DataHora, "dataHora");
 
@@ -213,7 +216,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Marca");
+            entity.ToTable("marca");
 
             entity.HasIndex(e => e.Id, "id_UNIQUE").IsUnique();
 
@@ -227,7 +230,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Modelo");
+            entity.ToTable("modelo");
 
             entity.HasIndex(e => e.IdMarca, "fkModeloMarca");
 
@@ -251,7 +254,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Pagamento");
+            entity.ToTable("pagamento");
 
             entity.HasIndex(e => e.IdAluguel, "fkPagamentoVeiculo");
 
@@ -278,7 +281,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Pessoa");
+            entity.ToTable("pessoa");
 
             entity.HasIndex(e => e.Id, "Id_UNIQUE").IsUnique();
 
@@ -362,7 +365,7 @@ public partial class CoAutoContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Veiculo");
+            entity.ToTable("veiculo");
 
             entity.HasIndex(e => e.IdPessoa, "IdPessoa_UNIQUE").IsUnique();
 
