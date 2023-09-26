@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core.Service;
 using AutoMapper;
 using Moq;
@@ -63,9 +63,9 @@ namespace CoAutoWeb.Controllers.Tests
             DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
 
 
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraInicio);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraFim);
-            Assert.AreEqual((uint)1, DisponibilidadeModel.Id);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraInicio);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraFim);
+            Assert.AreEqual((uint)1, disponibilidadeModel.IdVeiculo);
         }
 
         [TestMethod()]
@@ -156,7 +156,7 @@ namespace CoAutoWeb.Controllers.Tests
         {
             return new DisponibilidadeModel
             {
-                ID = 1,
+                Id = 1,
                 DataHoraInicio = new DateTime(2021, 09, 2, 3, 30, 0),
                 DataHoraFim = new DateTime(2023, 09, 2, 3, 30, 0),
                 IdVeiculo = 2
@@ -180,7 +180,7 @@ namespace CoAutoWeb.Controllers.Tests
         {
             return new DisponibilidadeModel
             {
-                ID = 1,
+                Id = 1,
                 DataHoraInicio = new DateTime(2021, 09, 2, 3, 30, 0),
                 DataHoraFim = new DateTime(2023, 09, 2, 3, 30, 0),
                 IdVeiculo = 2

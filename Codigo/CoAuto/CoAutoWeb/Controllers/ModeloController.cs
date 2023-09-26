@@ -30,7 +30,7 @@ public class ModeloController : Controller
 
         if (modelos == null) return BadRequest();
 
-        var marcas = await _marcaService.GetAll();
+        var marcas = _marcaService.GetAll();
         var modeloModel = modelos.Select(modelo => new ModeloViewModel
         {
             Id = modelo.Id,
@@ -48,7 +48,7 @@ public class ModeloController : Controller
 
         if (modelo == null) return BadRequest();
 
-        var marcas = await _marcaService.GetAll();
+        var marcas = _marcaService.GetAll();
         var modeloModel = new ModeloViewModel
         {
             Id = modelo.Id,
@@ -61,7 +61,7 @@ public class ModeloController : Controller
     // GET: ModeloController/Create
     public async Task<ActionResult> Create()
     {
-        var marcas = await _marcaService.GetAll();
+        var marcas = _marcaService.GetAll();
         var items = marcas.Select(marca => new SelectListItem { Value = marca.Id.ToString(), Text = marca.Nome }).ToList();
         var selectList = new SelectList(items, "Value", "Text");
         ViewBag.MarcasSelectList = selectList;
@@ -94,7 +94,7 @@ public class ModeloController : Controller
     {
         var modelo = await _modeloService.Get(id);
         var modeloModel = _mapper.Map<ModeloViewModel>(modelo);
-        var marcas = await _marcaService.GetAll();
+        var marcas = _marcaService.GetAll();
         var items = marcas.Select(marca => new SelectListItem { Value = marca.Id.ToString(), Text = marca.Nome }).ToList();
         var selectList = new SelectList(items, "Value", "Text");
         ViewBag.MarcasSelectList = selectList;
@@ -134,7 +134,7 @@ public class ModeloController : Controller
 
         if (modelo == null) return NotFound();
 
-        var marcas = await _marcaService.GetAll();
+        var marcas = _marcaService.GetAll();
         var modeloModel = new ModeloViewModel
         {
             Id = modelo.Id,

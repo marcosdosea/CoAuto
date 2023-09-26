@@ -21,11 +21,11 @@ public class PagamentoService : IPagamentoService
     /// <param name="pagamento">dados de pagamento</param>
     /// <returns></returns>
 
-    public int Create(Pagamento pagamento)
+    public uint Create(Pagamento pagamento)
     {
         _context.Add(pagamento);
         _context.SaveChanges();
-        return (int)pagamento.Id;
+        return (uint)pagamento.Id;
     }
     // <summary>
     /// Deleta um pagamento
@@ -33,7 +33,7 @@ public class PagamentoService : IPagamentoService
     /// <param name="id do pagamento ">deleta o pagamento </param>
     /// <returns></returns>
 
-    public void Delete(int idPagamento)
+    public void Delete(uint idPagamento)
     {
         var _pagamento = _context.Pagamentos.Find(idPagamento);
         _context.Remove(_pagamento);
@@ -58,7 +58,7 @@ public class PagamentoService : IPagamentoService
     /// <param name="id do pagamento ">dados do pagamento</param>
     /// <returns></returns>
 
-    public Pagamento Get(int idPagamento)
+    public Pagamento Get(uint idPagamento)
     {
         return _context.Pagamentos.Find(idPagamento);
     }

@@ -5,7 +5,7 @@ namespace CoAutoWeb.Models;
 public class DisponibilidadeModel
 {
     [Key]
-    public int ID { get; set; }
+    public uint Id { get; set; }
 
     [Display(Name = "Data e Hora de inicio")]
     [Required(ErrorMessage = "Data de inicio é obrigatório")]

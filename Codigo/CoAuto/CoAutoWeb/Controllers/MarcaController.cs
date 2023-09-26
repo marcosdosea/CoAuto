@@ -15,125 +15,67 @@ public class MarcaController : Controller
         _marcaService = marcaService;
         _mapper = mapper;
     }
-
-    /// <summary>
-    /// Retorna todas as marcas da ViewModel
-    /// </summary>
-    /// <returns>View(marcas)</returns>
-    public async Task<ActionResult> Index()
+    // GET: MarcaController
+    public ActionResult Index()
     {
-        var marcas = await _marcaService.GetAll();
-
-        if (marcas == null) return BadRequest();
-
-        var marcaModel = _mapper.Map<List<MarcaViewModel>>(marcas);
-        return View(marcaModel);
+        var listaMarcas = _marcaService.GetAll();
+        var listaMarcasModel = _mapper.Map<List<MarcaViewModel>>(listaMarcas);
+        return View(listaMarcasModel);
     }
-
     // GET: MarcaController/Details/5
-    [HttpGet]
-    public async Task<ActionResult> Details(uint id)
+    public ActionResult Details(uint id)
     {
-        var marca = await _marcaService.Get(id);
-
-        if (marca == null) return BadRequest();
-
-        var marcaModel = _mapper.Map<MarcaViewModel>(marca);
-
+        Marca marca = _marcaService.Get(id);
+        MarcaViewModel marcaModel = _mapper.Map<MarcaViewModel>(marca);
         return View(marcaModel);
     }
-
     // GET: MarcaController/Create
     public ActionResult Create()
     {
         return View();
     }
-
     // POST: MarcaController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(MarcaViewModel marcaModel)
+    public ActionResult Create(MarcaViewModel marcaModel)
     {
-
         if (ModelState.IsValid)
         {
-            try
-            {
-                var marca = _mapper.Map<Marca>(marcaModel);
-                await _marcaService.Create(marca);
-            }
-            catch
-            {
-                return View(marcaModel);
-            }
-
-            return RedirectToAction(nameof(Index));
+            var marca = _mapper.Map<Marca>(marcaModel);
+            _marcaService.Create(marca);
         }
-
-        return View(marcaModel);
-
+        return RedirectToAction(nameof(Index));
     }
-
     // GET: MarcaController/Edit/5
-    [HttpGet]
-    public async Task<ActionResult> Edit(uint id)
+    public ActionResult Edit(uint id)
     {
-        var marca = await _marcaService.Get(id);
-
-        var marcaModel = _mapper.Map<MarcaViewModel>(marca);
-
-        return View(marcaModel);
+        return Details(id);
     }
-
     // POST: MarcaController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(uint id, MarcaViewModel marcaModel)
+    public ActionResult Edit(uint id, MarcaViewModel marcaModel)
     {
-        if (id != marcaModel.Id) return NotFound();
-
-
         if (ModelState.IsValid)
         {
-            try
-            {
-                var marca = _mapper.Map<Marca>(marcaModel);
-                await _marcaService.Edit(marca);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-
-            return RedirectToAction(nameof(Index));
+            var marca = _mapper.Map<Marca>(marcaModel);
+            _marcaService.Edit(marca);
         }
-
-        return View(marcaModel);
-
+        return RedirectToAction(nameof(Index));
     }
-
     // GET: MarcaController/Delete/5
-    [HttpGet]
-    public async Task<ActionResult> Delete(uint? id)
+    public ActionResult Delete(uint id)
     {
-        if (id == null) return BadRequest();
-
-        var marca = await _marcaService.Get((uint)id);
-
-        if (marca == null) return NotFound();
-
-        var marcaModel = _mapper.Map<MarcaViewModel>(marca);
-
+        Marca marca = _marcaService.Get(id);
+        MarcaViewModel marcaModel = _mapper.Map<MarcaViewModel>(marca);
         return View(marcaModel);
     }
-
     // POST: MarcaController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(uint id)
+    public ActionResult Delete(uint id, MarcaViewModel marcaModel)
     {
-        await _marcaService.Delete(id);
-
+        _marcaService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
 }
