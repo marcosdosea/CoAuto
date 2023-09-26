@@ -63,9 +63,9 @@ namespace CoAutoWeb.Controllers.Tests
             DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
 
 
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraInicio);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraFim);
-            Assert.AreEqual((uint)1, DisponibilidadeModel.IdVeiculo);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraInicio);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraFim);
+            Assert.AreEqual((uint)1, disponibilidadeModel.IdVeiculo);
         }
 
         [TestMethod()]
@@ -104,7 +104,7 @@ namespace CoAutoWeb.Controllers.Tests
             // Assert
             Assert.AreEqual(1, controller.ModelState.ErrorCount);
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
-            RedirectToActionResult redirectToActionResult1 = (RedirectToActionResult)result;
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
             Assert.IsNull(redirectToActionResult.ControllerName);
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
@@ -121,9 +121,9 @@ namespace CoAutoWeb.Controllers.Tests
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DisponibilidadeModel));
             DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
 
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraInicio);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraFim);
-            Assert.AreEqual((uint)1, DisponibilidadeModel.IdVeiculo);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraInicio);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraFim);
+            Assert.AreEqual((uint)1, disponibilidadeModel.IdVeiculo);
         }
 
         [TestMethod()]
@@ -156,7 +156,7 @@ namespace CoAutoWeb.Controllers.Tests
         {
             return new DisponibilidadeModel
             {
-                ID = 1,
+                Id = 1,
                 DataHoraInicio = new DateTime(2021, 09, 2, 3, 30, 0),
                 DataHoraFim = new DateTime(2023, 09, 2, 3, 30, 0),
                 IdVeiculo = 2
@@ -180,7 +180,7 @@ namespace CoAutoWeb.Controllers.Tests
         {
             return new DisponibilidadeModel
             {
-                ID = 1,
+                Id = 1,
                 DataHoraInicio = new DateTime(2021, 09, 2, 3, 30, 0),
                 DataHoraFim = new DateTime(2023, 09, 2, 3, 30, 0),
                 IdVeiculo = 2
