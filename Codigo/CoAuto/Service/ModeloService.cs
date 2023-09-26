@@ -1,75 +1,76 @@
 ﻿using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
-
 namespace Service;
-
+/// <summary>
+/// Implementa serviços para manter dados do banco
+/// </summary>
 public class ModeloService : IModeloService
 {
     private readonly CoAutoContext _context;
-
     public ModeloService(CoAutoContext context)
     {
-        _context = context;
+        this._context = context;
     }
-
-    // <summary>
-    /// Insere um novo modelo
+    /// <summary>
+    /// Criar um novo Modelo na base de dados
     /// </summary>
-    /// <param name="modelo">dados do modelo</param>
-    /// <returns></returns>
-    public async Task<uint> Create(Modelo modelo)
+    /// <param name="modelo">dados do Modelo</param>
+    /// <returns>id do Modelo</returns>
+    public uint Create(Modelo modelo)
     {
-        await _context.AddAsync(modelo);
-        await _context.SaveChangesAsync();
-        return modelo.Id;
+        _context.Add(modelo);
+        _context.SaveChanges();
+        return (uint)modelo.Id;
     }
-
-    // <summary>
-    /// Deleta um modelo
-    /// </summary>
-    /// <param name="id da modelo ">deleta o modelo </param>
-    /// <returns></returns>
-    public async Task Delete(uint idModelo)
-    {
-        var modelo = await _context.Modelos.
-            FindAsync(idModelo);
-
-        if (modelo == null) return;
-
-        _context.Remove(modelo);
-        await _context.SaveChangesAsync();
-
-    }
-
-    // <summary>
-    /// Edita um modelo
+    /// <summary>
+    /// Editar dados do modelo na base de dados
     /// </summary>
     /// <param name="modelo"></param>
-    /// <exception cref="ServiceException"></exception>
-    public async Task Edit(Modelo modelo)
+    public void Edit(Modelo modelo)
     {
         _context.Update(modelo);
-
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
-
-    // <summary>
-    /// busca um modelo 
-    /// </summary>
-    /// <param name="id do modelo">dados do modelo</param>
-    /// <returns></returns>
-    public async Task<Modelo> Get(uint idModelo)
-    {
-        return await _context.Modelos.FindAsync(idModelo);
-    }
-
     /// <summary>
-    /// Obtém todos modelos
+    /// Remover o modelo da base de dados
     /// </summary>
-    /// <returns></returns>
-    public async Task<IEnumerable<Modelo>> GetAll()
+    /// <param name="id">id do modelo</param>
+    public void Delete(uint id)
     {
-        return await _context.Modelos.ToListAsync();
+        var modelo = _context.Modelos.Find(id);
+        _context.Remove(modelo);
+        _context.SaveChanges();
+    }
+    /// <summary>
+    /// Buscar um modelo na base de dados
+    /// </summary>
+    /// <param name="id">id do modelo</param>
+    /// <returns>dados do modelo</returns>
+    public Modelo Get(uint id)
+    {
+        return _context.Modelos.Find(id);
+    }
+    /// <summary>
+    /// Buscar todos os Modelos cadastrados
+    /// </summary>
+    /// <returns>lista de Modelo</returns>
+    public IEnumerable<Modelo> GetAll()
+    {
+        return _context.Modelos.AsNoTracking();
+    }
+    public IEnumerable<ModeloDTO> GetByNome(string nome)
+    {
+        var query = from modelo in _context.Modelos
+                    where modelo.Nome.StartsWith(nome)
+                    orderby modelo.Nome
+                    select new Core.DTO.ModeloDTO
+                    {
+                        Id = modelo.Id,
+                        IdMarca = modelo.IdMarca,
+                        Nome = modelo.Nome
+                    };
+        return query;
     }
 }
