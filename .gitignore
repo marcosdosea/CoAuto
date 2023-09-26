@@ -6,3 +6,8 @@
 /Codigo/CoAuto/CoAutoWeb/bin
 /Codigo/CoAuto/.vs
 .DS_Store
+/Codigo/CoAuto/CoAutoWebTests/obj
+/Codigo/CoAuto/CoAutoWebTests/bin
+/Codigo/CoAuto/ServiceTests/obj
+/Codigo/CoAuto/ServiceTests/bin
+/Codigo/CoAuto/TestResults

@@ -2,10 +2,10 @@
 
 public interface IAluguelService
 {
-    Task<uint> Create(Aluguel aluguel);
-    Task Edit(Aluguel aluguel);
-    Task Delete(uint idAluguel);
-    Task<Aluguel> Get(uint idAluguel);
-    Task<IEnumerable<Aluguel>> GetAll();
+    uint Create(Aluguel aluguel);
+    void Delete(uint id);
+    void Edit(Aluguel aluguel);
+    Aluguel Get(uint id);
+    IEnumerable<Aluguel> GetAll();
 }
 

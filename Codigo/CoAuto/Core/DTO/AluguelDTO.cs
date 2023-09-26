@@ -1,5 +1,4 @@
 ﻿namespace Core.DTO;
-
 public class AluguelDTO
 {
     public int Id { get; set; }
