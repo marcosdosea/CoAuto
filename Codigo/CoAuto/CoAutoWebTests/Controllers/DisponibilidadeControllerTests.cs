@@ -13,8 +13,6 @@ namespace CoAutoWeb.Controllers.Tests
     public class DisponibilidadeControllerTests
     {
         private static DisponibilidadeController controller;
-        private IDisponibilidadeService @object;
-        private IMapper mapper;
 
 
         [TestInitialize]
@@ -107,7 +105,7 @@ namespace CoAutoWeb.Controllers.Tests
             Assert.AreEqual(1, controller.ModelState.ErrorCount);
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
             RedirectToActionResult redirectToActionResult1 = (RedirectToActionResult)result;
-            Assert.IsNull(RedirectToActionResult.ControllerName);
+            Assert.IsNull(redirectToActionResult.ControllerName);
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
