@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core.Service;
 using AutoMapper;
 using Moq;
@@ -25,7 +25,7 @@ namespace CoAutoWeb.Controllers.Tests
             ctg.AddProfile(new DisponibilidadeProfile())).CreateMapper();
 
             mockService.Setup(service => service.GetAll())
-                .Returns(GetTesteDisponibilidade());
+                .Returns(GetTestDisponibilidade());
             mockService.Setup(service => service.Get(1))
                 .Returns(GetTargetDisponibilidade());
             mockService.Setup(service => service.Create(It.IsAny<Disponibilidade>()))
@@ -186,7 +186,7 @@ namespace CoAutoWeb.Controllers.Tests
                 IdVeiculo = 2
             };
         }
-        private IEnumerable<Disponibilidade> GetTesteDisponibilidade()
+        private IEnumerable<Disponibilidade> GetTestDisponibilidade()
         {
             return new List<Disponibilidade>
             {
