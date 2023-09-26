@@ -3,7 +3,7 @@ namespace CoAutoWeb.Models;
 public class AluguelViewModel
 {
     [Key]
-    public int Id { get; set; }
+    public uint Id { get; set; }
     [Display(Name = "Data e Hora")]
     [DataType(DataType.DateTime, ErrorMessage = "Data e Hora válida requerida")]
     [Required(ErrorMessage = "Data e Hora são obrigatórias")]
