@@ -1,14 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CoAutoWeb.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Service;
 using AutoMapper;
 using Moq;
 using Core;
+using CoAutoWeb.Models;
+using Microsoft.AspNetCore.Mvc;
+using CoAutoWeb.Mappers;
 
 namespace CoAutoWeb.Controllers.Tests
 {
@@ -42,59 +39,183 @@ namespace CoAutoWeb.Controllers.Tests
         [TestMethod()]
         public void IndexTest()
         {
-
             // Act
             var result = controller.Index();
 
-            //assert
+            // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result;
-            Assert.IsInstanceOfType(viewResult.ViewData.model, typeof(List<Disponibilidade>));
-            
-            List<DisponibilidadeModel> ? lista = (List<DisponibilidadeModel>)viewResult.ViewData.model; 
-            Assert.AreEqual(2, lista.Count);
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(List<DisponibilidadeModel>));
+
+            List<DisponibilidadeModel>? lista = (List<DisponibilidadeModel>)viewResult.ViewData.Model;
+            Assert.AreEqual(3   , lista.Count);
         }
 
         [TestMethod()]
         public void DetailsTest()
         {
+            // Act
             var result = controller.Details(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result;
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DisponibilidadeModel));
+            DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
+
+
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraInicio);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraFim);
+            Assert.AreEqual((uint)1, DisponibilidadeModel.IdVeiculo);
         }
 
         [TestMethod()]
         public void CreateTest()
         {
-            Assert.Fail();
+            // Act
+            var result = controller.Create();
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+
+        [TestMethod()]
+        public void CreateTest_Valid()
+        {
+            // Act
+            var result = controller.Create(GetNewDisponibilidade());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
         [TestMethod()]
-        public void CreateTest1()
+        public void CreateTest_Invalid()
         {
-            Assert.Fail();
+            // Arrange
+            controller.ModelState.AddModelError("Data e hora", "é obrigatório.");
+
+            // Act
+            var result = controller.Create(GetNewDisponibilidade());
+
+            // Assert
+            Assert.AreEqual(1, controller.ModelState.ErrorCount);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult1 = (RedirectToActionResult)result;
+            Assert.IsNull(RedirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
         [TestMethod()]
-        public void EditTest()
+        public void EditTest_Get_Valid()
         {
-            Assert.Fail();
+            // Act
+            var result = controller.Edit(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result;
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DisponibilidadeModel));
+            DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
+
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraInicio);
+            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraFim);
+            Assert.AreEqual((uint)1, DisponibilidadeModel.IdVeiculo);
         }
 
         [TestMethod()]
-        public void EditTest1()
+        public void EditTest_Post_Valid()
         {
-            Assert.Fail();
+            // Act
+            var result = controller.Edit(GetTargetDisponibilidade().Id, GetTargetDisponibilidadeModel());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
         [TestMethod()]
-        public void DeleteTest()
+        public void DeleteTest_Get_Valid()
         {
-            Assert.Fail();
+            // Act
+            var result = controller.Delete(GetTargetDisponibilidadeModel().Id, GetTargetDisponibilidadeModel());
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
+            Assert.IsNull(redirectToActionResult.ControllerName);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
-        [TestMethod()]
-        public void DeleteTest1()
+        private DisponibilidadeModel GetNewDisponibilidade()
         {
-            Assert.Fail();
+            return new DisponibilidadeModel
+            {
+                ID = 1,
+                DataHoraInicio = new DateTime(2021, 09, 2, 3, 30, 0),
+                DataHoraFim = new DateTime(2023, 09, 2, 3, 30, 0),
+                IdVeiculo = 2
+
+            };
+        }
+        private static Disponibilidade GetTargetDisponibilidade()
+        {
+            return new Disponibilidade
+            {
+                Id = 1,
+                DataHoraInicio = new DateTime(2021, 09, 2, 3, 30, 0),
+                DataHoraFim = new DateTime(2023, 09, 2, 3, 30, 0),
+                IdVeiculo = 2
+                
+
+            };
+        }
+
+        private DisponibilidadeModel GetTargetDisponibilidadeModel()
+        {
+            return new DisponibilidadeModel
+            {
+                ID = 1,
+                DataHoraInicio = new DateTime(2021, 09, 2, 3, 30, 0),
+                DataHoraFim = new DateTime(2023, 09, 2, 3, 30, 0),
+                IdVeiculo = 2
+            };
+        }
+        private IEnumerable<Disponibilidade> GetTesteDisponibilidade()
+        {
+            return new List<Disponibilidade>
+            {
+                new Disponibilidade
+                {
+                    Id = 2,
+                    DataHoraInicio = new DateTime(2021, 09, 3, 9, 0, 0),
+                    DataHoraFim = new DateTime(2023, 09, 3, 9, 0, 0),
+                    IdVeiculo = 3
+                },
+
+                new Disponibilidade
+                {
+                    Id = 3,
+                    DataHoraInicio = new DateTime(2021, 09, 4, 14, 45, 0),
+                    DataHoraFim = new DateTime(2023, 09, 4, 14, 45, 0),
+                    IdVeiculo = 1
+                },
+
+                new Disponibilidade
+                {
+                    Id = 4,
+                    DataHoraInicio = new DateTime(2021, 09, 5, 18, 15, 0),
+                    DataHoraFim = new DateTime(2023, 09, 5, 18, 15, 0),
+                    IdVeiculo = 4
+                }
+
+            };
         }
     }
 }
