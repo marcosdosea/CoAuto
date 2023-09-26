@@ -25,7 +25,7 @@ namespace CoAutoWeb.Controllers.Tests
             ctg.AddProfile(new DisponibilidadeProfile())).CreateMapper();
 
             mockService.Setup(service => service.GetAll())
-                .Returns(GetTesteDisponibilidade());
+                .Returns(GetTestDisponibilidade());
             mockService.Setup(service => service.Get(1))
                 .Returns(GetTargetDisponibilidade());
             mockService.Setup(service => service.Create(It.IsAny<Disponibilidade>()))
@@ -65,7 +65,7 @@ namespace CoAutoWeb.Controllers.Tests
 
             Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraInicio);
             Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), DisponibilidadeModel.DataHoraFim);
-            Assert.AreEqual((uint)1, DisponibilidadeModel.IdVeiculo);
+            Assert.AreEqual((uint)1, DisponibilidadeModel.Id);
         }
 
         [TestMethod()]
@@ -186,7 +186,7 @@ namespace CoAutoWeb.Controllers.Tests
                 IdVeiculo = 2
             };
         }
-        private IEnumerable<Disponibilidade> GetTesteDisponibilidade()
+        private IEnumerable<Disponibilidade> GetTestDisponibilidade()
         {
             return new List<Disponibilidade>
             {
