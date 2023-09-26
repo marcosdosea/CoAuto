@@ -27,10 +27,10 @@ public class PagamentoController : Controller
     }
 
     // GET: PagamentoController/Details/5
-    public ActionResult Details(int id)
+    public ActionResult Details(uint id)
     {
         var pagamento = _PagamentoService.Get(id);
-        var pagamentoModel = _mapper.Map<List<PagamentoViewModel>>(pagamento);
+        var pagamentoModel = _mapper.Map<PagamentoViewModel>(pagamento);
         return View(pagamentoModel);
     }
 
@@ -54,7 +54,7 @@ public class PagamentoController : Controller
     }
 
     // GET: PagamentoController/Edit/5
-    public ActionResult Edit(int id)
+    public ActionResult Edit(uint id)
     {
         Pagamento pagamento = _PagamentoService.Get(id);
         PagamentoViewModel pagamentoModel = _mapper.Map<PagamentoViewModel>(pagamento);
@@ -64,7 +64,7 @@ public class PagamentoController : Controller
     // POST: PagamentoController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, PagamentoViewModel pagamentoModel)
+    public ActionResult Edit(uint id, PagamentoViewModel pagamentoModel)
     {
         if (ModelState.IsValid)
         {
@@ -75,7 +75,7 @@ public class PagamentoController : Controller
     }
 
     // GET: PagamentoController/Delete/5
-    public ActionResult Delete(int id)
+    public ActionResult Delete(uint id)
     {
         Pagamento pagamento = _PagamentoService.Get(id);
         PagamentoViewModel pagamentoModel = _mapper.Map<PagamentoViewModel>(pagamento);
@@ -85,7 +85,7 @@ public class PagamentoController : Controller
     // POST: PagamentoController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
+    public ActionResult Delete(uint id, PagamentoViewModel collection)
     {
         _PagamentoService.Delete(id);
         return RedirectToAction(nameof(Index));
