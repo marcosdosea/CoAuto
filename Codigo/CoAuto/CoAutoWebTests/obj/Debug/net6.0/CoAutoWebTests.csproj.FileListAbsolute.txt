@@ -1,6 +1,0 @@
-C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\CoAutoWebTests\bin\Debug\net6.0\CoverletSourceRootsMapping
-C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\CoAutoWebTests\obj\Debug\net6.0\CoAutoWebTests.csproj.AssemblyReference.cache
-C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\CoAutoWebTests\obj\Debug\net6.0\CoAutoWebTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\CoAutoWebTests\obj\Debug\net6.0\CoAutoWebTests.AssemblyInfoInputs.cache
-C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\CoAutoWebTests\obj\Debug\net6.0\CoAutoWebTests.AssemblyInfo.cs
-C:\Users\LuisRibeiro\Documents\CoAuto\Codigo\CoAuto\CoAutoWebTests\obj\Debug\net6.0\CoAutoWebTests.csproj.CoreCompileInputs.cache
