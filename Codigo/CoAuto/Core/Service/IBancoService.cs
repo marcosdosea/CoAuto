@@ -1,4 +1,6 @@
-﻿namespace Core.Service;
+﻿using Core.DTO;
+
+namespace Core.Service;
     public interface IBancoService
     {
         uint Create(Banco banco);
@@ -6,4 +8,6 @@
         void Edit(Banco banco);
         Banco Get(uint id);
         IEnumerable<Banco> GetAll();
-    }
+        IEnumerable<BancoDTO> GetByNome(string nome);
+
+}

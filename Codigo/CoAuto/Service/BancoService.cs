@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 namespace Service;
@@ -58,5 +59,17 @@ public class BancoService : IBancoService
     public IEnumerable<Banco> GetAll()
     {
         return _context.Bancos.AsNoTracking();
+    }
+    public IEnumerable<BancoDTO> GetByNome(string nome)
+    {
+        var query = from banco in _context.Bancos
+                    where banco.Nome.StartsWith(nome)
+                    orderby banco.Nome
+                    select new Core.DTO.BancoDTO
+                    {
+                        Id = banco.Id,
+                        Nome = banco.Nome
+                    };
+        return query;
     }
 }
