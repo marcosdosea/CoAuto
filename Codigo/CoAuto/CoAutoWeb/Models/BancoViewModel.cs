@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 namespace CoAutoWeb.Models;
 public class BancoViewModel
 {
