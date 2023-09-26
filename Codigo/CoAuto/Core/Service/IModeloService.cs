@@ -1,9 +1,13 @@
-﻿namespace Core.Service;
+﻿using Core.DTO;
+
+namespace Core.Service;
 public interface IModeloService
 {
-    Task<uint> Create(Modelo modelo);
-    Task Edit(Modelo modelo);
-    Task Delete(uint idModelo);
-    Task<Modelo> Get(uint idModelo);
-    Task<IEnumerable<Modelo>> GetAll();
+    uint Create(Modelo modelo);
+    void Delete(uint id);
+    void Edit(Modelo modelo);
+    Modelo Get(uint id);
+    IEnumerable<Modelo> GetAll();
+    IEnumerable<ModeloDTO> GetByNome(string nome);
+
 }

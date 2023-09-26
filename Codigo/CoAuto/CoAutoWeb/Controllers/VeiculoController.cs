@@ -30,7 +30,7 @@ public class VeiculoController : Controller
 
         if (veiculos == null) return BadRequest();
 
-        var modelos = await _modeloService.GetAll();
+        var modelos = _modeloService.GetAll();
         var veiculoModel = veiculos.Select(veiculo => new VeiculoViewModel
         {
             Ano = veiculo.Ano,
@@ -67,7 +67,7 @@ public class VeiculoController : Controller
 
         if (veiculo == null) return BadRequest();
 
-        var modelos = await _modeloService.GetAll();
+        var modelos = _modeloService.GetAll();
         var veiculoModel = new VeiculoViewModel
         {
             Ano = veiculo.Ano,
@@ -99,7 +99,7 @@ public class VeiculoController : Controller
     // GET: VeiculoController/Create
     public async Task<ActionResult> Create()
     {
-        var modelos = await _modeloService.GetAll();
+        var modelos = _modeloService.GetAll();
         var items = modelos.Select(modelo => new SelectListItem { Value = modelo.Id.ToString(), Text = modelo.Nome }).ToList();
         var selectList = new SelectList(items, "Value", "Text");
         ViewBag.ModelosSelectList = selectList;
@@ -132,7 +132,7 @@ public class VeiculoController : Controller
     {
         var veiculo = await _veiculoService.Get(id);
         var veiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
-        var modelos = await _modeloService.GetAll();
+        var modelos = _modeloService.GetAll();
         var items = modelos.Select(modelo => new SelectListItem { Value = modelo.Id.ToString(), Text = modelo.Nome }).ToList();
         var selectList = new SelectList(items, "Value", "Text");
         ViewBag.ModelosSelectList = selectList;
@@ -172,7 +172,7 @@ public class VeiculoController : Controller
 
         if (veiculo == null) return NotFound();
 
-        var modelos = await _modeloService.GetAll();
+        var modelos = _modeloService.GetAll();
         var veiculoModel = new VeiculoViewModel
         {
             Ano = veiculo.Ano,
