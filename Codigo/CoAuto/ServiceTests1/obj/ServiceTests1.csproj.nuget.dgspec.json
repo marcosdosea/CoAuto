@@ -1,183 +1,9 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWebTests\\CoAutoWebTests.csproj": {}
+    "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\ServiceTests1\\ServiceTests1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWebTests\\CoAutoWebTests.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWebTests\\CoAutoWebTests.csproj",
-        "projectName": "CoAutoWebTests",
-        "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWebTests\\CoAutoWebTests.csproj",
-        "packagesPath": "C:\\Users\\LuisRibeiro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWebTests\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\LuisRibeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj": {
-                "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[12.0.1, )"
-            },
-            "MSTest.TestAdapter": {
-              "target": "Package",
-              "version": "[2.2.10, )"
-            },
-            "MSTest.TestFramework": {
-              "target": "Package",
-              "version": "[2.2.10, )"
-            },
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[17.5.0, )"
-            },
-            "Moq": {
-              "target": "Package",
-              "version": "[4.20.69, )"
-            },
-            "coverlet.collector": {
-              "target": "Package",
-              "version": "[3.2.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj",
-        "projectName": "CoAutoWeb",
-        "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\CoAutoWeb.csproj",
-        "packagesPath": "C:\\Users\\LuisRibeiro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\CoAutoWeb\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\LuisRibeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj"
-              },
-              "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj": {
-                "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[12.0.1, )"
-            },
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[12.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.21, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.10, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[6.0.16, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -233,6 +59,83 @@
             "MySql.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\ServiceTests1\\ServiceTests1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\ServiceTests1\\ServiceTests1.csproj",
+        "projectName": "ServiceTests1",
+        "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\ServiceTests1\\ServiceTests1.csproj",
+        "packagesPath": "C:\\Users\\LuisRibeiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\ServiceTests1\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LuisRibeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\LuisRibeiro\\Documents\\CoAuto\\Codigo\\CoAuto\\Service\\Service.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.2.0, )"
             }
           },
           "imports": [
