@@ -1,75 +1,77 @@
 ﻿using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Service;
-
+/// <summary>
+/// Implementa serviços para manter dados da marca
+/// </summary>
 public class MarcaService : IMarcaService
 {
     private readonly CoAutoContext _context;
-
     public MarcaService(CoAutoContext context)
     {
-        _context = context;
+        this._context = context;
     }
-
-    // <summary>
-    /// Insere uma nova marca 
+    /// <summary>
+    /// Criar um novo marca na base de dados
     /// </summary>
-    /// <param name="marca">dados da marca</param>
-    /// <returns></returns>
-    public async Task<uint> Create(Marca marca)
+    /// <param name="marca">dados do marca</param>
+    /// <returns>id do Marca</returns>
+    public uint Create(Marca marca)
     {
-        await _context.AddAsync(marca);
-        await _context.SaveChangesAsync();
-        return marca.Id;
+        _context.Add(marca);
+        _context.SaveChanges();
+        return (uint)marca.Id;
     }
-
-    // <summary>
-    /// Deleta uma marca
-    /// </summary>
-    /// <param name="id da marca ">deleta a marca </param>
-    /// <returns></returns>
-    public async Task Delete(uint idMarca)
-    {
-        var marca = await _context.Marcas.
-        FindAsync(idMarca);
-
-        if (marca == null) return;
-
-        _context.Remove(marca);
-        await _context.SaveChangesAsync();
-
-    }
-
-    // <summary>
-    /// Edita uma marca
+    /// <summary>
+    /// Editar dados de marca na base de dados
     /// </summary>
     /// <param name="marca"></param>
-    /// <exception cref="ServiceException"></exception>
-    public async Task Edit(Marca marca)
+    public void Edit(Marca marca)
     {
         _context.Update(marca);
-
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
-
-    // <summary>
-    /// busca uma marca 
-    /// </summary>
-    /// <param name="id da marca ">dados da marca</param>
-    /// <returns></returns>
-    public async Task<Marca> Get(uint idMarca)
-    {
-        return await _context.Marcas.FindAsync(idMarca);
-    }
-
     /// <summary>
-    /// Obtém todas as marca
+    /// Remover o banco da base de dados
     /// </summary>
-    /// <returns></returns>
-    public async Task<IEnumerable<Marca>> GetAll()
+    /// <param name="id">id do banco</param>
+    public void Delete(uint id)
     {
-        return await _context.Marcas.ToListAsync();
+        var Marca = _context.Marcas.Find(id);
+        _context.Remove(Marca);
+        _context.SaveChanges();
+    }
+    /// <summary>
+    /// Buscar um banco na base de dados
+    /// </summary>
+    /// <param name="id">id do banco</param>
+    /// <returns>dados do banco</returns>
+    public Marca Get(uint id)
+    {
+        return _context.Marcas.Find(id);
+    }
+    /// <summary>
+    /// Buscar todos os bancos cadastrados
+    /// </summary>
+    /// <returns>lista de banco</returns>
+    public IEnumerable<Marca> GetAll()
+    {
+        return _context.Marcas.AsNoTracking();
+    }
+    public IEnumerable<MarcaDTO> GetByNome(string nome)
+    {
+        var query = from marca in _context.Marcas
+                    where marca.Nome.StartsWith(nome)
+                    orderby marca.Nome
+                    select new Core.DTO.MarcaDTO
+                    {
+                        Id = marca.Id,
+                        Nome = marca.Nome
+                    };
+        return query;
     }
 }
