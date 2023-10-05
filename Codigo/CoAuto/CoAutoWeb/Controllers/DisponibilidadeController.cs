@@ -90,4 +90,11 @@ public class DisponibilidadeController : Controller
         _disponibilidadeService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Delete(uint id, DisponibilidadeModel disponibilidadeModel)
+    {
+        _disponibilidadeService.Delete(id);
+        return RedirectToAction(nameof(Index));
+    }
 }
