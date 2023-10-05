@@ -1,5 +1,6 @@
-﻿using Core.Service;
-using Core;
+﻿using Core;
+using Core.Service;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Service;
 using System;
@@ -7,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Service.Tests
 {
@@ -15,12 +15,12 @@ namespace Service.Tests
     public class DisponibilidadeServiceTests
     {
         private CoAutoContext _context;
-        private IBancoService _bancoService;
+        private IDisponibilidadeService _disponibilidadeService;
 
-        [TestInitialize]
-        public void Initialize()
-        {
-            //Arrange
+
+        [TestInitialize()]
+        public void Initialize() 
+        { 
             var builder = new DbContextOptionsBuilder<CoAutoContext>();
             builder.UseInMemoryDatabase("coauto");
             var options = builder.Options;
@@ -29,8 +29,8 @@ namespace Service.Tests
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
             var disponibilidades = new List<Disponibilidade>
-                {
-                    new Disponibilidade
+            {
+                 new Disponibilidade
                     {
                     Id = 2,
                     DataHoraInicio = new DateTime(2021, 09, 3, 9, 0, 0),
@@ -38,54 +38,60 @@ namespace Service.Tests
                     IdVeiculo = 3
                     },
 
-                    new Disponibilidade
-                    {
+                 new Disponibilidade
+                 {
                     Id = 3,
                     DataHoraInicio = new DateTime(2021, 09, 4, 14, 45, 0),
                     DataHoraFim = new DateTime(2023, 09, 4, 14, 45, 0),
                     IdVeiculo = 1
-                    },
+                 },
 
-                    new Disponibilidade
-                    {
+                 new Disponibilidade
+                 {
                     Id = 4,
                     DataHoraInicio = new DateTime(2021, 09, 5, 18, 15, 0),
                     DataHoraFim = new DateTime(2023, 09, 5, 18, 15, 0),
                     IdVeiculo = 4
-                    }
-                };
+                 },
+            };
+
 
             _context.AddRange(disponibilidades);
             _context.SaveChanges();
 
-            _bancoService = new BancoService(_context);
+            _disponibilidadeService = new DisponibilidadeService(_context);
         }
 
         [TestMethod()]
         public void CreateTest()
         {
-            // Act
-            _bancoService.Create(new Disponibilidade()
+
+            _disponibilidadeService.Create(new Disponibilidade()
             {
-                Id = 4,
-                DataHoraInicio = new DateTime(2021, 09, 5, 18, 15, 0),
-                DataHoraFim = new DateTime(2023, 09, 5, 18, 15, 0),
+                Id = 1,
+                DataHoraInicio = new DateTime(2021, 09, 4, 14, 45, 0),
+                DataHoraFim = new DateTime(2024, 09, 05, 18, 15, 0),
                 IdVeiculo = 4
             });
-            // Assert
-            Assert.AreEqual(4, _bancoService.GetAll().Count());
-            var disponibilidade = _bancoService.Get(4);
-            Assert.AreEqual("Nubank", Disponibilidade.);
+            // Asserts
+            Assert.AreEqual(4, _disponibilidadeService.GetAll().Count());
+            var disponibilidade = _disponibilidadeService.Get(4);
+            Assert.AreEqual((uint)1,disponibilidade.Id);
+            Assert.AreEqual(DateTime.Parse("2021-09-04 14:45:00"), disponibilidade.DataHoraInicio);
+            Assert.AreEqual(DateTime.Parse("2024-05-18 18:15:00"), disponibilidade.DataHoraFim);
+            Assert.AreEqual((uint)4, disponibilidade.IdVeiculo);
+            
+
         }
 
         [TestMethod()]
         public void DeleteTest()
         {
             // Act
-            _bancoService.Delete(1);
+            _disponibilidadeService.Delete(2);
             // Assert
-            Assert.AreEqual(2, _bancoService.GetAll().Count());
-            var disponibilidade = _bancoService.Get(1);
+            Assert.AreEqual(2, _disponibilidadeService.GetAll().Count());
+            var disponibilidade = _disponibilidadeService.Get(2);
             Assert.AreEqual(null, disponibilidade);
         }
 
@@ -93,36 +99,39 @@ namespace Service.Tests
         public void EditTest()
         {
             //Act 
-            var disponibilidade = _bancoService.Get(3);
-            disponibilidade.Nome = "Inter";
-            _bancoService.Edit(disponibilidade);
+            var disponibilidade = _disponibilidadeService.Get(3);
+            disponibilidade.Id = 3;
+            disponibilidade.DataHoraInicio = DateTime.Parse("2021-09-04 14:45:00");
+            _disponibilidadeService.Edit(disponibilidade);
 
             //Assert
-            disponibilidade = _bancoService.Get(3);
-            Assert.AreEqual("Inter", disponibilidade.Nome);
+            disponibilidade = _disponibilidadeService.Get(3);
+            Assert.IsNotNull(disponibilidade);
+            Assert.AreEqual(DateTime.Parse("2023-10-18 18:15:00"), disponibilidade.DataHoraInicio);
+            Assert.AreEqual(DateTime.Parse("2024-10-18 18:15:00"), disponibilidade.DataHoraFim);
         }
 
         [TestMethod()]
         public void GetTest()
         {
-            var disponibilidade = _bancoService.Get(3);
+            var disponibilidade = _disponibilidadeService.Get(1);
             Assert.IsNotNull(disponibilidade);
-            Assert.AreEqual("Bradesco", disponibilidade.Id);
+            Assert.AreEqual((uint)1, disponibilidade.Id);
+            Assert.AreEqual((uint)1, disponibilidade.IdVeiculo);
         }
 
         [TestMethod()]
         public void GetAllTest()
         {
-            // Act
-            var listaDisponibilidade = _bancoService.GetAll();
-            // Assert
+            var listaDisponibilidade = _disponibilidadeService.GetAll();
+
             Assert.IsInstanceOfType(listaDisponibilidade, typeof(IEnumerable<Disponibilidade>));
             Assert.IsNotNull(listaDisponibilidade);
             Assert.AreEqual(3, listaDisponibilidade.Count());
-            var firstDisponibilidade = listaDisponibilidade.First();
-            Assert.AreEqual((uint)1, firstDisponibilidade.Id);
-            Assert.AreEqual("Banco do Brasil", firstDisponibilidade.Nome);
-        }
+            Assert.AreEqual((uint)1, listaDisponibilidade.First().Id);
+            Assert.AreEqual((uint)1, listaDisponibilidade.First().IdVeiculo);
 
+
+        }
     }
 }
