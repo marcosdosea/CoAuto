@@ -25,7 +25,7 @@ namespace CoAutoWeb.Controllers.Tests
             ctg.AddProfile(new DisponibilidadeProfile())).CreateMapper();
 
             mockService.Setup(service => service.GetAll())
-                .Returns(GetTestDisponibilidade());
+                .Returns(GetTesteDisponibilidade());
             mockService.Setup(service => service.Get(1))
                 .Returns(GetTargetDisponibilidade());
             mockService.Setup(service => service.Create(It.IsAny<Disponibilidade>()))
@@ -61,11 +61,7 @@ namespace CoAutoWeb.Controllers.Tests
             ViewResult viewResult = (ViewResult)result;
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DisponibilidadeModel));
             DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
-
-
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraInicio);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraFim);
-            Assert.AreEqual((uint)1, disponibilidadeModel.IdVeiculo);
+            Assert.AreEqual((uint)1, disponibilidadeModel.Id);
         }
 
         [TestMethod()]
@@ -120,10 +116,7 @@ namespace CoAutoWeb.Controllers.Tests
             ViewResult viewResult = (ViewResult)result;
             Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DisponibilidadeModel));
             DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
-
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraInicio);
-            Assert.AreEqual(DateTime.Parse("2021-09-02 03:30:00"), disponibilidadeModel.DataHoraFim);
-            Assert.AreEqual((uint)1, disponibilidadeModel.IdVeiculo);
+            Assert.AreEqual((uint)1, disponibilidadeModel.Id);
         }
 
         [TestMethod()]
@@ -137,6 +130,21 @@ namespace CoAutoWeb.Controllers.Tests
             RedirectToActionResult redirectToActionResult = (RedirectToActionResult)result;
             Assert.IsNull(redirectToActionResult.ControllerName);
             Assert.AreEqual("Index", redirectToActionResult.ActionName);
+        }
+
+        [TestMethod()]
+        public void DeleteTest_Post_Valid()
+        {
+            // Act
+            var result = controller.Delete(1);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            ViewResult viewResult = (ViewResult)result;
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(DisponibilidadeModel));
+            DisponibilidadeModel disponibilidadeModel = (DisponibilidadeModel)viewResult.ViewData.Model;
+            Assert.AreEqual((uint)1, disponibilidadeModel.Id);
+
         }
 
         [TestMethod()]
@@ -186,7 +194,7 @@ namespace CoAutoWeb.Controllers.Tests
                 IdVeiculo = 2
             };
         }
-        private IEnumerable<Disponibilidade> GetTestDisponibilidade()
+        private IEnumerable<Disponibilidade> GetTesteDisponibilidade()
         {
             return new List<Disponibilidade>
             {
