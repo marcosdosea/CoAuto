@@ -3,6 +3,7 @@ using CoAutoWeb.Models;
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
+using Service;
 
 namespace CoAutoWeb.Controllers;
 
@@ -87,4 +88,12 @@ public class PessoaController : Controller
         _pessoaService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
+
+    //GET: PessoaControler/Perfil
+    public ActionResult Perfil(uint id)
+    {
+        Pessoa pessoa = _pessoaService.Get(id);
+        PessoaViewModel pessoaModel = _mapper.Map<PessoaViewModel>(pessoa);
+        return View(pessoaModel);
+    } 
 }

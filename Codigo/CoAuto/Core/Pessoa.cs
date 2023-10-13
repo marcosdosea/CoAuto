@@ -1,4 +1,7 @@
-﻿namespace Core;
+﻿using System;
+using System.Collections.Generic;
+
+namespace Core;
 
 public partial class Pessoa
 {
@@ -40,7 +43,7 @@ public partial class Pessoa
 
     public string? Chavepix { get; set; }
 
-    public DateTime DataAutorizacao { get; set; }
+    public DateTime? DataAutorizacao { get; set; }
 
     public sbyte Autorizado { get; set; }
 
