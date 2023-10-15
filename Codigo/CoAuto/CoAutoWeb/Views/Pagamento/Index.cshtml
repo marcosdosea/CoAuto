@@ -1,47 +1,42 @@
 ﻿@model IEnumerable<CoAutoWeb.Models.PagamentoViewModel>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FormaPagamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAluguel)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FormaPagamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdAluguel)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div style="background-color:white;justify-content:center">
+    <h1 style="color:darkgray;"> COMPRA SEGURA </h1>
+</div>
+<br />
+<h3><strong>Formas de Pagamento</strong></h3>
+<div class="card" style="width: 30rem;border-color:dodgerblue;border-radius:1.5rem;">
+    <div class="card-body">
+        <h5 class="card-title"><strong>Como deseja pagar?</strong></h5>
+        <h6 class="card-subtitle mb-2 text-muted" style="width:80%;margin-right:0px">Escolha uma forma de pagamento</h6>
+        <a href="#" class="card-link" style="text-decoration: none;">Escolher</a>
+    </div>
+</div>
+<br />
+<br />
+<div class="card" style="width: 18rem;border-radius:1.5rem;">
+    <img class="card-img-top" src="https://garagem360.com.br/wp-content/uploads/2021/08/Screenshot_4-1-8.jpg" style="width:contain;height:contain" alt="Imagem de capa do card">
+    <div class="card-body">
+        <h5 class="card-title"><strong>FORD RANGER 2022</strong></h5>
+        <p class="card-text">(Número de Avaliações)</p>
+        <p class="card-text">Compartilhado por *NOME DO PROPRIETARIO*</p>
+    </div>
+</div>
+
+
+<br />
+<hr />
+<p style="color:gray">Diária</p>
+<p style="color:gray">Total de diárias</p>
+<h3><strong>Total</strong></h3>
+
+<br />
+<br />
+
+
+<div class="btn-group" role="group">
+    <button type="button" class="btn btn-secondary" style="border-radius:15px;margin-right:1rem;width:9rem;">Cancelar</button>
+
+    <button type="button" class="btn btn-primary" style="border-radius:15px;width:9rem;">Confirmar</button>
+</div>
