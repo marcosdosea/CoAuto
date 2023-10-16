@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoAutoWeb.Models;
 
@@ -87,4 +88,6 @@ public class PessoaViewModel
 
     [Required(ErrorMessage = "Campo requerido")]
     public uint IdBanco { get; set; }
+
+    public SelectList? ListaBancos { get; set; }
 }

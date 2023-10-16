@@ -107,9 +107,9 @@
                 <input asp-for="DataAutorizacao" class="form-control" />
                 <span asp-validation-for="DataAutorizacao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-sm-8">
                 <label asp-for="IdBanco" class="control-label"></label>
-                <input asp-for="IdBanco" class="form-control" />
+                <select asp-for="IdBanco" asp-items="@Model.ListaBancos" class="form-control"></select>
                 <span asp-validation-for="IdBanco" class="text-danger"></span>
             </div>
             <div class="form-group">

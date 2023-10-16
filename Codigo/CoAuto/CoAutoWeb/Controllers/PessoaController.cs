@@ -3,6 +3,7 @@ using CoAutoWeb.Models;
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Service;
 
 namespace CoAutoWeb.Controllers;
@@ -10,11 +11,13 @@ namespace CoAutoWeb.Controllers;
 public class PessoaController : Controller
 {
     private readonly IPessoaService _pessoaService;
+    private readonly IBancoService _bancoService;
     private readonly IMapper _mapper;
 
-    public PessoaController(IPessoaService pessoaService, IMapper mapper)
+    public PessoaController(IPessoaService pessoaService, IMapper mapper, IBancoService bancoService)
     {
         _pessoaService = pessoaService;
+        _bancoService = bancoService;
         _mapper = mapper;
     }
 
@@ -37,7 +40,10 @@ public class PessoaController : Controller
     // GET: PessoaController/Create
     public ActionResult Create()
     {
-        return View();
+        PessoaViewModel pessoaViewModel = new();
+        IEnumerable<Banco> listaBancos = _bancoService.GetAll();
+        pessoaViewModel.ListaBancos = new SelectList(listaBancos, "Id", "Nome", null);
+        return View(pessoaViewModel);
     }
 
     // POST: PessoaController/Create
@@ -56,7 +62,11 @@ public class PessoaController : Controller
     // GET: PessoaController/Edit/5
     public ActionResult Edit(uint id)
     {
-        return Details(id);
+        Pessoa? pessoa = _pessoaService.Get(id);
+        PessoaViewModel pessoaViewModel = _mapper.Map<PessoaViewModel>(pessoa);
+        IEnumerable<Banco> listaBancos = _bancoService.GetAll();
+        pessoaViewModel.ListaBancos = new SelectList(listaBancos, "Id","Nome",listaBancos.FirstOrDefault(e=> e.Id.Equals(pessoa.IdBanco)));
+        return View(pessoaViewModel);
     }
 
     // POST: PessoaController/Edit/5
