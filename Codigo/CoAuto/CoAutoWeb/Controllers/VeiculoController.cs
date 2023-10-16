@@ -24,9 +24,9 @@ public class VeiculoController : Controller
     /// Retorna todos os veiculos da ViewModel
     /// </summary>
     /// <returns>View(veiculos)</returns>
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
-        var veiculos = await _veiculoService.GetAll();
+        var veiculos = _veiculoService.GetAll();
 
         if (veiculos == null) return BadRequest();
 
@@ -61,9 +61,9 @@ public class VeiculoController : Controller
 
     // GET: VeiculoController/Details/5
     [HttpGet]
-    public async Task<ActionResult> Details(uint id)
+    public ActionResult Details(uint id)
     {
-        var veiculo = await _veiculoService.Get(id);
+        var veiculo = _veiculoService.Get(id);
 
         if (veiculo == null) return BadRequest();
 
@@ -97,7 +97,7 @@ public class VeiculoController : Controller
     }
 
     // GET: VeiculoController/Create
-    public async Task<ActionResult> Create()
+    public ActionResult Create()
     {
         var modelos = _modeloService.GetAll();
         var items = modelos.Select(modelo => new SelectListItem { Value = modelo.Id.ToString(), Text = modelo.Nome }).ToList();
@@ -109,14 +109,14 @@ public class VeiculoController : Controller
     // POST: VeiculoController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(VeiculoViewModel veiculoModel)
+    public ActionResult Create(VeiculoViewModel veiculoModel)
     {
         if (ModelState.IsValid)
         {
             try
             {
                 var veiculo = _mapper.Map<Veiculo>(veiculoModel);
-                await _veiculoService.Create(veiculo);
+                _veiculoService.Create(veiculo);
             }
             catch
             {
@@ -128,9 +128,9 @@ public class VeiculoController : Controller
     }
 
     // GET: VeiculoController/Edit/5
-    public async Task<ActionResult> Edit(uint id)
+    public ActionResult Edit(uint id)
     {
-        var veiculo = await _veiculoService.Get(id);
+        var veiculo = _veiculoService.Get(id);
         var veiculoModel = _mapper.Map<VeiculoViewModel>(veiculo);
         var modelos = _modeloService.GetAll();
         var items = modelos.Select(modelo => new SelectListItem { Value = modelo.Id.ToString(), Text = modelo.Nome }).ToList();
@@ -142,7 +142,7 @@ public class VeiculoController : Controller
     // POST: VeiculoController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(uint id, VeiculoViewModel veiculoModel)
+    public ActionResult Edit(uint id, VeiculoViewModel veiculoModel)
     {
         if (id != veiculoModel.Id) return NotFound();
 
@@ -151,7 +151,7 @@ public class VeiculoController : Controller
             try
             {
                 var veiculo = _mapper.Map<Veiculo>(veiculoModel);
-                await _veiculoService.Edit(veiculo);
+                _veiculoService.Edit(veiculo);
             }
             catch
             {
@@ -164,11 +164,11 @@ public class VeiculoController : Controller
 
     // GET: VeiculoController/Delete/5
     [HttpGet]
-    public async Task<ActionResult> Delete(uint? id)
+    public ActionResult Delete(uint? id)
     {
         if (id == null) return BadRequest();
 
-        var veiculo = await _veiculoService.Get((uint)id);
+        var veiculo = _veiculoService.Get((uint)id);
 
         if (veiculo == null) return NotFound();
 
@@ -204,9 +204,9 @@ public class VeiculoController : Controller
     // POST: VeiculoController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(uint id)
+    public ActionResult Delete(uint id)
     {
-        await _veiculoService.Delete(id);
+        _veiculoService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
 }

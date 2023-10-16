@@ -18,10 +18,10 @@ public class EntregaService : IEntregaService
     /// </summary>
     /// <param name="entrega">dados da entrega</param>
     /// <returns></returns>
-    public async Task<uint> Create(Entrega entrega)
+    public  uint Create(Entrega entrega)
     {
-        await _context.AddAsync(entrega);
-        await _context.SaveChangesAsync();
+        _context.Add(entrega);
+        _context.SaveChanges();
         return (uint)entrega.Id;
     }
 
@@ -30,15 +30,14 @@ public class EntregaService : IEntregaService
     /// </summary>
     /// <param name="id da entrega ">deleta a entrega </param>
     /// <returns></returns>
-    public async Task Delete(uint id)
+    public void Delete(uint id)
     {
-        var entrega = await _context.Entregas.
-        FindAsync(id);
+        var entrega = _context.Entregas.Find(id);
 
         if (entrega == null) return;
 
         _context.Remove(entrega);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 
     // <summary>
@@ -46,11 +45,10 @@ public class EntregaService : IEntregaService
     /// </summary>
     /// <param name="entrega"></param>
     /// <exception cref="ServiceException"></exception>
-    public async Task Edit(Entrega entrega)
+    public void Edit(Entrega entrega)
     {
         _context.Update(entrega);
-
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 
     // <summary>
@@ -58,17 +56,19 @@ public class EntregaService : IEntregaService
     /// </summary>
     /// <param name="id da entrega ">dados da entrega</param>
     /// <returns></returns>
-    public async Task<Entrega> Get(uint idEntrega)
+    public Entrega Get(uint idEntrega)
     {
-        return await _context.Entregas.FindAsync(idEntrega);
+        return _context.Entregas.Find(idEntrega);
     }
 
     /// <summary>
     /// Obtém todas as entregas
     /// </summary>
     /// <returns></returns>
-    public async Task<IEnumerable<Entrega>> GetAll()
+    public IEnumerable<Entrega> GetAll()
     {
-        return await _context.Entregas.ToListAsync();
+        string sql = "SELECT * FROM coauto.entrega;";
+        var entregas = _context.Entregas.FromSqlRaw(sql).ToList();
+        return entregas;
     }
 }
