@@ -35,35 +35,35 @@
                     @Html.DisplayFor(modelItem => item.DataHora)
                 </td>
                 <td>
-                    @if (item.Foto1 != null)
+                    @if (item.Foto1 != null && item.Foto1.SequenceEqual(new byte[0]))
                     {
                         var imagemSrc1 = $"data:image/jpeg;base64,{Convert.ToBase64String(@item.Foto1)}";
                         <img src="@imagemSrc1" alt="Minha Imagem" />
                     }
                 </td>
                 <td>
-                    @if (item.Foto2 != null)
+                    @if (item.Foto2 != null && item.Foto2.SequenceEqual(new byte[0]))
                     {
                         var imagemSrc2 = $"data:image/jpeg;base64,{Convert.ToBase64String(@item.Foto2)}";
                         <img src="@imagemSrc2" alt="Minha Imagem" />
                     }
                 </td>
                 <td>
-                    @if (item.Foto3 != null)
+                    @if (item.Foto3 != null && item.Foto3.SequenceEqual(new byte[0]))
                     {
                         var imagemSrc3 = $"data:image/jpeg;base64,{Convert.ToBase64String(@item.Foto3)}";
                         <img src="@imagemSrc3" alt="Minha Imagem" />
                     }
                 </td>
                 <td>
-                    @if (item.Foto4 != null)
+                    @if (item.Foto4 != null && item.Foto4.SequenceEqual(new byte[0]))
                     {
                         var imagemSrc4 = $"data:image/jpeg;base64,{Convert.ToBase64String(@item.Foto4)}";
                         <img src="@imagemSrc4" alt="Minha Imagem" />
                     }
                 </td>
                 <td>
-                    @if (item.Foto5 != null)
+                    @if (item.Foto5 != null && item.Foto5.SequenceEqual(new byte[0]))
                     {
                         var imagemSrc5 = $"data:image/jpeg;base64,{Convert.ToBase64String(@item.Foto5)}";
                         <img src="@imagemSrc5" alt="Minha Imagem" />

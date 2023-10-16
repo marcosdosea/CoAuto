@@ -2,64 +2,76 @@
 using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
+
 namespace Service;
-/// <summary>
-/// Implementa serviços para manter dados do banco
-/// </summary>
+
 public class ModeloService : IModeloService
 {
     private readonly CoAutoContext _context;
+
     public ModeloService(CoAutoContext context)
     {
-        this._context = context;
+        _context = context;
     }
-    /// <summary>
-    /// Criar um novo Modelo na base de dados
+
+    // <summary>
+    /// Insere um novo modelo
     /// </summary>
-    /// <param name="modelo">dados do Modelo</param>
-    /// <returns>id do Modelo</returns>
+    /// <param name="modelo">dados do modelo</param>
+    /// <returns></returns>
     public uint Create(Modelo modelo)
     {
         _context.Add(modelo);
         _context.SaveChanges();
-        return (uint)modelo.Id;
+        return modelo.Id;
     }
-    /// <summary>
-    /// Editar dados do modelo na base de dados
+
+    // <summary>
+    /// Deleta um modelo
+    /// </summary>
+    /// <param name="id da modelo ">deleta o modelo </param>
+    /// <returns></returns>
+    public void Delete(uint idModelo)
+    {
+        var modelo = _context.Modelos.Find(idModelo);
+
+        if (modelo == null) return;
+
+        _context.Remove(modelo);
+        _context.SaveChanges();
+
+    }
+
+    // <summary>
+    /// Edita um modelo
     /// </summary>
     /// <param name="modelo"></param>
+    /// <exception cref="ServiceException"></exception>
     public void Edit(Modelo modelo)
     {
         _context.Update(modelo);
         _context.SaveChanges();
     }
-    /// <summary>
-    /// Remover o modelo da base de dados
+
+    // <summary>
+    /// busca um modelo 
     /// </summary>
-    /// <param name="id">id do modelo</param>
-    public void Delete(uint id)
+    /// <param name="id do modelo">dados do modelo</param>
+    /// <returns></returns>
+    public Modelo Get(uint idModelo)
     {
-        var modelo = _context.Modelos.Find(id);
-        _context.Remove(modelo);
-        _context.SaveChanges();
+        return _context.Modelos.Find(idModelo);
     }
+
     /// <summary>
-    /// Buscar um modelo na base de dados
+    /// Obtém todos modelos
     /// </summary>
-    /// <param name="id">id do modelo</param>
-    /// <returns>dados do modelo</returns>
-    public Modelo Get(uint id)
-    {
-        return _context.Modelos.Find(id);
-    }
-    /// <summary>
-    /// Buscar todos os Modelos cadastrados
-    /// </summary>
-    /// <returns>lista de Modelo</returns>
+    /// <returns></returns>
     public IEnumerable<Modelo> GetAll()
     {
-        return _context.Modelos.AsNoTracking();
+        return _context.Modelos.ToList();
     }
+
     public IEnumerable<ModeloDTO> GetByNome(string nome)
     {
         var query = from modelo in _context.Modelos

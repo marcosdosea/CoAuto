@@ -3,37 +3,71 @@ using CoAutoWeb.Models;
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoAutoWeb.Controllers;
 
 public class ModeloController : Controller
 {
     private readonly IModeloService _modeloService;
+    private readonly IMarcaService _marcaService;
     private readonly IMapper _mapper;
-    public ModeloController(IModeloService modeloController, IMapper mapper)
+    public ModeloController(IModeloService modeloService, IMarcaService marcaService, IMapper mapper)
     {
-        _modeloService = modeloController;
+        _modeloService = modeloService;
+        _marcaService = marcaService;
         _mapper = mapper;
     }
-    // GET: ModeloController
+
+    [HttpGet]
+    /// <summary>
+    /// Retorna todos os modelos da ViewModel
+    /// </summary>
+    /// <returns>View(modelos)</returns>
     public ActionResult Index()
     {
-        var listaModelos = _modeloService.GetAll();
-        var listaModelosModel = _mapper.Map<List<ModeloViewModel>>(listaModelos);
-        return View(listaModelosModel);
-    }
-    // GET: ModeloController/Details/5
-    public ActionResult Details(uint id)
-    {
-        Modelo modelo = _modeloService.Get(id);
-        ModeloViewModel modeloModel = _mapper.Map<ModeloViewModel>(modelo);
+        var modelos = _modeloService.GetAll();
+
+        if (modelos == null) return BadRequest();
+
+        var marcas = _marcaService.GetAll();
+        var modeloModel = modelos.Select(modelo => new ModeloViewModel
+        {
+            Id = modelo.Id,
+            IdMarca = modelo.IdMarca,
+            Nome = modelo.Nome
+        }).ToList();
         return View(modeloModel);
     }
+
+    // GET: ModeloController/Details/5
+    [HttpGet]
+    public ActionResult Details(uint id)
+    {
+        var modelo = _modeloService.Get(id);
+
+        if (modelo == null) return BadRequest();
+
+        var marcas = _marcaService.GetAll();
+        var modeloModel = new ModeloViewModel
+        {
+            Id = modelo.Id,
+            IdMarca = modelo.IdMarca,
+            Nome = modelo.Nome
+        };
+        return View(modeloModel);
+    }
+
     // GET: ModeloController/Create
     public ActionResult Create()
     {
+        var marcas = _marcaService.GetAll();
+        var items = marcas.Select(marca => new SelectListItem { Value = marca.Id.ToString(), Text = marca.Nome }).ToList();
+        var selectList = new SelectList(items, "Value", "Text");
+        ViewBag.MarcasSelectList = selectList;
         return View();
     }
+
     // POST: ModeloController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -41,39 +75,79 @@ public class ModeloController : Controller
     {
         if (ModelState.IsValid)
         {
-            var modelo = _mapper.Map<Modelo>(modeloModel);
-            _modeloService.Create(modelo);
+            try
+            {
+                var modelo = _mapper.Map<Modelo>(modeloModel);
+                _modeloService.Create(modelo);
+            }
+            catch
+            {
+                return View(modeloModel);
+            }
+            return RedirectToAction(nameof(Index));
         }
-        return RedirectToAction(nameof(Index));
+        return View(modeloModel);
     }
+
     // GET: ModeloController/Edit/5
     public ActionResult Edit(uint id)
     {
-        return Details(id);
+        var modelo = _modeloService.Get(id);
+        var modeloModel = _mapper.Map<ModeloViewModel>(modelo);
+        var marcas = _marcaService.GetAll();
+        var items = marcas.Select(marca => new SelectListItem { Value = marca.Id.ToString(), Text = marca.Nome }).ToList();
+        var selectList = new SelectList(items, "Value", "Text");
+        ViewBag.MarcasSelectList = selectList;
+        return View(modeloModel);
     }
+
     // POST: ModeloController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Edit(uint id, ModeloViewModel modeloModel)
     {
+        if (id != modeloModel.Id) return NotFound();
+
         if (ModelState.IsValid)
         {
-            var modelo = _mapper.Map<Modelo>(modeloModel);
-            _modeloService.Edit(modelo);
+            try
+            {
+                var modelo = _mapper.Map<Modelo>(modeloModel);
+                _modeloService.Edit(modelo);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            return RedirectToAction(nameof(Index));
         }
-        return RedirectToAction(nameof(Index));
-    }
-    // GET: ModeloController/Delete/5
-    public ActionResult Delete(uint id)
-    {
-        Modelo modelo = _modeloService.Get(id);
-        ModeloViewModel modeloModel = _mapper.Map<ModeloViewModel>(modelo);
         return View(modeloModel);
     }
+
+    // GET: ModeloController/Delete/5
+    [HttpGet]
+    public ActionResult Delete(uint? id)
+    {
+        if (id == null) return BadRequest();
+
+        var modelo = _modeloService.Get((uint)id);
+
+        if (modelo == null) return NotFound();
+
+        var marcas = _marcaService.GetAll();
+        var modeloModel = new ModeloViewModel
+        {
+            Id = modelo.Id,
+            IdMarca = modelo.IdMarca,
+            Nome = modelo.Nome
+        };
+        return View(modeloModel);
+    }
+
     // POST: ModeloController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(uint id, ModeloViewModel modeloModel)
+    public ActionResult Delete(uint id)
     {
         _modeloService.Delete(id);
         return RedirectToAction(nameof(Index));
