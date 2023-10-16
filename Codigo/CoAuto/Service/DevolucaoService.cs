@@ -67,6 +67,8 @@ public class DevolucaoService : IDevolucaoService
     /// <returns></returns>
     public IEnumerable<Devolucao> GetAll()
     {
-        return _context.Devolucaos.ToList();
+        string sql = "SELECT * FROM coauto.devolucao;";
+        var devolucoes = _context.Devolucaos.FromSqlRaw(sql).ToList();
+        return devolucoes;
     }
 }
