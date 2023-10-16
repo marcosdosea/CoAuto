@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CoAutoWeb.Models;
 
-public class EntregaViewModel
+public class UpdateEntregaViewModel
 {
     [Key]
     public uint Id { get; set; }
@@ -23,4 +23,14 @@ public class EntregaViewModel
     public byte[]? Foto4 { get; set; }
 
     public byte[]? Foto5 { get; set; }
+
+    public IFormFile? FormFoto1 { get; set; }
+
+    public IFormFile? FormFoto2 { get; set; }
+
+    public IFormFile? FormFoto3 { get; set; }
+
+    public IFormFile? FormFoto4 { get; set; }
+
+    public IFormFile? FormFoto5 { get; set; }
 }

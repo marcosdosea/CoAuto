@@ -1,9 +1,7 @@
-﻿using Org.BouncyCastle.Utilities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CoAutoWeb.Models;
-
-public class EntregaViewModel
+public class CreateEntregaViewModel
 {
     [Key]
     public uint Id { get; set; }
@@ -14,13 +12,13 @@ public class EntregaViewModel
     [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime DataHora { get; set; }
 
-    public byte[]? Foto1 { get; set; }
+    public IFormFile? Foto1 { get; set; }
 
-    public byte[]? Foto2 { get; set; }
+    public IFormFile? Foto2 { get; set; }
 
-    public byte[]? Foto3 { get; set; }
+    public IFormFile? Foto3 { get; set; }
 
-    public byte[]? Foto4 { get; set; }
+    public IFormFile? Foto4 { get; set; }
 
-    public byte[]? Foto5 { get; set; }
+    public IFormFile? Foto5 { get; set; }
 }

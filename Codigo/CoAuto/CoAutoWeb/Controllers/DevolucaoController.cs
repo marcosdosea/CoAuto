@@ -20,9 +20,9 @@ public class DevolucaoController : Controller
     /// Retorna todas as devoluções da ViewModel
     /// </summary>
     /// <returns>View(devoluções)</returns>
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
-        var devolucaos = await _devolucaoService.GetAll();
+        var devolucaos = _devolucaoService.GetAll();
 
         if (devolucaos == null) return BadRequest();
 
@@ -31,9 +31,9 @@ public class DevolucaoController : Controller
     }
 
     // GET: DevolucaoController/Details/5
-    public async Task<ActionResult> Details(uint? id)
+    public ActionResult Details(uint? id)
     {
-        var devolucao = await _devolucaoService.Get((uint)id);
+        var devolucao = _devolucaoService.Get((uint)id);
 
         if (devolucao == null) return BadRequest();
 
@@ -50,14 +50,14 @@ public class DevolucaoController : Controller
     // POST: DevolucaoController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(DevolucaoViewModel devolucaoModel)
+    public ActionResult Create(DevolucaoViewModel devolucaoModel)
     {
         if (ModelState.IsValid)
         {
             try
             {
                 var devolucao = _mapper.Map<Devolucao>(devolucaoModel);
-                await _devolucaoService.Create(devolucao);
+                _devolucaoService.Create(devolucao);
             }
             catch
             {
@@ -69,9 +69,9 @@ public class DevolucaoController : Controller
     }
 
     // GET: DevolucaoController/Edit/5
-    public async Task<ActionResult> Edit(uint id)
+    public ActionResult Edit(uint id)
     {
-        var devolucao = await _devolucaoService.Get(id);
+        var devolucao = _devolucaoService.Get(id);
         var devolucaoModel = _mapper.Map<DevolucaoViewModel>(devolucao);
         return View(devolucaoModel);
     }
@@ -79,7 +79,7 @@ public class DevolucaoController : Controller
     // POST: DevolucaoController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(uint id, DevolucaoViewModel devolucaoModel)
+    public ActionResult Edit(uint id, DevolucaoViewModel devolucaoModel)
     {
         if (id != devolucaoModel.Id) return NotFound();
 
@@ -88,7 +88,7 @@ public class DevolucaoController : Controller
             try
             {
                 var devolucao = _mapper.Map<Devolucao>(devolucaoModel);
-                await _devolucaoService.Edit(devolucao);
+                _devolucaoService.Edit(devolucao);
             }
             catch
             {
@@ -100,11 +100,11 @@ public class DevolucaoController : Controller
     }
 
     // GET: DevolucaoController/Delete/5
-    public async Task<ActionResult> Delete(uint? id)
+    public ActionResult Delete(uint? id)
     {
         if (id == null) return BadRequest();
 
-        var devolucao = await _devolucaoService.Get((uint)id);
+        var devolucao = _devolucaoService.Get((uint)id);
 
         if (devolucao == null) return NotFound();
 
@@ -115,9 +115,9 @@ public class DevolucaoController : Controller
     // POST: DevolucaoController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(uint id)
+    public ActionResult Delete(uint id)
     {
-        await _devolucaoService.Delete(id);
+        _devolucaoService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
 }

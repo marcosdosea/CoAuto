@@ -3,6 +3,10 @@ using CoAutoWeb.Models;
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
+using Service;
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace CoAutoWeb.Controllers;
 
@@ -20,24 +24,37 @@ public class EntregaController : Controller
     /// Retorna todas as entregas da ViewModel
     /// </summary>
     /// <returns>View(entregas)</returns>
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
-        var entregas = await _entregaService.GetAll();
-
-        if (entregas == null) return BadRequest();
-
-        var entregaModel = _mapper.Map<List<EntregaViewModel>>(entregas);
+        var entregas = _entregaService.GetAll();
+        var entregaModel = new List<EntregaViewModel>();
+        foreach (Entrega entrega in entregas)
+        {
+            EntregaViewModel evm = new EntregaViewModel();
+            evm.Id = entrega.Id;
+            evm.DataHora = entrega.DataHora;
+            evm.Foto1 = entrega.Foto1;
+            evm.Foto2 = entrega.Foto2;
+            evm.Foto3 = entrega.Foto3;
+            evm.Foto4 = entrega.Foto4;
+            evm.Foto5 = entrega.Foto5;
+            entregaModel.Add(evm);
+        }
         return View(entregaModel);
     }
 
     // GET: EntregaController/Details/5
-    public async Task<ActionResult> Details(uint? id)
+    public ActionResult Details(uint id)
     {
-        var entrega = await _entregaService.Get((uint)id);
-
-        if (entrega == null) return BadRequest();
-
-        var entregaModel = _mapper.Map<EntregaViewModel>(entrega);
+        Entrega entrega = _entregaService.Get(id);
+        EntregaViewModel entregaModel = new EntregaViewModel();
+        entregaModel.Id = entrega.Id;
+        entregaModel.DataHora = entrega.DataHora;
+        entregaModel.Foto1 = entrega.Foto1;
+        entregaModel.Foto2 = entrega.Foto2;
+        entregaModel.Foto3 = entrega.Foto3;
+        entregaModel.Foto4 = entrega.Foto4;
+        entregaModel.Foto5 = entrega.Foto5;
         return View(entregaModel);
     }
 
@@ -50,76 +67,163 @@ public class EntregaController : Controller
     // POST: EntregaController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(EntregaViewModel entregaModel)
+    public ActionResult Create(CreateEntregaViewModel entregaModel)
     {
         if (ModelState.IsValid)
         {
-            try
+            Entrega entrega = new Entrega();
+
+            if(entregaModel.Foto1 != null && entregaModel.Foto1.Length > 0)
             {
-                var entrega = _mapper.Map<Entrega>(entregaModel);
-                await _entregaService.Create(entrega);
-            }
-            catch
-            {
-                return View(entregaModel);
+                var memoryStream = new MemoryStream();
+                entregaModel.Foto1.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto1 = jpgStream.ToArray();
             }
 
-            return RedirectToAction(nameof(Index));
+            if (entregaModel.Foto2 != null && entregaModel.Foto2.Length > 0)
+            {
+                var memoryStream = new MemoryStream();
+                entregaModel.Foto2.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto2 = jpgStream.ToArray();
+            }
+
+            if (entregaModel.Foto3 != null && entregaModel.Foto3.Length > 0)
+            {
+                var memoryStream = new MemoryStream();
+                entregaModel.Foto3.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto3 = jpgStream.ToArray();
+            }
+
+            if (entregaModel.Foto4 != null && entregaModel.Foto4.Length > 0)
+            {
+                var memoryStream = new MemoryStream();
+                entregaModel.Foto4.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto4 = jpgStream.ToArray();
+            }
+
+            if (entregaModel.Foto5 != null && entregaModel.Foto5.Length > 0)
+            {
+                var memoryStream = new MemoryStream();
+                entregaModel.Foto5.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto5 = jpgStream.ToArray();
+            }
+            // TODO: vincular entrega a um aluguel
+            entrega.DataHora = entregaModel.DataHora;
+
+            _entregaService.Create(entrega);
         }
-
-        return View(entregaModel);
+        return RedirectToAction(nameof(Index));
     }
 
     // GET: EntregaController/Edit/5
-    public async Task<ActionResult> Edit(uint id)
+    public ActionResult Edit(uint id)
     {
-        var entrega = await _entregaService.Get(id);
-        var entregaModel = _mapper.Map<EntregaViewModel>(entrega);
-        return View(entregaModel);
+        var entrega = _entregaService.Get(id);
+        UpdateEntregaViewModel updateEntregaViewModel = new UpdateEntregaViewModel();
+        updateEntregaViewModel.Id = entrega.Id;
+        updateEntregaViewModel.DataHora = entrega.DataHora;
+        updateEntregaViewModel.Foto1 = entrega.Foto1;
+        updateEntregaViewModel.Foto2 = entrega.Foto2;
+        updateEntregaViewModel.Foto3 = entrega.Foto3;
+        updateEntregaViewModel.Foto4 = entrega.Foto4;
+        updateEntregaViewModel.Foto5 = entrega.Foto5;
+        return View(updateEntregaViewModel);
     }
 
     // POST: EntregaController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(uint id, EntregaViewModel entregaModel)
+    public ActionResult Edit(uint id, UpdateEntregaViewModel updateEntregaViewModel)
     {
-        if (id != entregaModel.Id) return NotFound();
-
         if (ModelState.IsValid)
         {
-            try
+            var entrega = _entregaService.Get(id);
+            entrega.Id = updateEntregaViewModel.Id;
+            entrega.DataHora = updateEntregaViewModel.DataHora;
+
+            if (updateEntregaViewModel.FormFoto1 != null && updateEntregaViewModel.FormFoto1.Length > 0)
             {
-                var entrega = _mapper.Map<Entrega>(entregaModel);
-                await _entregaService.Edit(entrega);
+                var memoryStream = new MemoryStream();
+                updateEntregaViewModel.FormFoto1.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto1 = jpgStream.ToArray();
             }
-            catch
+
+            if (updateEntregaViewModel.FormFoto2 != null && updateEntregaViewModel.FormFoto2.Length > 0)
             {
-                return BadRequest();
+                var memoryStream = new MemoryStream();
+                updateEntregaViewModel.FormFoto2.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto2 = jpgStream.ToArray();
             }
-            return RedirectToAction(nameof(Index));
+
+            if (updateEntregaViewModel.FormFoto3 != null && updateEntregaViewModel.FormFoto3.Length > 0)
+            {
+                var memoryStream = new MemoryStream();
+                updateEntregaViewModel.FormFoto3.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto3 = jpgStream.ToArray();
+            }
+
+            if (updateEntregaViewModel.FormFoto4 != null && updateEntregaViewModel.FormFoto4.Length > 0)
+            {
+                var memoryStream = new MemoryStream();
+                updateEntregaViewModel.FormFoto4.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto4 = jpgStream.ToArray();
+            }
+
+            if (updateEntregaViewModel.FormFoto5 != null && updateEntregaViewModel.FormFoto5.Length > 0)
+            {
+                var memoryStream = new MemoryStream();
+                updateEntregaViewModel.FormFoto5.CopyTo(memoryStream);
+                var img = Image.FromStream(memoryStream);
+                var jpgStream = new MemoryStream();
+                img.Save(jpgStream, ImageFormat.Jpeg);
+                entrega.Foto5 = jpgStream.ToArray();
+            }
+            _entregaService.Edit(entrega);
         }
-        return View(entregaModel);
+        return RedirectToAction(nameof(Index));
     }
 
     // GET: EntregaController/Delete/5
-    public async Task<ActionResult> Delete(uint? id)
+    public ActionResult Delete(uint id)
     {
-        if (id == null) return BadRequest();
-
-        var entrega = await _entregaService.Get((uint)id);
-
-        if (entrega == null) return NotFound();
-
-        var entregaModel = _mapper.Map<EntregaViewModel>(entrega);
+        Entrega entrega = _entregaService.Get(id);
+        EntregaViewModel entregaModel = _mapper.Map<EntregaViewModel>(entrega);
         return View(entregaModel);
     }
 
     // POST: EntregaController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Delete(uint id)
+    public ActionResult Delete(uint id, EntregaViewModel entregaModel)
     {
-        await _entregaService.Delete(id);
+        _entregaService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
 }

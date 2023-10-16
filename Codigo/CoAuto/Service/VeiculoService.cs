@@ -18,10 +18,10 @@ public class VeiculoService : IVeiculoService
     /// </summary>
     /// <param name="veiculo">dados do veiculo</param>
     /// <returns></returns>
-    public async Task<uint> Create(Veiculo veiculo)
+    public uint Create(Veiculo veiculo)
     {
-        await _context.AddAsync(veiculo);
-        await _context.SaveChangesAsync();
+        _context.Add(veiculo);
+        _context.SaveChanges();
         return veiculo.Id;
     }
 
@@ -30,15 +30,14 @@ public class VeiculoService : IVeiculoService
     /// </summary>
     /// <param name="id da veículo ">deleta o veículo </param>
     /// <returns></returns>
-    public async Task Delete(uint idVeiculo)
+    public void Delete(uint idVeiculo)
     {
-        var veiculo = await _context.Veiculos.
-            FindAsync(idVeiculo);
+        var veiculo = _context.Veiculos.Find(idVeiculo);
 
         if (veiculo == null) return;
 
         _context.Remove(veiculo);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
 
     }
 
@@ -47,11 +46,10 @@ public class VeiculoService : IVeiculoService
     /// </summary>
     /// <param name="veículo"></param>
     /// <exception cref="ServiceException"></exception>
-    public async Task Edit(Veiculo veiculo)
+    public void Edit(Veiculo veiculo)
     {
         _context.Update(veiculo);
-
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 
     // <summary>
@@ -59,17 +57,17 @@ public class VeiculoService : IVeiculoService
     /// </summary>
     /// <param name="id do veículo ">dados do veículo</param>
     /// <returns></returns>
-    public async Task<Veiculo> Get(uint idVeiculo)
+    public Veiculo Get(uint idVeiculo)
     {
-        return await _context.Veiculos.FindAsync(idVeiculo);
+        return _context.Veiculos.Find(idVeiculo);
     }
 
     /// <summary>
     /// Obtém todos veículo
     /// </summary>
     /// <returns></returns>
-    public async Task<IEnumerable<Veiculo>> GetAll()
+    public IEnumerable<Veiculo> GetAll()
     {
-        return await _context.Veiculos.ToListAsync();
+        return _context.Veiculos.ToList();
     }
 }

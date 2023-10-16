@@ -18,10 +18,10 @@ public class DevolucaoService : IDevolucaoService
     /// </summary>
     /// <param name="entrega">dados da entrega</param>
     /// <returns></returns>
-    public async Task<uint> Create(Devolucao devolucao)
+    public uint Create(Devolucao devolucao)
     {
-        await _context.AddAsync(devolucao);
-        await _context.SaveChangesAsync();
+        _context.Add(devolucao);
+        _context.SaveChanges();
         return (uint)devolucao.Id;
     }
 
@@ -30,15 +30,14 @@ public class DevolucaoService : IDevolucaoService
     /// </summary>
     /// <param name="id da devolucao ">deleta a devolucao </param>
     /// <returns></returns>
-    public async Task Delete(uint id)
+    public void Delete(uint id)
     {
-        var devolucao = await _context.Devolucaos.
-        FindAsync(id);
+        var devolucao = _context.Devolucaos.Find(id);
 
         if (devolucao == null) return;
 
         _context.Remove(devolucao);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 
     // <summary>
@@ -46,11 +45,10 @@ public class DevolucaoService : IDevolucaoService
     /// </summary>
     /// <param name="devolucao"></param>
     /// <exception cref="ServiceException"></exception>
-    public async Task Edit(Devolucao devolucao)
+    public void Edit(Devolucao devolucao)
     {
         _context.Update(devolucao);
-
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 
     // <summary>
@@ -58,17 +56,17 @@ public class DevolucaoService : IDevolucaoService
     /// </summary>
     /// <param name="id da devolucao ">dados da devolucao</param>
     /// <returns></returns>
-    public async Task<Devolucao> Get(uint idDevolucao)
+    public Devolucao Get(uint idDevolucao)
     {
-        return await _context.Devolucaos.FindAsync(idDevolucao);
+        return _context.Devolucaos.Find(idDevolucao);
     }
 
     /// <summary>
     /// Obtém todas as devoluções
     /// </summary>
     /// <returns></returns>
-    public async Task<IEnumerable<Devolucao>> GetAll()
+    public IEnumerable<Devolucao> GetAll()
     {
-        return await _context.Devolucaos.ToListAsync();
+        return _context.Devolucaos.ToList();
     }
 }
