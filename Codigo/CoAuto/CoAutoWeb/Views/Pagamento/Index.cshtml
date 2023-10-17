@@ -27,10 +27,12 @@
 
 <br />
 <hr />
-<p style="color:gray">Diária</p>
-<p style="color:gray">Total de diárias</p>
-<h3><strong>Total</strong></h3>
-
+@foreach (var item in Model)
+{
+    <p style="color:gray">Diária</p>   @Html.DisplayFor(modelItem => item.Valor)
+    <p style="color:gray">Total de diárias</p>
+    <h3><strong>Total</strong></h3>
+}
 <br />
 <br />
 

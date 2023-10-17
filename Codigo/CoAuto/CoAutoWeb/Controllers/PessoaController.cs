@@ -2,17 +2,19 @@ using AutoMapper;
 using CoAutoWeb.Models;
 using Core;
 using Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Service;
 
 namespace CoAutoWeb.Controllers;
-
+[Authorize]
 public class PessoaController : Controller
 {
     private readonly IPessoaService _pessoaService;
     private readonly IBancoService _bancoService;
     private readonly IMapper _mapper;
+
 
     public PessoaController(IPessoaService pessoaService, IMapper mapper, IBancoService bancoService)
     {

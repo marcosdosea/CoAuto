@@ -2,19 +2,26 @@
 using CoAutoWeb.Models;
 using Core;
 using Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoAutoWeb.Controllers;
-
+[Authorize]
 public class PagamentoController : Controller
 {
+
+
     private readonly IPagamentoService _PagamentoService;
     private readonly IMapper _mapper;
+    private readonly IAluguelService _aluguelService;
 
-    public PagamentoController(IPagamentoService pagamentoService, IMapper mapper)
+ 
+
+    public PagamentoController(IPagamentoService pagamentoService, IMapper mapper, IAluguelService aluguelService)
     {
         _PagamentoService = pagamentoService;
         _mapper = mapper;
+        _aluguelService = aluguelService;
     }
 
     

@@ -2,9 +2,11 @@
 using CoAutoWeb.Models;
 using Core;
 using Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoAutoWeb.Controllers;
+[Authorize]
 public class AluguelController : Controller
 {
     private readonly IAluguelService _aluguelService;
