@@ -1,109 +1,86 @@
 using AutoMapper;
-using CoAutoWeb.Models;
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using CoAutoAPI.Models;
 using Service;
 
-namespace CoAutoWeb.Controllers;
-
-public class PessoaController : Controller
+namespace CoAutoAPI.Controllers
 {
-    private readonly IPessoaService _pessoaService;
-    private readonly IBancoService _bancoService;
-    private readonly IMapper _mapper;
-
-    public PessoaController(IPessoaService pessoaService, IMapper mapper, IBancoService bancoService)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PessoaController : ControllerBase
     {
-        _pessoaService = pessoaService;
-        _bancoService = bancoService;
-        _mapper = mapper;
-    }
+        private readonly IPessoaService _pessoaService;
+        private readonly IMapper _mapper;
 
-    // GET: PessoaController
-    public ActionResult Index()
-    {
-        var listaPessoas = _pessoaService.GetAll();
-        var listaPessoasModel = _mapper.Map<List<PessoaViewModel>>(listaPessoas);
-        return View(listaPessoasModel);
-    }
-
-    // GET: PessoaController/Details/5
-    public ActionResult Details(uint id)
-    {
-        Pessoa pessoa = _pessoaService.Get(id);
-        PessoaViewModel pessoaModel = _mapper.Map<PessoaViewModel>(pessoa);
-        return View(pessoaModel);
-    }
-
-    // GET: PessoaController/Create
-    public ActionResult Create()
-    {
-        PessoaViewModel pessoaViewModel = new();
-        IEnumerable<Banco> listaBancos = _bancoService.GetAll();
-        pessoaViewModel.ListaBancos = new SelectList(listaBancos, "Id", "Nome", null);
-        return View(pessoaViewModel);
-    }
-
-    // POST: PessoaController/Create
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Create(PessoaViewModel pessoaModel)
-    {
-        if (ModelState.IsValid)
+        public PessoaController(IPessoaService pessoaService, IMapper mapper)
         {
-            var pessoa = _mapper.Map<Pessoa>(pessoaModel);
+            _pessoaService = pessoaService;
+            _mapper = mapper;
+        }
+
+        // GET: api/<PessoaController>
+        [HttpGet]
+        public ActionResult Get()
+        {
+            var listaPessoa = _pessoaService.GetAll();
+            if (listaPessoa == null)
+                return NotFound();
+
+            return Ok(listaPessoa);
+        }
+
+        // GET api/<PessoaController>/5
+        [HttpGet("{id}")]
+        public ActionResult Get(uint id)
+        {
+            Pessoa pessoa = _pessoaService.Get(id);
+            if (pessoa == null)
+                return NotFound();
+
+            return Ok(pessoa);
+        }
+
+        // POST api/<PessoaController>
+        [HttpPost]
+        public ActionResult Post([FromBody] PessoaViewModel pessoaView)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Dados invalidos.");
+
+            var pessoa = _mapper.Map<Pessoa>(pessoaView);
             _pessoaService.Create(pessoa);
+
+            return Ok();
         }
-        return RedirectToAction(nameof(Index));
-    }
 
-    // GET: PessoaController/Edit/5
-    public ActionResult Edit(uint id)
-    {
-        Pessoa? pessoa = _pessoaService.Get(id);
-        PessoaViewModel pessoaViewModel = _mapper.Map<PessoaViewModel>(pessoa);
-        IEnumerable<Banco> listaBancos = _bancoService.GetAll();
-        pessoaViewModel.ListaBancos = new SelectList(listaBancos, "Id","Nome",listaBancos.FirstOrDefault(e=> e.Id.Equals(pessoa.IdBanco)));
-        return View(pessoaViewModel);
-    }
-
-    // POST: PessoaController/Edit/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Edit(uint id, PessoaViewModel pessoaModel)
-    {
-        if (ModelState.IsValid)
+        // PUT api/<PessoaController>/5
+        [HttpPut("{id}")]
+        public ActionResult Put(uint id, [FromBody] PessoaViewModel pessoaView)
         {
-            var pessoa = _mapper.Map<Pessoa>(pessoaModel);
+            if (!ModelState.IsValid)
+                return BadRequest("Dados Invalidos.");
+
+            var pessoa = _mapper.Map<Pessoa>(pessoaView);
+            if (pessoa == null)
+                return NotFound();
+
             _pessoaService.Edit(pessoa);
+
+            return Ok();
         }
-        return RedirectToAction(nameof(Index));
-    }
 
-    // GET: PessoaController/Delete/5
-    public ActionResult Delete(uint id)
-    {
-        Pessoa pessoa = _pessoaService.Get(id);
-        PessoaViewModel pessoaModel = _mapper.Map<PessoaViewModel>(pessoa);
-        return View(pessoaModel);
-    }
+        // DELETE api/<PessoaController>/5
+        [HttpDelete("{id}")]
+        public ActionResult Delete(uint id)
+        {
+            Pessoa pessoa = _pessoaService.Get(id);
+            if (pessoa == null)
+                return NotFound();
 
-    // POST: PessoaController/Delete/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(uint id, PessoaViewModel pessoaModel)
-    {
-        _pessoaService.Delete(id);
-        return RedirectToAction(nameof(Index));
+            _pessoaService.Delete(id);
+            return Ok();
+        }
     }
-
-    //GET: PessoaControler/Perfil
-    public ActionResult Perfil(uint id)
-    {
-        Pessoa pessoa = _pessoaService.Get(id);
-        PessoaViewModel pessoaModel = _mapper.Map<PessoaViewModel>(pessoa);
-        return View(pessoaModel);
-    } 
 }

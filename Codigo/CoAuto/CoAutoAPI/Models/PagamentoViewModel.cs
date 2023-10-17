@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CoAutoWeb.Models;
+namespace CoAutoAPI.Models;
 
 public class PagamentoViewModel
 {
