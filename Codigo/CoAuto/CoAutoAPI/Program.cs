@@ -20,10 +20,12 @@ namespace CoAutoAPI
 
             builder.Services.AddTransient<IAluguelService, AluguelService>();
             builder.Services.AddTransient<IBancoService, BancoService>();
+            builder.Services.AddTransient<IDisponibilidadeService, DisponibilidadeService>();
             builder.Services.AddTransient<IPagamentoService, PagamentoService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            builder.Services.AddDbContext<CoAutoContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("CoAutoDatabase")));
+            builder.Services.AddDbContext<CoAutoContext>(
+                options => options.UseMySQL(builder.Configuration.GetConnectionString("CoAutoDatabase")));
 
             var app = builder.Build();
 
@@ -44,4 +46,3 @@ namespace CoAutoAPI
         }
     }
 }
-
