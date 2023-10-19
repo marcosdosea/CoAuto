@@ -1,8 +1,8 @@
 using AutoMapper;
 using Core;
 using Core.Service;
+using CoAutoWeb.Models;
 using Microsoft.AspNetCore.Mvc;
-using CoAutoAPI.Models;
 using Service;
 
 namespace CoAutoAPI.Controllers
