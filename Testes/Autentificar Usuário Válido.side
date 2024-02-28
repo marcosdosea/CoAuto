@@ -1,0 +1,169 @@
+{
+  "id": "375dab82-cfe7-40c7-a474-9af90f90cb13",
+  "version": "2.0",
+  "name": "CoAuto",
+  "url": "https://localhost:7071/",
+  "tests": [{
+    "id": "63b0fa64-f62d-4b84-ba25-79bc0bf05a79",
+    "name": "Autentificar Usuário Inválido",
+    "commands": [{
+      "id": "a7e03232-464b-47a4-a4e4-a2a252ac1683",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d49cc22-80d9-41a8-badf-de4c79a80813",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04a15b68-0510-4af0-8a2a-aeada756d789",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#login", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='login']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/Identity/Account/Login')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70b5d425-f091-491d-b92b-ecf97c04bc9f",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-submit",
+      "targets": [
+        ["id=login-submit", "id"],
+        ["css=#login-submit", "css:finder"],
+        ["xpath=//button[@id='login-submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ACESSAR CONTA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "67443eaf-b84a-410e-bbcd-8bee4e4a806d",
+    "name": "Autentificar Usuário Válido",
+    "commands": [{
+      "id": "23439baa-0d78-4fcf-8e55-9075870a6d1c",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a2a5822-cc26-4a7d-99b5-840ca6b40a4f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1253x816",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33fe6cdc-a0ec-45e4-8e4b-fe7b012a500d",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#login", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='login']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/Identity/Account/Login')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "11f8866b-3311-4c04-8c57-6bd670d94719",
+      "comment": "",
+      "command": "click",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "056c7f04-6288-470e-a420-28fc714c1203",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "coauto@gmail.com"
+    }, {
+      "id": "10344092-72df-49a3-95b6-9c16c5a3de80",
+      "comment": "",
+      "command": "click",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "179a13fb-2f12-44b2-a5c4-53e6f57f7437",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "e1ab1179-ce46-4d4f-946f-3a053d658295",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-submit",
+      "targets": [
+        ["id=login-submit", "id"],
+        ["css=#login-submit", "css:finder"],
+        ["xpath=//button[@id='login-submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ACESSAR CONTA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "315945c4-a374-4b59-8b6f-93e9a05e13b6",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["63b0fa64-f62d-4b84-ba25-79bc0bf05a79"]
+  }],
+  "urls": ["https://localhost:7071/"],
+  "plugins": []
+}
