@@ -1,0 +1,86 @@
+{
+  "id": "677387a7-eedf-4d37-9a2f-84ac64d58385",
+  "version": "2.0",
+  "name": "coauto",
+  "url": "https://localhost:7071/Banco",
+  "tests": [{
+    "id": "57ec066d-6724-468f-8aa5-2241288bc2d3",
+    "name": "Alterar Banco",
+    "commands": [{
+      "id": "12333f19-ef3f-4d22-a74d-3141a46885fb",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/Banco",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1e0720d8-2d44-4119-bf1c-b1b6a9f94311",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "16a15ca1-3698-45cb-a555-de1e58fd79f2",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) a:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(2) a:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Editar')])[2]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Banco/Edit/2')]", "xpath:href"],
+        ["xpath=//tr[2]/td[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49ba8990-c9ce-4cae-9808-82bd5e61dac4",
+      "comment": "",
+      "command": "click",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "79f03b29-87b1-4a7f-b3da-9061dbd2bb6a",
+      "comment": "",
+      "command": "type",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "santander"
+    }, {
+      "id": "3b4f7985-ce2e-4306-992b-4417cb9348e3",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }],
+  "suites": [{
+    "id": "b5ade0f8-f841-4e29-8b69-7bd69f142acf",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:7071/Modelo", "https://localhost:7071/Banco"],
+  "plugins": []
+}

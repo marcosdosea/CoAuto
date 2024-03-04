@@ -1,0 +1,94 @@
+{
+  "id": "677387a7-eedf-4d37-9a2f-84ac64d58385",
+  "version": "2.0",
+  "name": "coauto",
+  "url": "https://localhost:7071/Modelo",
+  "tests": [{
+    "id": "7b5e236f-38ca-4f22-9735-cfa6d3aaf3f3",
+    "name": "Cadastrar Modelo Inválido",
+    "commands": [{
+      "id": "fd666687-627d-44a5-888e-2f266a701ed0",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/Modelo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8dbcd2bd-f3bd-4900-aeee-85f416ccde1a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "455f63d7-4950-4f2c-ad86-aec685feb9fe",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(6) a:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(6) a:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Edit')])[3]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Modelo/Edit/4')]", "xpath:href"],
+        ["xpath=//tr[3]/td[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "499ef910-46f1-4f7f-82db-917e4733bf22",
+      "comment": "",
+      "command": "click",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "26fba967-3ea8-41b3-9560-30c45ebfe4d2",
+      "comment": "",
+      "command": "type",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Hb20S"
+    }, {
+      "id": "0f005774-7d71-471c-8359-a641160b905e",
+      "comment": "",
+      "command": "click",
+      "target": "css=body",
+      "targets": [
+        ["css=body", "css:finder"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee781786-900c-4d01-bd26-bde5fd050e0a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Save']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "b5ade0f8-f841-4e29-8b69-7bd69f142acf",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:7071/Modelo"],
+  "plugins": []
+}
