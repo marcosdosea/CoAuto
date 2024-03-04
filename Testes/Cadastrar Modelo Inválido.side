@@ -1,0 +1,127 @@
+{
+  "id": "677387a7-eedf-4d37-9a2f-84ac64d58385",
+  "version": "2.0",
+  "name": "coauto",
+  "url": "https://localhost:7071/Modelo",
+  "tests": [{
+    "id": "c8890a67-7a3d-424d-a12e-93ba4596fbd1",
+    "name": "Cadastro Modelo Inválido ",
+    "commands": [{
+      "id": "9d8102ca-02e2-4ae8-8573-7becd9add6e0",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/Modelo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4197fe9a-3efa-42fc-af53-c3f63139b951",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c8f32a8-bbda-4eb9-8b55-b120ec232aaf",
+      "comment": "",
+      "command": "click",
+      "target": "css=p",
+      "targets": [
+        ["css=p", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Create New')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "385e71b7-82e9-41e5-9696-d27a3eaf9714",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Create New",
+      "targets": [
+        ["linkText=Create New", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Create New')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Modelo/Create')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Create New')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "56dbd438-916e-47f9-b7ce-d7ed72ab660d",
+      "comment": "",
+      "command": "click",
+      "target": "id=IdMarca",
+      "targets": [
+        ["id=IdMarca", "id"],
+        ["name=IdMarca", "name"],
+        ["css=#IdMarca", "css:finder"],
+        ["xpath=//select[@id='IdMarca']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"],
+        ["xpath=//select[contains(.,'Fiat\nTesla\nToyota\nHonda\nMercedes-Benz\nBMW\nAudi\nFord\nChevrolet\nPorsche\nVolkswagen\nHyundai\nLexus\nVolvo\nJeep\nSubaru\nKia\nNissan\nMazda\nFerrari')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1121a8b-faaa-4312-912d-fc780c650eae",
+      "comment": "",
+      "command": "select",
+      "target": "id=IdMarca",
+      "targets": [],
+      "value": "label=BMW"
+    }, {
+      "id": "29210073-e55b-4c33-a011-1765345572a5",
+      "comment": "",
+      "command": "click",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98a393e3-2f99-42a9-b92a-0a495c61ab9e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Create']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89fe4465-ff0d-43c6-8873-73bae596ea51",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Create']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e28cdf7f-deba-42d3-8ac8-74a83dba136a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Create']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "b5ade0f8-f841-4e29-8b69-7bd69f142acf",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:7071/Modelo"],
+  "plugins": []
+}

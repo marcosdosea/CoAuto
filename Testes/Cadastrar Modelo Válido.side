@@ -1,0 +1,107 @@
+{
+  "id": "677387a7-eedf-4d37-9a2f-84ac64d58385",
+  "version": "2.0",
+  "name": "coauto",
+  "url": "https://localhost:7071/Modelo",
+  "tests": [{
+    "id": "62d5f07f-d12c-48bc-9a13-42a0c200386f",
+    "name": "Cadastra modelo válido",
+    "commands": [{
+      "id": "dfe14da0-e6d1-46fd-8cc0-47f120dc9f59",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/Modelo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "32d257a5-c88c-4ab2-a6af-799193e70bee",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c61a6e01-55e1-4798-bc2d-d7cf9a2cd5f7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Create New",
+      "targets": [
+        ["linkText=Create New", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Create New')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Modelo/Create')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Create New')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8149fe40-18b5-44cb-af14-69a569eac338",
+      "comment": "",
+      "command": "click",
+      "target": "id=IdMarca",
+      "targets": [
+        ["id=IdMarca", "id"],
+        ["name=IdMarca", "name"],
+        ["css=#IdMarca", "css:finder"],
+        ["xpath=//select[@id='IdMarca']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"],
+        ["xpath=//select[contains(.,'Fiat\nTesla\nToyota\nHonda\nMercedes-Benz\nBMW\nAudi\nFord\nChevrolet\nPorsche\nVolkswagen\nHyundai\nLexus\nVolvo\nJeep\nSubaru\nKia\nNissan\nMazda\nFerrari')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c347999d-df5e-4d77-9139-afb459bbea83",
+      "comment": "",
+      "command": "select",
+      "target": "id=IdMarca",
+      "targets": [],
+      "value": "label=Mercedes-Benz"
+    }, {
+      "id": "44abd97d-aa4a-4869-977a-5be879ad896a",
+      "comment": "",
+      "command": "click",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "724ca7ad-da66-4e21-bfb5-582a665287a1",
+      "comment": "",
+      "command": "type",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Amg petronas"
+    }, {
+      "id": "cae7216a-829a-4621-9852-694211d085db",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Create']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "b5ade0f8-f841-4e29-8b69-7bd69f142acf",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:7071/Modelo"],
+  "plugins": []
+}

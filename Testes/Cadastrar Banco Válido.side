@@ -1,0 +1,106 @@
+{
+  "id": "677387a7-eedf-4d37-9a2f-84ac64d58385",
+  "version": "2.0",
+  "name": "coauto",
+  "url": "https://localhost:7071/Banco",
+  "tests": [{
+    "id": "f7c0e281-7d6a-4e59-bd09-f12c32cd8af7",
+    "name": "Cadastrar Banco Válido",
+    "commands": [{
+      "id": "e7f06d07-4b05-4ccb-9b74-eecc02a6e089",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/Banco",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fd56c0e5-5dde-407a-880d-e4150b4617a8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "72521b85-1e06-450f-b900-328b942e08cd",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Criar um banco",
+      "targets": [
+        ["linkText=Criar um banco", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Criar um banco')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Banco/Create')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Criar um banco')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "537361af-19c7-4f82-b1a8-3b807457c4cb",
+      "comment": "",
+      "command": "click",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3e78b29a-913d-4352-a2f3-f253dc49574b",
+      "comment": "",
+      "command": "type",
+      "target": "id=Nome",
+      "targets": [
+        ["id=Nome", "id"],
+        ["name=Nome", "name"],
+        ["css=#Nome", "css:finder"],
+        ["xpath=//input[@id='Nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Bradesco"
+    }, {
+      "id": "4921a229-ae80-44f6-a7fa-3cb3a1059dc9",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(4)",
+      "targets": [
+        ["css=div:nth-child(4)", "css:finder"],
+        ["xpath=//main/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a78138a8-fd83-4b26-a84b-d16b26948d4d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Criar']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "74924a12-e7d4-4ead-b9d2-8a8d84f37193",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "b5ade0f8-f841-4e29-8b69-7bd69f142acf",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:7071/Modelo", "https://localhost:7071/Banco"],
+  "plugins": []
+}
