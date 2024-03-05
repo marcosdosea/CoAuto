@@ -1,0 +1,105 @@
+{
+  "id": "58bf8a0a-357c-43e0-97dc-7c36a6924ffb",
+  "version": "2.0",
+  "name": "CoAuto",
+  "url": "https://localhost:7071",
+  "tests": [{
+    "id": "12c90b92-3404-40a1-b3f7-d830d1832e34",
+    "name": "Inserir Usuário Inválido",
+    "commands": [{
+      "id": "0629d8a5-636a-443f-adb4-47b71d4fe007",
+      "comment": "",
+      "command": "open",
+      "target": "/Identity/Account/Register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cc68b4d0-f1ae-4ad2-aa78-c1432eb76f62",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "945x1012",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69ad13f8-09af-49ee-9a71-706c1e284702",
+      "comment": "",
+      "command": "click",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='registerForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3116a764-167f-41bb-9d36-2921acddf634",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='registerForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "contato.jordanaquino@gmail.com"
+    }, {
+      "id": "49c5eeea-f1be-4523-8827-05663266ebf9",
+      "comment": "",
+      "command": "click",
+      "target": "id=registerSubmit",
+      "targets": [
+        ["id=registerSubmit", "id"],
+        ["css=#registerSubmit", "css:finder"],
+        ["xpath=//button[@id='registerSubmit']", "xpath:attributes"],
+        ["xpath=//form[@id='registerForm']/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "08dd90b8-df62-4512-b1bf-633f10814dfa",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=registerSubmit",
+      "targets": [
+        ["id=registerSubmit", "id"],
+        ["css=#registerSubmit", "css:finder"],
+        ["xpath=//button[@id='registerSubmit']", "xpath:attributes"],
+        ["xpath=//form[@id='registerForm']/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6692be42-f995-4a9d-9249-7729b02a9f04",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=registerSubmit",
+      "targets": [
+        ["id=registerSubmit", "id"],
+        ["css=#registerSubmit", "css:finder"],
+        ["xpath=//button[@id='registerSubmit']", "xpath:attributes"],
+        ["xpath=//form[@id='registerForm']/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "557e9c66-3bd8-4d12-ba1a-45960507ccaf",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["12c90b92-3404-40a1-b3f7-d830d1832e34"]
+  }],
+  "urls": ["https://localhost:7071/"],
+  "plugins": []
+}

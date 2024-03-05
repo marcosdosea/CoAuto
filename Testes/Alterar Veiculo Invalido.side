@@ -1,0 +1,93 @@
+{
+  "id": "960fb3b8-9f28-4395-a7d2-6d3ef78b811a",
+  "version": "2.0",
+  "name": "CoAuto",
+  "url": "https://localhost:7071/veiculo",
+  "tests": [{
+    "id": "89cf441f-f391-457b-9f77-b8c5248b6a57",
+    "name": "Alterar Veículo Inválido",
+    "commands": [{
+      "id": "e8670e3a-c50d-4adb-a52d-edb178c74dce",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:7071/veiculo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "14c5e6b4-6968-4291-9729-14616cd072fb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "792x816",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9bfbcd7-8987-400e-8c53-068b812c29d3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=td > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Veiculo/Edit/2')]", "xpath:href"],
+        ["xpath=//td[21]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7652399-69e9-4585-8679-ee932c82d7cc",
+      "comment": "",
+      "command": "click",
+      "target": "id=Placa",
+      "targets": [
+        ["id=Placa", "id"],
+        ["name=Placa", "name"],
+        ["css=#Placa", "css:finder"],
+        ["xpath=//input[@id='Placa']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "31271078-80c1-4d4f-86e2-aa5d4d8ee6e3",
+      "comment": "",
+      "command": "type",
+      "target": "id=Placa",
+      "targets": [
+        ["id=Placa", "id"],
+        ["name=Placa", "name"],
+        ["css=#Placa", "css:finder"],
+        ["xpath=//input[@id='Placa']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "abc123"
+    }, {
+      "id": "4ee11f4c-ab1e-4895-b95f-df3ee29bebca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//input[@value='Save']", "xpath:attributes"],
+        ["xpath=//div[21]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9888111-e408-427f-923f-4c35445cd0d8",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,832.7999877929688)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "fca8f011-4eec-4a92-9c9d-7ac3b4e33612",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:7071/"],
+  "plugins": []
+}
