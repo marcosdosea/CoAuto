@@ -22,7 +22,7 @@
 
   <h2 id="solucao">2. A Solução :sparkles:</h2>
   
-  <p>Na tentiva de solucionar as problematicas de acessibilidade urbana, de estacionamento e sustentabilidade criamos o 
+  <p>Na tentativa de solucionar as problemas de acessibilidade urbana, de estacionamento e sustentabilidade criamos o 
     <a href="https://github.com/marcosdosea/CoAuto" >CoAuto</a>. </p>
   <p>O Projeto CoAuto visa abordar as necessidades de mobilidade enfrentadas por diversos segmentos da comunidade. Destinado a indivíduos que enfrentam desafios na mobilidade urbana, aqueles que optam por não possuir um veículo ou têm um veículo subutilizado, o CoAuto oferece uma solução inovadora e econômica.</p>
   <p>Em um cenário em que empresas como Uber e 99 Táxi dominam o mercado, o Projeto CoAuto destaca-se com um aplicativo/software abrangente, proporcionando as seguintes funcionalidades:</p>
@@ -40,7 +40,7 @@
   
   <h2 id="linksuteis">4. Links Úteis</h2>
 
-  <a href="PENDENTE" target="_blank">1 - Vídeo de Apresentação </a>
+  <a href="https://youtu.be/HOkcx7VP2c8" target="_blank">1 - Vídeo de Apresentação </a>
 
   <a href="https://bilheteria.my.canva.site/coauto" target="_blank">2 - Manual de Uso </a>
 
