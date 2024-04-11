@@ -42,7 +42,7 @@
 
   <a href="https://youtu.be/HOkcx7VP2c8" target="_blank">1 - Vídeo de Apresentação </a>
 
-  <a href="https://bilheteria.my.canva.site/coauto" target="_blank">2 - Manual de Uso </a>
+  <a href="https://bilheteria.my.canva.site/manualcoauto" target="_blank">2 - Manual de Uso </a>
 
   
   <h2 id="equipe">5. Equipe :busts_in_silhouette::busts_in_silhouette: :bust_in_silhouette:</h2>
