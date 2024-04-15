@@ -11,7 +11,8 @@
     <li><a href="#solucao">2. A Solução</a></li>
     <li><a href="#publico">3. Público Alvo</a></li>
     <li><a href="#linksuteis">4. Links Úteis</a></li>
-    <li><a href="#equipe">5. Equipe</a></li>
+    <li><a href="apresentação">5. Apresentação</a></li>
+    <li><a href="#equipe">6. Equipe</a></li>
   </ul>
 
   <h2 id="problema">1. O Problema :warning:</h2>
@@ -40,12 +41,13 @@
   
   <h2 id="linksuteis">4. Links Úteis</h2>
 
-  <a href="https://youtu.be/HOkcx7VP2c8" target="_blank">1 - Vídeo de Apresentação </a>
+  <a href="https://bilheteria.my.canva.site/manualcoauto" target="_blank">Manual de Uso </a>
 
-  <a href="https://bilheteria.my.canva.site/manualcoauto" target="_blank">2 - Manual de Uso </a>
+  <h2 id="apresentação">5. Apresentação CoAuto</h2>  
 
+ [![](https://markdown-videos-api.jorgenkh.no/youtube/HOkcx7VP2c8?width=320&height=180&filetype=gif)](https://youtu.be/HOkcx7VP2c8)
   
-  <h2 id="equipe">5. Equipe :busts_in_silhouette::busts_in_silhouette: :bust_in_silhouette:</h2>
+  <h2 id="equipe">6. Equipe :busts_in_silhouette::busts_in_silhouette: :bust_in_silhouette:</h2>
 
   <table align="center">
   <tr>
