@@ -51,6 +51,8 @@ public partial class Veiculo
 
     public virtual Aluguel? Aluguel { get; set; }
 
+    public string ImageUrl { get; set; }
+
     public virtual Disponibilidade? Disponibilidade { get; set; }
 
     public virtual Modelo IdModeloNavigation { get; set; } = null!;

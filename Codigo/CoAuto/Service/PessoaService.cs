@@ -61,6 +61,7 @@ public class PessoaService : IPessoaService
         return _context.Pessoas.Find(id);
     }
 
+
     /// <summary>
     /// Buscar todos as pessoas cadastrados
     /// </summary>
@@ -85,5 +86,16 @@ public class PessoaService : IPessoaService
                         Telefone = pessoa.Telefone
                     };
         return query;
+    }
+
+    public Pessoa GetPerfilParcial(string Email)
+    {
+        return _context.Pessoas
+            .Include(a => a.Aluguel)
+            .ThenInclude(p => p.Pagamento)
+            .Include(a => a.Aluguel)
+            .ThenInclude(v => v.IdVeiculoNavigation)
+            .ThenInclude(m => m.IdModeloNavigation)
+            .FirstOrDefault(p => p.Email == Email);
     }
 }

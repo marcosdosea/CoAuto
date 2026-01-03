@@ -1,4 +1,6 @@
-﻿using CoAutoWeb.Models;
+﻿using AutoMapper;
+using CoAutoWeb.Models;
+using Core.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +9,22 @@ namespace CoAutoWeb.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IVeiculoService _veiculoService;
+    private readonly IMapper _mapper;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IVeiculoService veiculoService, IMapper mapper)
     {
         _logger = logger;
+        _veiculoService = veiculoService;
+        _mapper = mapper;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var veiculos = _veiculoService.GetAllSimpleVeiculos();
+
+        var veiculosView = _mapper.Map<List<VeiculoListagemViewModel>>(veiculos);
+        return View(veiculosView);
     }
 
     public IActionResult Privacy()

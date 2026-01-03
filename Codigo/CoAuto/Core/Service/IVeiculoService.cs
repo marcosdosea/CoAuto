@@ -1,4 +1,6 @@
-﻿namespace Core.Service;
+﻿using Core.DTO;
+
+namespace Core.Service;
 
 public interface IVeiculoService
 {
@@ -7,4 +9,5 @@ public interface IVeiculoService
     void Delete(uint idVeiculo);
     Veiculo Get(uint idVeiculo);
     IEnumerable<Veiculo> GetAll();
+    IEnumerable<VeiculosSimplesDTO> GetAllSimpleVeiculos();
 }

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Core;
 
 namespace CoAutoWeb.Areas.Identity.Pages.Account
 {
@@ -30,13 +31,16 @@ namespace CoAutoWeb.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<UsuarioIdentity> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly CoAutoContext _context;
 
         public RegisterModel(
             UserManager<UsuarioIdentity> userManager,
             IUserStore<UsuarioIdentity> userStore,
             SignInManager<UsuarioIdentity> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            CoAutoContext context
+            )
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +48,7 @@ namespace CoAutoWeb.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         /// <summary>
@@ -98,6 +103,22 @@ namespace CoAutoWeb.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public string Nome { get; set; }
+            public string Cnh { get; set; }
+            public string Cpf { get; set; }
+            public DateTime DataNascimento { get; set; }
+            public string Telefone { get; set; }
+            public string Cep { get; set; }
+            public string Estado { get; set; }
+            public string Cidade { get; set; }
+            public string Bairro { get; set; }
+            public string Rua { get; set; }
+            public string Numero { get; set; }
+            public sbyte Autorizado { get; set; }
+
+            public string Tipo { get; set; } = "cliente";
+
         }
 
 
@@ -122,6 +143,28 @@ namespace CoAutoWeb.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    Pessoa pessoa = new Pessoa
+                    {
+                        Nome = Input.Nome,
+                        Email = Input.Email,
+                        Senha = Input.Password,
+                        Cnh = Input.Cnh,
+                        Cpf = Input.Cpf,
+                        DataNascimento = Input.DataNascimento,
+                        Telefone = Input.Telefone,
+                        Cep = Input.Cep,
+                        Estado = Input.Estado,
+                        Cidade = Input.Cidade,
+                        Bairro = Input.Bairro,
+                        Rua = Input.Rua,
+                        Numero = Input.Numero,
+                        Autorizado = 1,
+                        Tipo = Input.Tipo
+                    };
+                    Console.WriteLine(pessoa);
+                    _context.Pessoas.Add(pessoa);
+                    _context.SaveChanges();
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

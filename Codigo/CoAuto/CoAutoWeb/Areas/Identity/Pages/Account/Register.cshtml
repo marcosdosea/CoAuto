@@ -1,15 +1,10 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Registrar";
-}
-
-<h1 style="color:dodgerblue">@ViewData["Title"]</h1>
 
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2 style="color:dodgerblue">uma nova conta</h2>
+            <h2 style="color:dodgerblue">Crie uma nova conta</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
@@ -30,9 +25,77 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <br />
+            <div class="form-floating">
+                <input asp-for="Input.Nome" class="form-control"  aria-required="true" />
+                <label asp-for="Input.Nome"></label>
+                <span asp-validation-for="Input.Nome" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Cpf" class="form-control"  aria-required="true" />
+                <label asp-for="Input.Cpf"></label>
+                <span asp-validation-for="Input.Cpf" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Telefone" class="form-control" aria-required="true" />
+                <label asp-for="Input.Telefone"></label>
+                <span asp-validation-for="Input.Telefone" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Cnh" class="form-control"  aria-required="true" />
+                <label asp-for="Input.Cnh"></label>
+                <span asp-validation-for="Input.Cnh" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.DataNascimento" type="date" class="form-control" aria-required="true" />
+                <label asp-for="Input.DataNascimento"></label>
+                <span asp-validation-for="Input.DataNascimento" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Cep" class="form-control" aria-required="true" />
+                <label asp-for="Input.Cep"></label>
+                <span asp-validation-for="Input.Cep" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Estado" class="form-control" aria-required="true" />
+                <label asp-for="Input.Estado"></label>
+                <span asp-validation-for="Input.Estado" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Cidade" class="form-control"  aria-required="true" />
+                <label asp-for="Input.Cidade"></label>
+                <span asp-validation-for="Input.Cidade" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Bairro" class="form-control"  aria-required="true" />
+                <label asp-for="Input.Bairro"></label>
+                <span asp-validation-for="Input.Bairro" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Rua" class="form-control"  aria-required="true" />
+                <label asp-for="Input.Rua"></label>
+                <span asp-validation-for="Input.Rua" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Numero" class="form-control"  aria-required="true" />
+                <label asp-for="Input.Numero"></label>
+                <span asp-validation-for="Input.Numero" class="text-danger"></span>
+            </div>
+            <br />
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary" style="border-radius:1rem">Registrar</button>
         </form>
+        <br />
     </div>
+   
     <div class="col-md-6 col-md-offset-2">
         <section>
       

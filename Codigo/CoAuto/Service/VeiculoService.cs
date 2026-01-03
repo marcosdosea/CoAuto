@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -68,6 +69,29 @@ public class VeiculoService : IVeiculoService
     /// <returns></returns>
     public IEnumerable<Veiculo> GetAll()
     {
-        return _context.Veiculos.ToList();
+        return _context.Veiculos
+            .Include(v => v.IdModeloNavigation)
+            .ToList();
+    }
+
+    public IEnumerable<VeiculosSimplesDTO> GetAllSimpleVeiculos()
+    {
+        var veiculos = _context.Veiculos
+            .Select(v => new VeiculosSimplesDTO {
+                Id = v.Id,
+                NomeModelo = v.IdModeloNavigation.Nome,
+                ImageUrl=v.ImageUrl,
+                Ano = v.Ano,
+                Placa = v.Placa,
+                Valor = v.Valor,
+                Estado = v.Estado,
+                Cidade = v.Cidade,
+                Bairro = v.Bairro,
+                NomeMarca = v.IdModeloNavigation.IdMarcaNavigation.Nome
+            })
+            .ToList();
+
+
+        return veiculos;
     }
 }

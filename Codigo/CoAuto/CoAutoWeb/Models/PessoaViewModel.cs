@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Core;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoAutoWeb.Models;
@@ -90,4 +91,7 @@ public class PessoaViewModel
     public uint IdBanco { get; set; }
 
     public SelectList? ListaBancos { get; set; }
+
+
+
 }

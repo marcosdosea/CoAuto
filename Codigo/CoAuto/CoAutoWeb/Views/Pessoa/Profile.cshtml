@@ -1,0 +1,59 @@
+﻿@model CoAutoWeb.Models.PerfilViewModel;
+
+<h1>Meu perfil</h1>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <partial name="_Profile" model="Model" />
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPFR-snlw_Lh0NqQAyvxHV6tIsM5JvCQ_5SH1bjVonUX98GKF2ideqhq87-QAdr9FyVBs&usqp=CAU"
+         alt="Foto de perfil de @Model.Nome"
+         class="rounded-circle img-fluid"
+         style="width: 150px; height: 150px; object-fit: cover;">
+</div>
+
+
+@if (Model.possuiCadastro == false)
+{
+        <a asp-action="Create" asp-controller="Pessoa" class="btn btn-primary">Adicione seus dados</a>
+}
+else
+{
+    <div class="row">
+        <a asp-action="Edit" asp-controller="Pessoa" class="btn btn-warning">Editar dados</a>
+    </div>
+}
+
+<h5>Aluguéis</h5>
+@if (Model.Alugueis.Count <= 0)
+{
+    <div class="card">
+        <div class="card-body text-center">
+            <p class="card-text text-muted">
+                Você ainda não realizou nenhum aluguel.
+            </p>
+            <a asp-controller="Aluguel" asp-action="Index" class="btn btn-primary">Ver veículos disponíveis</a>
+        </div>
+    </div>
+}
+@foreach (var aluguel in Model.Alugueis)
+{
+
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">@aluguel.Modelo.Nome</h5>
+            <h4 class="card-subtitle mb-2 text-muted">@aluguel.Veiculo.Placa</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">@aluguel.DataHoraAluguel</li>
+            <li class="list-group-item">@aluguel.Status</li>
+            <li class="list-group-item">@aluguel.Pagamento.Valor</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Detalhes</a>
+        </div>
+    </div>
+    }
+
+<h4><strong>Avaliações</strong></h4>
+

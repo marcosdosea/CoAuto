@@ -33,5 +33,30 @@
         public virtual Modelo NomeModeloNavigation { get; set; } = null!;
 
         public virtual Pessoa NomePessoaNavigation { get; set; } = null!;
+
+        public string ImageUrl { get; set; }
+    }
+
+    public class VeiculosSimplesDTO
+    {
+        public uint Id { get; set; }
+
+        public string Ano { get; set; } = null!;
+
+        public string Placa { get; set; } = null!;
+
+        public float Valor { get; set; }
+
+        public string Estado { get; set; } = null!;
+
+        public string Cidade { get; set; } = null!;
+
+        public string Bairro { get; set; }
+
+        public string NomeMarca { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public string NomeModelo { get; set; }
     }
 }

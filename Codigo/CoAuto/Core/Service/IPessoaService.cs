@@ -10,4 +10,5 @@ public interface IPessoaService
     Pessoa Get(uint id);
     IEnumerable<Pessoa> GetAll();
     IEnumerable<PessoaDto> GetByNome(string nome);
+    public Pessoa GetPerfilParcial(string Email);
 }

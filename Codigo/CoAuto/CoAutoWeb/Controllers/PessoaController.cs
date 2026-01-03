@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Service;
+using System.Security.Claims;
 
 namespace CoAutoWeb.Controllers;
 [Authorize]
@@ -56,9 +57,10 @@ public class PessoaController : Controller
         if (ModelState.IsValid)
         {
             var pessoa = _mapper.Map<Pessoa>(pessoaModel);
+            pessoa.Email = User.FindFirstValue(ClaimTypes.Email);
             _pessoaService.Create(pessoa);
         }
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Profile));
     }
 
     // GET: PessoaController/Edit/5
@@ -102,10 +104,28 @@ public class PessoaController : Controller
     }
 
     //GET: PessoaControler/Perfil
-    public ActionResult Perfil(uint id)
+    [Authorize]
+    public ActionResult Profile()
     {
-        Pessoa pessoa = _pessoaService.Get(id);
-        PessoaViewModel pessoaModel = _mapper.Map<PessoaViewModel>(pessoa);
-        return View(pessoaModel);
-    } 
+        var userEmailFromToken = User.FindFirstValue(ClaimTypes.Email);
+        Console.WriteLine(userEmailFromToken);
+        //Obter dados da pessoa || alugueis
+        Pessoa pessoa = _pessoaService.GetPerfilParcial(userEmailFromToken);
+
+        PerfilViewModel perfilViewModel = new PerfilViewModel();
+
+        if(pessoa == null)
+        {
+            perfilViewModel.possuiCadastro = false;
+            return View(perfilViewModel);
+        }
+        else
+        {
+            perfilViewModel.possuiCadastro = true;
+            perfilViewModel = _mapper.Map<PerfilViewModel>(pessoa);
+            return View(perfilViewModel);
+        }
+
+    }
+
 }
